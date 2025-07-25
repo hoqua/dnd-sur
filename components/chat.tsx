@@ -3,9 +3,9 @@
 import { DefaultChatTransport } from 'ai';
 import { useChat } from '@ai-sdk/react';
 import { useEffect, useState } from 'react';
-import useSWR, { useSWRConfig } from 'swr';
+import useSWR from 'swr';
 import { ChatHeader } from '@/components/chat-header';
-import type { Vote } from '@/lib/db/schema';
+import { PlayerStats } from '@/components/player-stats';
 import { fetcher, fetchWithErrorHandlers, generateUUID } from '@/lib/utils';
 import { MultimodalInput } from './multimodal-input';
 import { Messages } from './messages';
@@ -16,7 +16,7 @@ import { useSearchParams } from 'next/navigation';
 
 import { useAutoResume } from '@/hooks/use-auto-resume';
 import { ChatSDKError } from '@/lib/errors';
-import type { Attachment, ChatMessage } from '@/lib/types';
+import type { ChatMessage } from '@/lib/types';
 import { useDataStream } from './data-stream-provider';
 
 export function Chat({
@@ -32,12 +32,19 @@ export function Chat({
   session: Session;
   autoResume: boolean;
 }) {
-
-
-  const { mutate } = useSWRConfig();
   const { setDataStream } = useDataStream();
 
   const [input, setInput] = useState<string>('');
+  
+  // Fetch player data (optimized refresh interval)
+  const { data: playerData } = useSWR(
+    session?.user?.id ? `/api/player/${session.user.id}` : null,
+    fetcher,
+    { 
+      refreshInterval: 10000, // Reduced from 5s to 10s for better performance
+      revalidateOnFocus: true,
+    }
+  );
 
   const {
     messages,
@@ -86,6 +93,7 @@ export function Chat({
   const query = searchParams.get('query');
 
   const [hasAppendedQuery, setHasAppendedQuery] = useState(false);
+  const [hasAutoGreeted, setHasAutoGreeted] = useState(false);
 
   useEffect(() => {
     if (query && !hasAppendedQuery) {
@@ -99,12 +107,22 @@ export function Chat({
     }
   }, [query, sendMessage, hasAppendedQuery, id]);
 
-  const { data: votes } = useSWR<Array<Vote>>(
-    messages.length >= 2 ? `/api/vote?chatId=${id}` : null,
-    fetcher,
-  );
-
-  const [attachments, setAttachments] = useState<Array<Attachment>>([]);
+  // Auto-greet new players without characters
+  useEffect(() => {
+    if (
+      !hasAutoGreeted && 
+      messages.length === 0 && 
+      playerData !== undefined && 
+      !playerData?.player &&
+      !isReadonly
+    ) {
+      sendMessage({
+        role: 'user' as const,
+        parts: [{ type: 'text', text: 'Hello, I am new here.' }],
+      });
+      setHasAutoGreeted(true);
+    }
+  }, [hasAutoGreeted, messages.length, playerData, isReadonly, sendMessage]);
 
   useAutoResume({
     autoResume,
@@ -115,44 +133,61 @@ export function Chat({
 
   return (
     <>
-      <div className="flex flex-col min-w-0 h-dvh bg-background">
-        <ChatHeader
-          chatId={id}
-          isReadonly={isReadonly}
-          session={session}
-        />
+      <div className="flex h-screen bg-black text-white">
+        {/* Game-style Sidebar */}
+        <div className="w-80 border-r border-amber-600/30 p-6 flex-shrink-0 bg-gradient-to-b from-slate-900 via-slate-800 to-black shadow-2xl">
+          <PlayerStats player={playerData?.player || null} />
+        </div>
 
-        <Messages
-          chatId={id}
-          status={status}
-          votes={votes}
-          messages={messages}
-          setMessages={setMessages}
-          regenerate={regenerate}
-          isReadonly={isReadonly}
+        {/* Main Adventure Area */}
+        <div className="flex flex-col min-w-0 flex-1 bg-gradient-to-b from-slate-900 via-slate-800 to-black h-screen">
+          <ChatHeader
+            chatId={id}
+            isReadonly={isReadonly}
+            session={session}
+          />
 
-        />
+          {/* Adventure Text Area - Book Style */}
+          <div className="flex-1 overflow-y-auto min-h-0">
+            <div className="max-w-4xl mx-auto p-12">
+              {/* Book header */}
+              <div className="text-center mb-16 border-b border-amber-600/20 pb-8">
+                <h1 className="text-3xl font-serif font-bold text-amber-200 mb-2">
+                  Chronicles of the Realm
+                </h1>
+                <p className="text-amber-400/70 font-serif italic">
+                  An Epic Adventure Unfolds...
+                </p>
+              </div>
+              
+              <Messages
+                chatId={id}
+                status={status}
+                messages={messages}
+                setMessages={setMessages}
+                regenerate={regenerate}
+                isReadonly={isReadonly}
+              />
+            </div>
+          </div>
 
-        <form className="flex mx-auto px-4 bg-background pb-4 md:pb-6 gap-2 w-full md:max-w-3xl">
-          {!isReadonly && (
-            <MultimodalInput
-              chatId={id}
-              input={input}
-              setInput={setInput}
-              status={status}
-              stop={stop}
-              attachments={attachments}
-              setAttachments={setAttachments}
-              messages={messages}
-              setMessages={setMessages}
-              sendMessage={sendMessage}
-
-            />
-          )}
-        </form>
+          {/* Command Input Area - Seamless Book Style */}
+          <div className="bg-slate-900/90 backdrop-blur flex-shrink-0">
+            <div className="max-w-4xl mx-auto p-6">
+              {!isReadonly && (
+                <MultimodalInput
+                  chatId={id}
+                  input={input}
+                  setInput={setInput}
+                  status={status}
+                  stop={stop}
+                  sendMessage={sendMessage}
+                />
+              )}
+            </div>
+          </div>
+        </div>
       </div>
-
-
     </>
   );
 }

@@ -16,17 +16,12 @@ import {
   chat,
   type User,
   message,
-  vote,
   type DBMessage,
-  stream,
+  player,
+  type Player,
 } from './schema';
 import { generateHashedPassword } from './utils';
-type VisibilityType = 'private'; // Simplified to only private since visibility selection was removed
 import { ChatSDKError } from '../errors';
-
-// Optionally, if not using email/pass login, you can
-// use the Drizzle adapter for Auth.js / NextAuth
-// https://authjs.dev/reference/adapter/drizzle
 
 // biome-ignore lint: Forbidden non-null assertion.
 const client = postgres(process.env.POSTGRES_URL!);
@@ -53,8 +48,6 @@ export async function createUser(email: string, password: string) {
   }
 }
 
-
-
 export async function saveChat({
   id,
   userId,
@@ -70,7 +63,7 @@ export async function saveChat({
       createdAt: new Date(),
       userId,
       title,
-      visibility: 'private', // Always private since visibility selection was removed
+      visibility: 'private',
     });
   } catch (error) {
     throw new ChatSDKError('bad_request:database', 'Failed to save chat');
@@ -79,9 +72,7 @@ export async function saveChat({
 
 export async function deleteChatById({ id }: { id: string }) {
   try {
-    await db.delete(vote).where(eq(vote.chatId, id));
     await db.delete(message).where(eq(message.chatId, id));
-    await db.delete(stream).where(eq(stream.chatId, id));
 
     const [chatsDeleted] = await db
       .delete(chat)
@@ -149,60 +140,6 @@ export async function getMessagesByChatId({ id }: { id: string }) {
   }
 }
 
-export async function voteMessage({
-  chatId,
-  messageId,
-  type,
-}: {
-  chatId: string;
-  messageId: string;
-  type: 'up' | 'down';
-}) {
-  try {
-    const [existingVote] = await db
-      .select()
-      .from(vote)
-      .where(and(eq(vote.messageId, messageId)));
-
-    if (existingVote) {
-      return await db
-        .update(vote)
-        .set({ isUpvoted: type === 'up' })
-        .where(and(eq(vote.messageId, messageId), eq(vote.chatId, chatId)));
-    }
-    return await db.insert(vote).values({
-      chatId,
-      messageId,
-      isUpvoted: type === 'up',
-    });
-  } catch (error) {
-    throw new ChatSDKError('bad_request:database', 'Failed to vote message');
-  }
-}
-
-export async function getVotesByChatId({ id }: { id: string }) {
-  try {
-    return await db.select().from(vote).where(eq(vote.chatId, id));
-  } catch (error) {
-    throw new ChatSDKError(
-      'bad_request:database',
-      'Failed to get votes by chat id',
-    );
-  }
-}
-
-
-
-
-
-
-
-
-
-
-
-
-
 export async function getMessageById({ id }: { id: string }) {
   try {
     return await db.select().from(message).where(eq(message.id, id));
@@ -232,12 +169,6 @@ export async function deleteMessagesByChatIdAfterTimestamp({
     const messageIds = messagesToDelete.map((message) => message.id);
 
     if (messageIds.length > 0) {
-      await db
-        .delete(vote)
-        .where(
-          and(eq(vote.chatId, chatId), inArray(vote.messageId, messageIds)),
-        );
-
       return await db
         .delete(message)
         .where(
@@ -251,8 +182,6 @@ export async function deleteMessagesByChatIdAfterTimestamp({
     );
   }
 }
-
-
 
 export async function getMessageCountByUserId({
   id,
@@ -281,6 +210,100 @@ export async function getMessageCountByUserId({
     throw new ChatSDKError(
       'bad_request:database',
       'Failed to get message count by user id',
+    );
+  }
+}
+
+// Player-related functions
+export async function createPlayer({
+  userId,
+  name,
+  characterClass,
+}: {
+  userId: string;
+  name: string;
+  characterClass: string;
+}): Promise<Player> {
+  try {
+    const [newPlayer] = await db.insert(player).values({
+      userId,
+      name,
+      characterClass,
+      level: 1,
+      health: 100,
+      maxHealth: 100,
+      experience: 0,
+      location: 'Starting Village',
+      inventory: [],
+      stats: {
+        strength: 10,
+        dexterity: 10,
+        intelligence: 10,
+        constitution: 10,
+        wisdom: 10,
+        charisma: 10,
+      },
+      createdAt: new Date(),
+      updatedAt: new Date(),
+      isActive: true,
+    }).returning();
+    
+    return newPlayer;
+  } catch (error) {
+    throw new ChatSDKError('bad_request:database', 'Failed to create player');
+  }
+}
+
+export async function getPlayerByUserId({ userId }: { userId: string }): Promise<Player | null> {
+  try {
+    const [existingPlayer] = await db
+      .select()
+      .from(player)
+      .where(and(eq(player.userId, userId), eq(player.isActive, true)))
+      .limit(1);
+    
+    return existingPlayer || null;
+  } catch (error) {
+    throw new ChatSDKError(
+      'bad_request:database',
+      'Failed to get player by user id',
+    );
+  }
+}
+
+export async function getPlayersInLocation({ location }: { location: string }): Promise<Player[]> {
+  try {
+    return await db
+      .select()
+      .from(player)
+      .where(and(eq(player.location, location), eq(player.isActive, true)));
+  } catch (error) {
+    throw new ChatSDKError(
+      'bad_request:database',
+      'Failed to get players in location',
+    );
+  }
+}
+
+export async function updatePlayerLocation({
+  playerId,
+  location,
+}: {
+  playerId: string;
+  location: string;
+}): Promise<Player> {
+  try {
+    const [updatedPlayer] = await db
+      .update(player)
+      .set({ location, updatedAt: new Date() })
+      .where(eq(player.id, playerId))
+      .returning();
+    
+    return updatedPlayer;
+  } catch (error) {
+    throw new ChatSDKError(
+      'bad_request:database',
+      'Failed to update player location',
     );
   }
 }

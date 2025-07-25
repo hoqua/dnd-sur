@@ -1,17 +1,19 @@
 import type { Config } from 'tailwindcss';
+import { fontFamily } from 'tailwindcss/defaultTheme';
 
 const config: Config = {
   darkMode: ['class'],
   content: [
-    './pages/**/*.{js,ts,jsx,tsx,mdx}',
-    './components/**/*.{js,ts,jsx,tsx,mdx}',
-    './app/**/*.{js,ts,jsx,tsx,mdx}',
+    './pages/**/*.{ts,tsx}',
+    './components/**/*.{ts,tsx}',
+    './app/**/*.{ts,tsx}',
+    './src/**/*.{ts,tsx}',
   ],
+  prefix: '',
   theme: {
     extend: {
       fontFamily: {
-        sans: ['var(--font-geist)'],
-        mono: ['var(--font-geist-mono)'],
+        serif: ['var(--font-ibm-plex-serif)', ...fontFamily.serif],
       },
       screens: {
         'toast-mobile': '600px',

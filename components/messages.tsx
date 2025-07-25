@@ -1,19 +1,17 @@
-import { PreviewMessage, ThinkingMessage } from './message';
-import { Greeting } from './greeting';
-import { memo } from 'react';
-import type { Vote } from '@/lib/db/schema';
-import equal from 'fast-deep-equal';
-import type { UseChatHelpers } from '@ai-sdk/react';
 import { motion } from 'framer-motion';
+import { Greeting } from './greeting';
+import { PreviewMessage } from './message';
 import { useMessages } from '@/hooks/use-messages';
-import type { ChatMessage } from '@/lib/types';
-import { useDataStream } from './data-stream-provider';
+import { ThinkingMessage } from './message';
 
-interface MessagesProps {
+import { useDataStream } from './data-stream-provider';
+import type { ChatMessage } from '@/lib/types';
+import type { UseChatHelpers } from '@ai-sdk/react';
+
+export interface MessagesProps {
   chatId: string;
   status: UseChatHelpers<ChatMessage>['status'];
-  votes: Array<Vote> | undefined;
-  messages: ChatMessage[];
+  messages: Array<ChatMessage>;
   setMessages: UseChatHelpers<ChatMessage>['setMessages'];
   regenerate: UseChatHelpers<ChatMessage>['regenerate'];
   isReadonly: boolean;
@@ -22,7 +20,6 @@ interface MessagesProps {
 function PureMessages({
   chatId,
   status,
-  votes,
   messages,
   setMessages,
   regenerate,
@@ -44,7 +41,7 @@ function PureMessages({
   return (
     <div
       ref={messagesContainerRef}
-      className="flex flex-col min-w-0 gap-6 flex-1 overflow-y-scroll pt-4 relative"
+      className="flex flex-col min-w-0 gap-6 flex-1 pt-4 relative"
     >
       {messages.length === 0 && <Greeting />}
 
@@ -54,11 +51,6 @@ function PureMessages({
           chatId={chatId}
           message={message}
           isLoading={status === 'streaming' && messages.length - 1 === index}
-          vote={
-            votes
-              ? votes.find((vote) => vote.messageId === message.id)
-              : undefined
-          }
           setMessages={setMessages}
           regenerate={regenerate}
           isReadonly={isReadonly}
@@ -82,11 +74,4 @@ function PureMessages({
   );
 }
 
-export const Messages = memo(PureMessages, (prevProps, nextProps) => {
-  if (prevProps.status !== nextProps.status) return false;
-  if (prevProps.messages.length !== nextProps.messages.length) return false;
-  if (!equal(prevProps.messages, nextProps.messages)) return false;
-  if (!equal(prevProps.votes, nextProps.votes)) return false;
-
-  return false;
-});
+export const Messages = PureMessages;

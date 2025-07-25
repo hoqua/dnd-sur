@@ -6,9 +6,8 @@ import {
   json,
   uuid,
   text,
-  primaryKey,
-  foreignKey,
   boolean,
+  integer,
 } from 'drizzle-orm/pg-core';
 
 export const user = pgTable('User', {
@@ -33,21 +32,7 @@ export const chat = pgTable('Chat', {
 
 export type Chat = InferSelectModel<typeof chat>;
 
-// DEPRECATED: The following schema is deprecated and will be removed in the future.
-// Read the migration guide at https://chat-sdk.dev/docs/migration-guides/message-parts
-export const messageDeprecated = pgTable('Message', {
-  id: uuid('id').primaryKey().notNull().defaultRandom(),
-  chatId: uuid('chatId')
-    .notNull()
-    .references(() => chat.id),
-  role: varchar('role').notNull(),
-  content: json('content').notNull(),
-  createdAt: timestamp('createdAt').notNull(),
-});
-
-export type MessageDeprecated = InferSelectModel<typeof messageDeprecated>;
-
-export const message = pgTable('Message_v2', {
+export const message = pgTable('Message', {
   id: uuid('id').primaryKey().notNull().defaultRandom(),
   chatId: uuid('chatId')
     .notNull()
@@ -60,65 +45,23 @@ export const message = pgTable('Message_v2', {
 
 export type DBMessage = InferSelectModel<typeof message>;
 
-// DEPRECATED: The following schema is deprecated and will be removed in the future.
-// Read the migration guide at https://chat-sdk.dev/docs/migration-guides/message-parts
-export const voteDeprecated = pgTable(
-  'Vote',
-  {
-    chatId: uuid('chatId')
-      .notNull()
-      .references(() => chat.id),
-    messageId: uuid('messageId')
-      .notNull()
-      .references(() => messageDeprecated.id),
-    isUpvoted: boolean('isUpvoted').notNull(),
-  },
-  (table) => {
-    return {
-      pk: primaryKey({ columns: [table.chatId, table.messageId] }),
-    };
-  },
-);
+export const player = pgTable('Player', {
+  id: uuid('id').primaryKey().notNull().defaultRandom(),
+  userId: uuid('userId')
+    .notNull()
+    .references(() => user.id),
+  name: varchar('name', { length: 50 }).notNull(),
+  characterClass: varchar('characterClass', { length: 30 }).notNull(),
+  level: integer('level').notNull().default(1),
+  health: integer('health').notNull().default(100),
+  maxHealth: integer('maxHealth').notNull().default(100),
+  experience: integer('experience').notNull().default(0),
+  location: varchar('location', { length: 100 }).notNull().default('Starting Village'),
+  inventory: json('inventory').notNull().default([]),
+  stats: json('stats').notNull().default({}),
+  createdAt: timestamp('createdAt').notNull().default(new Date()),
+  updatedAt: timestamp('updatedAt').notNull().default(new Date()),
+  isActive: boolean('isActive').notNull().default(true),
+});
 
-export type VoteDeprecated = InferSelectModel<typeof voteDeprecated>;
-
-export const vote = pgTable(
-  'Vote_v2',
-  {
-    chatId: uuid('chatId')
-      .notNull()
-      .references(() => chat.id),
-    messageId: uuid('messageId')
-      .notNull()
-      .references(() => message.id),
-    isUpvoted: boolean('isUpvoted').notNull(),
-  },
-  (table) => {
-    return {
-      pk: primaryKey({ columns: [table.chatId, table.messageId] }),
-    };
-  },
-);
-
-export type Vote = InferSelectModel<typeof vote>;
-
-
-
-export const stream = pgTable(
-  'Stream',
-  {
-    id: uuid('id').notNull().defaultRandom(),
-    chatId: uuid('chatId').notNull(),
-    createdAt: timestamp('createdAt').notNull(),
-  },
-  (table) => ({
-    pk: primaryKey({ columns: [table.id] }),
-    chatRef: foreignKey({
-      columns: [table.chatId],
-      foreignColumns: [chat.id],
-      name: 'stream_chat_fk', // Custom short name
-    }),
-  }),
-);
-
-export type Stream = InferSelectModel<typeof stream>;
+export type Player = InferSelectModel<typeof player>;

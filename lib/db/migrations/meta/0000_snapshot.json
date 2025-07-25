@@ -1,5 +1,5 @@
 {
-  "id": "b6b49bf1-bd66-4a94-a687-4d61215ab54a",
+  "id": "82e49074-97d3-4179-8a3e-8f1089d1ddb7",
   "prevId": "00000000-0000-0000-0000-000000000000",
   "version": "7",
   "dialect": "postgresql",
@@ -60,8 +60,8 @@
       "compositePrimaryKeys": {},
       "uniqueConstraints": {}
     },
-    "public.Message_v2": {
-      "name": "Message_v2",
+    "public.Message": {
+      "name": "Message",
       "schema": "",
       "columns": {
         "id": {
@@ -104,61 +104,6 @@
       },
       "indexes": {},
       "foreignKeys": {
-        "Message_v2_chatId_Chat_id_fk": {
-          "name": "Message_v2_chatId_Chat_id_fk",
-          "tableFrom": "Message_v2",
-          "tableTo": "Chat",
-          "columnsFrom": [
-            "chatId"
-          ],
-          "columnsTo": [
-            "id"
-          ],
-          "onDelete": "no action",
-          "onUpdate": "no action"
-        }
-      },
-      "compositePrimaryKeys": {},
-      "uniqueConstraints": {}
-    },
-    "public.Message": {
-      "name": "Message",
-      "schema": "",
-      "columns": {
-        "id": {
-          "name": "id",
-          "type": "uuid",
-          "primaryKey": true,
-          "notNull": true,
-          "default": "gen_random_uuid()"
-        },
-        "chatId": {
-          "name": "chatId",
-          "type": "uuid",
-          "primaryKey": false,
-          "notNull": true
-        },
-        "role": {
-          "name": "role",
-          "type": "varchar",
-          "primaryKey": false,
-          "notNull": true
-        },
-        "content": {
-          "name": "content",
-          "type": "json",
-          "primaryKey": false,
-          "notNull": true
-        },
-        "createdAt": {
-          "name": "createdAt",
-          "type": "timestamp",
-          "primaryKey": false,
-          "notNull": true
-        }
-      },
-      "indexes": {},
-      "foreignKeys": {
         "Message_chatId_Chat_id_fk": {
           "name": "Message_chatId_Chat_id_fk",
           "tableFrom": "Message",
@@ -176,38 +121,114 @@
       "compositePrimaryKeys": {},
       "uniqueConstraints": {}
     },
-    "public.Stream": {
-      "name": "Stream",
+    "public.Player": {
+      "name": "Player",
       "schema": "",
       "columns": {
         "id": {
           "name": "id",
           "type": "uuid",
-          "primaryKey": false,
+          "primaryKey": true,
           "notNull": true,
           "default": "gen_random_uuid()"
         },
-        "chatId": {
-          "name": "chatId",
+        "userId": {
+          "name": "userId",
           "type": "uuid",
           "primaryKey": false,
           "notNull": true
+        },
+        "name": {
+          "name": "name",
+          "type": "varchar(50)",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "characterClass": {
+          "name": "characterClass",
+          "type": "varchar(30)",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "level": {
+          "name": "level",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": true,
+          "default": 1
+        },
+        "health": {
+          "name": "health",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": true,
+          "default": 100
+        },
+        "maxHealth": {
+          "name": "maxHealth",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": true,
+          "default": 100
+        },
+        "experience": {
+          "name": "experience",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": true,
+          "default": 0
+        },
+        "location": {
+          "name": "location",
+          "type": "varchar(100)",
+          "primaryKey": false,
+          "notNull": true,
+          "default": "'Starting Village'"
+        },
+        "inventory": {
+          "name": "inventory",
+          "type": "json",
+          "primaryKey": false,
+          "notNull": true,
+          "default": "'[]'::json"
+        },
+        "stats": {
+          "name": "stats",
+          "type": "json",
+          "primaryKey": false,
+          "notNull": true,
+          "default": "'{}'::json"
         },
         "createdAt": {
           "name": "createdAt",
           "type": "timestamp",
           "primaryKey": false,
-          "notNull": true
+          "notNull": true,
+          "default": "'2025-07-25 13:50:31.050'"
+        },
+        "updatedAt": {
+          "name": "updatedAt",
+          "type": "timestamp",
+          "primaryKey": false,
+          "notNull": true,
+          "default": "'2025-07-25 13:50:31.050'"
+        },
+        "isActive": {
+          "name": "isActive",
+          "type": "boolean",
+          "primaryKey": false,
+          "notNull": true,
+          "default": true
         }
       },
       "indexes": {},
       "foreignKeys": {
-        "stream_chat_fk": {
-          "name": "stream_chat_fk",
-          "tableFrom": "Stream",
-          "tableTo": "Chat",
+        "Player_userId_User_id_fk": {
+          "name": "Player_userId_User_id_fk",
+          "tableFrom": "Player",
+          "tableTo": "User",
           "columnsFrom": [
-            "chatId"
+            "userId"
           ],
           "columnsTo": [
             "id"
@@ -216,14 +237,7 @@
           "onUpdate": "no action"
         }
       },
-      "compositePrimaryKeys": {
-        "Stream_id_pk": {
-          "name": "Stream_id_pk",
-          "columns": [
-            "id"
-          ]
-        }
-      },
+      "compositePrimaryKeys": {},
       "uniqueConstraints": {}
     },
     "public.User": {
@@ -253,132 +267,6 @@
       "indexes": {},
       "foreignKeys": {},
       "compositePrimaryKeys": {},
-      "uniqueConstraints": {}
-    },
-    "public.Vote_v2": {
-      "name": "Vote_v2",
-      "schema": "",
-      "columns": {
-        "chatId": {
-          "name": "chatId",
-          "type": "uuid",
-          "primaryKey": false,
-          "notNull": true
-        },
-        "messageId": {
-          "name": "messageId",
-          "type": "uuid",
-          "primaryKey": false,
-          "notNull": true
-        },
-        "isUpvoted": {
-          "name": "isUpvoted",
-          "type": "boolean",
-          "primaryKey": false,
-          "notNull": true
-        }
-      },
-      "indexes": {},
-      "foreignKeys": {
-        "Vote_v2_chatId_Chat_id_fk": {
-          "name": "Vote_v2_chatId_Chat_id_fk",
-          "tableFrom": "Vote_v2",
-          "tableTo": "Chat",
-          "columnsFrom": [
-            "chatId"
-          ],
-          "columnsTo": [
-            "id"
-          ],
-          "onDelete": "no action",
-          "onUpdate": "no action"
-        },
-        "Vote_v2_messageId_Message_v2_id_fk": {
-          "name": "Vote_v2_messageId_Message_v2_id_fk",
-          "tableFrom": "Vote_v2",
-          "tableTo": "Message_v2",
-          "columnsFrom": [
-            "messageId"
-          ],
-          "columnsTo": [
-            "id"
-          ],
-          "onDelete": "no action",
-          "onUpdate": "no action"
-        }
-      },
-      "compositePrimaryKeys": {
-        "Vote_v2_chatId_messageId_pk": {
-          "name": "Vote_v2_chatId_messageId_pk",
-          "columns": [
-            "chatId",
-            "messageId"
-          ]
-        }
-      },
-      "uniqueConstraints": {}
-    },
-    "public.Vote": {
-      "name": "Vote",
-      "schema": "",
-      "columns": {
-        "chatId": {
-          "name": "chatId",
-          "type": "uuid",
-          "primaryKey": false,
-          "notNull": true
-        },
-        "messageId": {
-          "name": "messageId",
-          "type": "uuid",
-          "primaryKey": false,
-          "notNull": true
-        },
-        "isUpvoted": {
-          "name": "isUpvoted",
-          "type": "boolean",
-          "primaryKey": false,
-          "notNull": true
-        }
-      },
-      "indexes": {},
-      "foreignKeys": {
-        "Vote_chatId_Chat_id_fk": {
-          "name": "Vote_chatId_Chat_id_fk",
-          "tableFrom": "Vote",
-          "tableTo": "Chat",
-          "columnsFrom": [
-            "chatId"
-          ],
-          "columnsTo": [
-            "id"
-          ],
-          "onDelete": "no action",
-          "onUpdate": "no action"
-        },
-        "Vote_messageId_Message_id_fk": {
-          "name": "Vote_messageId_Message_id_fk",
-          "tableFrom": "Vote",
-          "tableTo": "Message",
-          "columnsFrom": [
-            "messageId"
-          ],
-          "columnsTo": [
-            "id"
-          ],
-          "onDelete": "no action",
-          "onUpdate": "no action"
-        }
-      },
-      "compositePrimaryKeys": {
-        "Vote_chatId_messageId_pk": {
-          "name": "Vote_chatId_messageId_pk",
-          "columns": [
-            "chatId",
-            "messageId"
-          ]
-        }
-      },
       "uniqueConstraints": {}
     }
   },

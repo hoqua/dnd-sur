@@ -2,12 +2,10 @@
 import cx from 'classnames';
 import { AnimatePresence, motion } from 'framer-motion';
 import { memo, useState } from 'react';
-import type { Vote } from '@/lib/db/schema';
 import { PencilEditIcon, SparklesIcon } from './icons';
 import { Markdown } from './markdown';
 import { MessageActions } from './message-actions';
 import { PreviewAttachment } from './preview-attachment';
-import { Weather } from './weather';
 import equal from 'fast-deep-equal';
 import { cn, sanitizeText } from '@/lib/utils';
 import { Button } from './ui/button';
@@ -24,7 +22,6 @@ import { useDataStream } from './data-stream-provider';
 const PurePreviewMessage = ({
   chatId,
   message,
-  vote,
   isLoading,
   setMessages,
   regenerate,
@@ -33,7 +30,6 @@ const PurePreviewMessage = ({
 }: {
   chatId: string;
   message: ChatMessage;
-  vote: Vote | undefined;
   isLoading: boolean;
   setMessages: UseChatHelpers<ChatMessage>['setMessages'];
   regenerate: UseChatHelpers<ChatMessage>['regenerate'];
@@ -49,100 +45,28 @@ const PurePreviewMessage = ({
   useDataStream();
 
   return (
-    <AnimatePresence>
-      <motion.div
-        data-testid={`message-${message.role}`}
-        className="w-full mx-auto max-w-3xl px-4 group/message"
-        initial={{ y: 5, opacity: 0 }}
-        animate={{ y: 0, opacity: 1 }}
-        data-role={message.role}
-      >
-        <div
-          className={cn(
-            'flex gap-4 w-full group-data-[role=user]/message:ml-auto group-data-[role=user]/message:max-w-2xl',
-            {
-              'w-full': mode === 'edit',
-              'group-data-[role=user]/message:w-fit': mode !== 'edit',
-            },
-          )}
-        >
-          {message.role === 'assistant' && (
-            <div className="size-8 flex items-center rounded-full justify-center ring-1 shrink-0 ring-border bg-background">
-              <div className="translate-y-px">
-                <SparklesIcon size={14} />
-              </div>
-            </div>
-          )}
+    <motion.div
+      data-testid={`message-${message.role}`}
+      className="w-full"
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      transition={{ duration: 0.8, ease: "easeOut" }}
+      data-role={message.role}
+    >
+      {/* Flowing book-style text */}
+      <div className="space-y-4">
+        {message.parts.map((part, index) => {
+          const key = `${message.id}-${index}`;
 
-          <div
-            className={cn('flex flex-col gap-4 w-full', {
-              'min-h-96': message.role === 'assistant' && requiresScrollPadding,
-            })}
-          >
-            {attachmentsFromMessage.length > 0 && (
-              <div
-                data-testid={`message-attachments`}
-                className="flex flex-row justify-end gap-2"
-              >
-                {attachmentsFromMessage.map((attachment) => (
-                  <PreviewAttachment
-                    key={attachment.url}
-                    attachment={{
-                      name: attachment.filename ?? 'file',
-                      contentType: attachment.mediaType,
-                      url: attachment.url,
-                    }}
-                  />
-                ))}
-              </div>
-            )}
-
-            {message.parts?.map((part, index) => {
-              const { type } = part;
-              const key = `message-${message.id}-part-${index}`;
-
-
-
-              if (type === 'text') {
-                if (mode === 'view') {
-                  return (
-                    <div key={key} className="flex flex-row gap-2 items-start">
-                      {message.role === 'user' && !isReadonly && (
-                        <Tooltip>
-                          <TooltipTrigger asChild>
-                            <Button
-                              data-testid="message-edit-button"
-                              variant="ghost"
-                              className="px-2 h-fit rounded-full text-muted-foreground opacity-0 group-hover/message:opacity-100"
-                              onClick={() => {
-                                setMode('edit');
-                              }}
-                            >
-                              <PencilEditIcon />
-                            </Button>
-                          </TooltipTrigger>
-                          <TooltipContent>Edit message</TooltipContent>
-                        </Tooltip>
-                      )}
-
-                      <div
-                        data-testid="message-content"
-                        className={cn('flex flex-col gap-4', {
-                          'bg-primary text-primary-foreground px-3 py-2 rounded-xl':
-                            message.role === 'user',
-                        })}
-                      >
-                        <Markdown>{sanitizeText(part.text)}</Markdown>
-                      </div>
-                    </div>
-                  );
-                }
-
-                if (mode === 'edit') {
-                  return (
-                    <div key={key} className="flex flex-row gap-2 items-start">
-                      <div className="size-8" />
-
+          if (part.type === 'text') {
+            return (
+              <div key={key} className="leading-relaxed">
+                {message.role === 'assistant' ? (
+                  // Narrator text - like book paragraphs
+                  <div className="font-serif text-lg leading-8 text-amber-100 mb-6">
+                    {mode === 'view' ? (
+                      <Markdown>{part.text}</Markdown>
+                    ) : (
                       <MessageEditor
                         key={message.id}
                         message={message}
@@ -150,52 +74,70 @@ const PurePreviewMessage = ({
                         setMessages={setMessages}
                         regenerate={regenerate}
                       />
+                    )}
+                  </div>
+                ) : (
+                  // Player input - styled as quoted dialogue
+                  <div className="my-6 border-l-4 border-amber-600/50 pl-6">
+                    <div className="text-amber-400/80 text-sm font-semibold uppercase tracking-wider mb-2 font-sans">
+                      → You say:
                     </div>
-                  );
-                }
-              }
-
-              if (type === 'tool-getWeather') {
-                const { toolCallId, state } = part;
-
-                if (state === 'input-available') {
-                  return (
-                    <div key={toolCallId} className="skeleton">
-                      <Weather />
+                    <div className="font-serif text-amber-200 text-lg italic leading-relaxed">
+                      &ldquo;{part.text}&rdquo;
                     </div>
-                  );
-                }
+                  </div>
+                )}
+              </div>
+            );
+          }
 
-                if (state === 'output-available') {
-                  const { output } = part;
-                  return (
-                    <div key={toolCallId}>
-                      <Weather weatherAtLocation={output} />
+          // Handle tool calls as narrative elements
+          if ('toolName' in part && 'args' in part) {
+            const toolPart = part as any;
+            return (
+              <div key={key} className="my-6">
+                <div className="text-center">
+                  <div className="inline-block bg-purple-900/20 border border-purple-500/30 rounded-lg px-6 py-3">
+                    <div className="text-purple-300 text-sm font-serif italic">
+                      ⚡ The arcane energies swirl as ancient magic takes hold...
                     </div>
-                  );
-                }
-              }
+                  </div>
+                </div>
+              </div>
+            );
+          }
 
+          if ('result' in part && !('text' in part)) {
+            const resultPart = part as any;
+            return (
+              <div key={key} className="my-6">
+                <div className="text-center">
+                  <div className="inline-block bg-emerald-900/20 border border-emerald-500/30 rounded-lg px-6 py-3">
+                    <div className="text-emerald-300 text-sm font-serif italic">
+                      ✨ The magic weaves reality anew...
+                    </div>
+                  </div>
+                </div>
+              </div>
+            );
+          }
 
+          return null;
+        })}
+      </div>
 
-
-
-
-            })}
-
-            {!isReadonly && (
-              <MessageActions
-                key={`action-${message.id}`}
-                chatId={chatId}
-                message={message}
-                vote={vote}
-                isLoading={isLoading}
-              />
-            )}
-          </div>
+      {/* Subtle message actions on hover */}
+      {!isReadonly && message.role === 'assistant' && (
+        <div className="mt-2 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+          <MessageActions
+            key={`action-${message.id}`}
+            chatId={chatId}
+            message={message}
+            isLoading={isLoading}
+          />
         </div>
-      </motion.div>
-    </AnimatePresence>
+      )}
+    </motion.div>
   );
 };
 
@@ -207,7 +149,6 @@ export const PreviewMessage = memo(
     if (prevProps.requiresScrollPadding !== nextProps.requiresScrollPadding)
       return false;
     if (!equal(prevProps.message.parts, nextProps.message.parts)) return false;
-    if (!equal(prevProps.vote, nextProps.vote)) return false;
 
     return false;
   },

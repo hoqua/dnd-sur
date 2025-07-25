@@ -15,11 +15,12 @@ import {
   getMessagesByChatId,
   saveChat,
   saveMessages,
+  getPlayerByUserId,
 } from '@/lib/db/queries';
 import { convertToUIMessages, generateUUID } from '@/lib/utils';
 import { generateTitleFromUserMessage } from '../../actions';
 
-import { getWeather } from '@/lib/ai/tools/get-weather';
+import { createPlayerTool } from '@/lib/ai/tools/create-player';
 import { isProductionEnvironment } from '@/lib/constants';
 import { myProvider } from '@/lib/ai/providers';
 
@@ -106,6 +107,8 @@ export async function POST(request: Request) {
       country,
     };
 
+    const playerData = await getPlayerByUserId({ userId: session.user.id });
+
     await saveMessages({
       messages: [
         {
@@ -119,21 +122,19 @@ export async function POST(request: Request) {
       ],
     });
 
-
-
     const stream = createUIMessageStream({
       execute: ({ writer: dataStream }) => {
         const result = streamText({
           model: myProvider.languageModel(selectedChatModel),
-          system: systemPrompt({ requestHints }),
+          system: systemPrompt({ requestHints, playerData }),
           messages: convertToModelMessages(uiMessages),
           stopWhen: stepCountIs(5),
           experimental_activeTools: [
-            'getWeather',
+            'createPlayerTool',
           ],
           experimental_transform: smoothStream({ chunking: 'word' }),
           tools: {
-            getWeather,
+            createPlayerTool: createPlayerTool(session.user.id),
           },
           experimental_telemetry: {
             isEnabled: isProductionEnvironment,
