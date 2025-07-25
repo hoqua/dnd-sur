@@ -1,18 +1,18 @@
 import { TerminalWindowIcon, LoaderIcon, CrossSmallIcon } from './icons';
 import { Button } from './ui/button';
 import {
-  Dispatch,
-  SetStateAction,
+  type Dispatch,
+  type SetStateAction,
   useCallback,
   useEffect,
   useRef,
   useState,
 } from 'react';
 import { cn } from '@/lib/utils';
-import { useArtifactSelector } from '@/hooks/use-artifact';
+
 
 export interface ConsoleOutputContent {
-  type: 'text' | 'image';
+  type: 'text';
   value: string;
 }
 
@@ -32,7 +32,7 @@ export function Console({ consoleOutputs, setConsoleOutputs }: ConsoleProps) {
   const [isResizing, setIsResizing] = useState(false);
   const consoleEndRef = useRef<HTMLDivElement>(null);
 
-  const isArtifactVisible = useArtifactSelector((state) => state.isVisible);
+
 
   const minHeight = 100;
   const maxHeight = 800;
@@ -71,10 +71,8 @@ export function Console({ consoleOutputs, setConsoleOutputs }: ConsoleProps) {
   }, [consoleOutputs]);
 
   useEffect(() => {
-    if (!isArtifactVisible) {
-      setConsoleOutputs([]);
-    }
-  }, [isArtifactVisible, setConsoleOutputs]);
+    setConsoleOutputs([]);
+  }, [setConsoleOutputs]);
 
   return consoleOutputs.length > 0 ? (
     <>
@@ -149,24 +147,14 @@ export function Console({ consoleOutputs, setConsoleOutputs }: ConsoleProps) {
                 </div>
               ) : (
                 <div className="dark:text-zinc-50 text-zinc-900 w-full flex flex-col gap-2 overflow-x-scroll">
-                  {consoleOutput.contents.map((content, index) =>
-                    content.type === 'image' ? (
-                      <picture key={`${consoleOutput.id}-${index}`}>
-                        <img
-                          src={content.value}
-                          alt="output"
-                          className="rounded-md max-w-screen-toast-mobile w-full"
-                        />
-                      </picture>
-                    ) : (
-                      <div
-                        key={`${consoleOutput.id}-${index}`}
-                        className="whitespace-pre-line break-words w-full"
-                      >
-                        {content.value}
-                      </div>
-                    ),
-                  )}
+                  {consoleOutput.contents.map((content, index) => (
+                    <div
+                      key={`${consoleOutput.id}-${index}`}
+                      className="whitespace-pre-line break-words w-full"
+                    >
+                      {content.value}
+                    </div>
+                  ))}
                 </div>
               )}
             </div>

@@ -52,25 +52,10 @@ const textToDeltas = (text: string): LanguageModelV2StreamPart[] => {
   return [{ id, type: 'text-start' }, ...deltas, { id, type: 'text-end' }];
 };
 
-const reasoningToDeltas = (text: string): LanguageModelV2StreamPart[] => {
-  const id = generateId();
 
-  const deltas = text.split(' ').map((char) => ({
-    id,
-    type: 'reasoning-delta' as const,
-    delta: `${char} `,
-  }));
-
-  return [
-    { id, type: 'reasoning-start' },
-    ...deltas,
-    { id, type: 'reasoning-end' },
-  ];
-};
 
 export const getResponseChunksByPrompt = (
   prompt: ModelMessage[],
-  isReasoningEnabled = false,
 ): LanguageModelV2StreamPart[] => {
   const recentMessage = prompt.at(-1);
 
@@ -78,31 +63,7 @@ export const getResponseChunksByPrompt = (
     throw new Error('No recent message found!');
   }
 
-  if (isReasoningEnabled) {
-    if (compareMessages(recentMessage, TEST_PROMPTS.USER_SKY)) {
-      return [
-        ...reasoningToDeltas('The sky is blue because of rayleigh scattering!'),
-        ...textToDeltas("It's just blue duh!"),
-        {
-          type: 'finish',
-          finishReason: 'stop',
-          usage: { inputTokens: 3, outputTokens: 10, totalTokens: 13 },
-        },
-      ];
-    } else if (compareMessages(recentMessage, TEST_PROMPTS.USER_GRASS)) {
-      return [
-        ...reasoningToDeltas(
-          'Grass is green because of chlorophyll absorption!',
-        ),
-        ...textToDeltas("It's just green duh!"),
-        {
-          type: 'finish',
-          finishReason: 'stop',
-          usage: { inputTokens: 3, outputTokens: 10, totalTokens: 13 },
-        },
-      ];
-    }
-  }
+
 
   if (compareMessages(recentMessage, TEST_PROMPTS.USER_THANKS)) {
     return [
@@ -172,61 +133,6 @@ export const getResponseChunksByPrompt = (
       {
         id: toolCallId,
         type: 'tool-input-end',
-      },
-      {
-        toolCallId: toolCallId,
-        type: 'tool-result',
-        toolName: 'createDocument',
-        result: {
-          id: 'doc_123',
-          title: 'Essay about Silicon Valley',
-          kind: 'text',
-        },
-      },
-      {
-        type: 'finish',
-        finishReason: 'stop',
-        usage: { inputTokens: 3, outputTokens: 10, totalTokens: 13 },
-      },
-    ];
-  } else if (
-    compareMessages(recentMessage, TEST_PROMPTS.CREATE_DOCUMENT_TEXT_CALL)
-  ) {
-    return [
-      ...textToDeltas(`\n
-# Silicon Valley: The Epicenter of Innovation
-
-## Origins and Evolution
-
-Silicon Valley, nestled in the southern part of the San Francisco Bay Area, emerged as a global technology hub in the late 20th century. Its transformation began in the 1950s when Stanford University encouraged its graduates to start their own companies nearby, leading to the formation of pioneering semiconductor firms that gave the region its name.
-
-## The Innovation Ecosystem
-
-What makes Silicon Valley unique is its perfect storm of critical elements: prestigious universities like Stanford and Berkeley, abundant venture capital, a culture that celebrates risk-taking, and a dense network of talented individuals. This ecosystem has consistently nurtured groundbreaking technologies from personal computers to social media platforms to artificial intelligence.
-
-## Challenges and Criticisms
-
-Despite its remarkable success, Silicon Valley faces significant challenges including extreme income inequality, housing affordability crises, and questions about technology's impact on society. Critics argue the region has developed a monoculture that sometimes struggles with diversity and inclusion.
-
-## Future Prospects
-
-As we move forward, Silicon Valley continues to reinvent itself. While some predict its decline due to remote work trends and competition from other tech hubs, the region's adaptability and innovative spirit suggest it will remain influential in shaping our technological future for decades to come.
-`),
-      {
-        type: 'finish',
-        finishReason: 'stop',
-        usage: { inputTokens: 3, outputTokens: 10, totalTokens: 13 },
-      },
-    ];
-  } else if (
-    compareMessages(recentMessage, TEST_PROMPTS.CREATE_DOCUMENT_TEXT_RESULT)
-  ) {
-    return [
-      ...textToDeltas('A document was created and is now visible to the user.'),
-      {
-        type: 'finish',
-        finishReason: 'stop',
-        usage: { inputTokens: 3, outputTokens: 10, totalTokens: 13 },
       },
     ];
   } else if (compareMessages(recentMessage, TEST_PROMPTS.GET_WEATHER_CALL)) {

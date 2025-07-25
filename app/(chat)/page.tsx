@@ -1,55 +1,45 @@
-import { cookies } from 'next/headers';
 
-import { Chat } from '@/components/chat';
-import { DEFAULT_CHAT_MODEL } from '@/lib/ai/models';
-import { generateUUID } from '@/lib/utils';
-import { DataStreamHandler } from '@/components/data-stream-handler';
+
 import { auth } from '../(auth)/auth';
 import { redirect } from 'next/navigation';
+import { getChatByUserId, saveChat } from '@/lib/db/queries';
+import { generateUUID } from '@/lib/utils';
 
 export default async function Page() {
   const session = await auth();
 
   if (!session) {
-    redirect('/api/auth/guest');
+    redirect('/login');
   }
 
-  const id = generateUUID();
-
-  const cookieStore = await cookies();
-  const modelIdFromCookie = cookieStore.get('chat-model');
-
-  if (!modelIdFromCookie) {
-    return (
-      <>
-        <Chat
-          key={id}
-          id={id}
-          initialMessages={[]}
-          initialChatModel={DEFAULT_CHAT_MODEL}
-          initialVisibilityType="private"
-          isReadonly={false}
-          session={session}
-          autoResume={false}
-        />
-        <DataStreamHandler />
-      </>
-    );
+  // Get the user's single chat
+  let userChat = await getChatByUserId({ id: session.user.id });
+  
+  // If no chat exists, create one automatically
+  if (!userChat) {
+    const chatId = generateUUID();
+    await saveChat({
+      id: chatId,
+      userId: session.user.id,
+      title: 'New Chat',
+    });
+    
+    // Get the newly created chat
+    userChat = await getChatByUserId({ id: session.user.id });
+  }
+  
+  if (userChat) {
+    // Redirect to the user's chat
+    redirect(`/chat/${userChat.id}`);
   }
 
+  // This should never happen now, but keep as fallback
   return (
-    <>
-      <Chat
-        key={id}
-        id={id}
-        initialMessages={[]}
-        initialChatModel={modelIdFromCookie.value}
-        initialVisibilityType="private"
-        isReadonly={false}
-        session={session}
-        autoResume={false}
-      />
-      <DataStreamHandler />
-    </>
+    <div className="flex flex-col items-center justify-center min-h-screen p-4">
+      <h1 className="text-2xl font-semibold mb-4">Setting up your chat...</h1>
+      <p className="text-muted-foreground text-center max-w-md">
+        Creating your chat interface...
+      </p>
+    </div>
   );
 }
