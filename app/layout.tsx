@@ -2,7 +2,7 @@ import type { Metadata } from 'next';
 import { IBM_Plex_Serif } from 'next/font/google';
 
 import './globals.css';
-import { ThemeProvider } from '@/components/theme-provider';
+import { Providers } from '@/components/providers';
 
 const ibmPlexSerif = IBM_Plex_Serif({
   subsets: ['latin'],
@@ -23,15 +23,10 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" suppressHydrationWarning>
-      <body className={`${ibmPlexSerif.variable} antialiased overflow-hidden h-screen`}>
-        <ThemeProvider
-          attribute="class"
-          defaultTheme="dark"
-          enableSystem
-          disableTransitionOnChange
-        >
+      <body className={`${ibmPlexSerif.variable} antialiased`}>
+        <Providers>
           {children}
-        </ThemeProvider>
+        </Providers>
       </body>
     </html>
   );

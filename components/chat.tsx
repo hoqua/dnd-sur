@@ -6,6 +6,8 @@ import { useEffect, useState } from 'react';
 import useSWR from 'swr';
 import { ChatHeader } from '@/components/chat-header';
 import { PlayerStats } from '@/components/player-stats';
+import { LocationDisplay } from '@/components/location-display';
+import { QuickActions } from '@/components/quick-actions';
 import { fetcher, fetchWithErrorHandlers, generateUUID } from '@/lib/utils';
 import { MultimodalInput } from './multimodal-input';
 import { Messages } from './messages';
@@ -36,6 +38,25 @@ export function Chat({
 
   const [input, setInput] = useState<string>('');
   
+  // Spawn player in world on login
+  useEffect(() => {
+    const spawnPlayer = async () => {
+      if (session?.user?.id) {
+        try {
+          const response = await fetch('/api/player/spawn', { method: 'POST' });
+          const result = await response.json();
+          if (!result.success && result.error) {
+            console.log(`ℹ️ Player spawn: ${result.error}`);
+          }
+        } catch (error) {
+          console.error('Failed to spawn player:', error);
+        }
+      }
+    };
+
+    spawnPlayer();
+  }, [session?.user?.id]);
+
   // Fetch player data (optimized refresh interval)
   const { data: playerData } = useSWR(
     session?.user?.id ? `/api/player/${session.user.id}` : null,
@@ -175,14 +196,17 @@ export function Chat({
           <div className="bg-slate-900/90 backdrop-blur flex-shrink-0">
             <div className="max-w-4xl mx-auto p-6">
               {!isReadonly && (
-                <MultimodalInput
-                  chatId={id}
-                  input={input}
-                  setInput={setInput}
-                  status={status}
-                  stop={stop}
-                  sendMessage={sendMessage}
-                />
+                <>
+                  <QuickActions append={sendMessage} isLoading={false} />
+                  <MultimodalInput
+                    chatId={id}
+                    input={input}
+                    setInput={setInput}
+                    status={status}
+                    stop={stop}
+                    sendMessage={sendMessage}
+                  />
+                </>
               )}
             </div>
           </div>

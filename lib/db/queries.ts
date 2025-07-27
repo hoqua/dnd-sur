@@ -264,10 +264,9 @@ export async function getPlayerByUserId({ userId }: { userId: string }): Promise
     
     return existingPlayer || null;
   } catch (error) {
-    throw new ChatSDKError(
-      'bad_request:database',
-      'Failed to get player by user id',
-    );
+    console.error('Database error in getPlayerByUserId:', error);
+    // Return null instead of throwing error to prevent middleware crashes
+    return null;
   }
 }
 

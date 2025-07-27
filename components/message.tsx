@@ -38,9 +38,9 @@ const PurePreviewMessage = ({
 }) => {
   const [mode, setMode] = useState<'view' | 'edit'>('view');
 
-  const attachmentsFromMessage = message.parts.filter(
+  const attachmentsFromMessage = message.parts?.filter(
     (part) => part.type === 'file',
-  );
+  ) || [];
 
   useDataStream();
 
@@ -55,7 +55,7 @@ const PurePreviewMessage = ({
     >
       {/* Flowing book-style text */}
       <div className="space-y-4">
-        {message.parts.map((part, index) => {
+        {(message.parts || []).map((part, index) => {
           const key = `${message.id}-${index}`;
 
           if (part.type === 'text') {
@@ -148,7 +148,7 @@ export const PreviewMessage = memo(
     if (prevProps.message.id !== nextProps.message.id) return false;
     if (prevProps.requiresScrollPadding !== nextProps.requiresScrollPadding)
       return false;
-    if (!equal(prevProps.message.parts, nextProps.message.parts)) return false;
+    if (!equal(prevProps.message.parts || [], nextProps.message.parts || [])) return false;
 
     return false;
   },

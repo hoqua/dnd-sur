@@ -21,6 +21,7 @@ import { convertToUIMessages, generateUUID } from '@/lib/utils';
 import { generateTitleFromUserMessage } from '../../actions';
 
 import { createPlayerTool } from '@/lib/ai/tools/create-player';
+import { createLookAroundTool } from '@/lib/ai/tools/look-around';
 import { isProductionEnvironment } from '@/lib/constants';
 import { myProvider } from '@/lib/ai/providers';
 
@@ -131,10 +132,12 @@ export async function POST(request: Request) {
           stopWhen: stepCountIs(5),
           experimental_activeTools: [
             'createPlayerTool',
+            'lookAroundTool',
           ],
           experimental_transform: smoothStream({ chunking: 'word' }),
           tools: {
             createPlayerTool: createPlayerTool(session.user.id),
+            lookAroundTool: createLookAroundTool(session.user.id),
           },
           experimental_telemetry: {
             isEnabled: isProductionEnvironment,

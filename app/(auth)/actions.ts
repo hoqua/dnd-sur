@@ -1,14 +1,15 @@
 'use server';
 
 import { z } from 'zod';
+import { redirect } from 'next/navigation';
 
 import { createUser, getUser } from '@/lib/db/queries';
 
 import { signIn, signOut } from './auth';
 
 const authFormSchema = z.object({
-  email: z.string().email(),
-  password: z.string().min(6),
+  email: z.string().email('Please enter a valid email address'),
+  password: z.string().min(6, 'Password must be at least 6 characters long'),
 });
 
 export interface LoginActionState {
@@ -28,7 +29,7 @@ export const login = async (
     await signIn('credentials', {
       email: validatedData.email,
       password: validatedData.password,
-      redirect: false,
+      redirectTo: '/',
     });
 
     return { status: 'success' };
@@ -36,7 +37,12 @@ export const login = async (
     if (error instanceof z.ZodError) {
       return { status: 'invalid_data' };
     }
-
+    
+    // Re-throw NextAuth redirects
+    if (error && typeof error === 'object' && 'digest' in error && typeof error.digest === 'string' && error.digest.startsWith('NEXT_REDIRECT')) {
+      throw error;
+    }
+    
     return { status: 'failed' };
   }
 };
@@ -62,15 +68,16 @@ export const register = async (
     });
 
     const [user] = await getUser(validatedData.email);
-
     if (user) {
-      return { status: 'user_exists' } as RegisterActionState;
+      return { status: 'user_exists' };
     }
+
     await createUser(validatedData.email, validatedData.password);
+    
     await signIn('credentials', {
       email: validatedData.email,
       password: validatedData.password,
-      redirect: false,
+      redirectTo: '/',
     });
 
     return { status: 'success' };
@@ -78,13 +85,18 @@ export const register = async (
     if (error instanceof z.ZodError) {
       return { status: 'invalid_data' };
     }
-
+    
+    // Re-throw NextAuth redirects
+    if (error && typeof error === 'object' && 'digest' in error && typeof error.digest === 'string' && error.digest.startsWith('NEXT_REDIRECT')) {
+      throw error;
+    }
+    
     return { status: 'failed' };
   }
 };
 
 export async function signOutAction() {
   await signOut({
-    redirectTo: '/',
+    redirectTo: '/login',
   });
 }

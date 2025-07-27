@@ -35,7 +35,7 @@ export function PureMessageActions({
               className="py-1 px-2 h-fit text-muted-foreground"
               variant="outline"
               onClick={async () => {
-                const textParts = message.parts
+                const textParts = (message.parts || [])
                   .filter((part) => part.type === 'text')
                   .map((part) => part.text)
                   .join('\n');

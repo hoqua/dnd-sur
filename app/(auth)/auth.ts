@@ -52,6 +52,10 @@ export const {
     Credentials({
       credentials: {},
       async authorize({ email, password }: any) {
+        if (!email || !password) {
+          return null;
+        }
+
         const users = await getUser(email);
 
         if (users.length === 0) {
@@ -68,32 +72,30 @@ export const {
 
         const passwordsMatch = await compare(password, user.password);
 
-        if (!passwordsMatch) return null;
+        if (!passwordsMatch) {
+          return null;
+        }
 
         return { ...user, type: 'regular' };
       },
     }),
   ],
-  callbacks: {
+    callbacks: {
     async signIn({ user, account }) {
-      // For social providers, ensure user exists in database and has a chat
+      // For social providers, ensure user exists in database
       if (account?.provider === 'google' || account?.provider === 'github') {
         if (!user.email) return false;
         
-        // Check if user exists in our database
         const existingUsers = await getUser(user.email);
         
-                 if (existingUsers.length === 0) {
-           // Create new user (no password for social login)
-           await createUser(user.email, generateUUID()); // Random password that won't be used
-         }
+        if (existingUsers.length === 0) {
+          await createUser(user.email, generateUUID());
+        }
         
-        // Get the user again to get the ID
         const [dbUser] = await getUser(user.email);
         user.id = dbUser.id;
         user.type = 'regular';
         
-        // Check if user has a chat, if not create one
         const existingChat = await getChatByUserId({ id: dbUser.id });
         
         if (!existingChat) {
@@ -113,7 +115,6 @@ export const {
         token.id = user.id as string;
         token.type = user.type;
       }
-
       return token;
     },
     async session({ session, token }) {
@@ -121,7 +122,6 @@ export const {
         session.user.id = token.id;
         session.user.type = token.type;
       }
-
       return session;
     },
   },

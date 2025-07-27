@@ -1,0 +1,4383 @@
+{
+  "meta": {
+    "name": "Adventure Realm - Extended World",
+    "version": "2.0",
+    "description": "A vast 100-cell world with difficulty progression from peaceful edges to the dangerous center"
+  },
+  "locations": {
+    "cell_0_0": {
+      "name": "Sunny Town",
+      "description": "A peaceful lands location with difficulty level 1. town area.",
+      "region": "Peaceful Lands",
+      "coordinates": {
+        "x": 0,
+        "y": 0
+      },
+      "type": "town",
+      "connections": [
+        "cell_1_0",
+        "cell_0_1"
+      ],
+      "npcs": [
+        {
+          "name": "Merchant A",
+          "type": "merchant",
+          "description": "A merchant found in this area",
+          "health": 80
+        }
+      ],
+      "objects": [
+        {
+          "name": "Wooden Stick",
+          "type": "decoration",
+          "description": "A wooden stick found in this dangerous area"
+        },
+        {
+          "name": "Healing Herb",
+          "type": "decoration",
+          "description": "A healing herb found in this dangerous area"
+        }
+      ]
+    },
+    "cell_0_1": {
+      "name": "Sunny Village",
+      "description": "A peaceful lands location with difficulty level 1. village area.",
+      "region": "Peaceful Lands",
+      "coordinates": {
+        "x": 0,
+        "y": 1
+      },
+      "type": "village",
+      "connections": [
+        "cell_1_1",
+        "cell_0_0",
+        "cell_0_2"
+      ],
+      "npcs": [
+        {
+          "name": "Villager B",
+          "type": "villager",
+          "description": "A villager found in this area",
+          "health": 60
+        }
+      ],
+      "objects": [
+        {
+          "name": "Healing Herb",
+          "type": "decoration",
+          "description": "A healing herb found in this dangerous area"
+        },
+        {
+          "name": "Bread",
+          "type": "decoration",
+          "description": "A bread found in this dangerous area"
+        }
+      ]
+    },
+    "cell_0_2": {
+      "name": "Sunny Farmland",
+      "description": "A peaceful lands location with difficulty level 1. farmland area.",
+      "region": "Peaceful Lands",
+      "coordinates": {
+        "x": 0,
+        "y": 2
+      },
+      "type": "farmland",
+      "connections": [
+        "cell_1_2",
+        "cell_0_1",
+        "cell_0_3"
+      ],
+      "npcs": [
+        {
+          "name": "Guard C",
+          "type": "guard",
+          "description": "A guard found in this area",
+          "health": 100
+        }
+      ],
+      "objects": [
+        {
+          "name": "Bread",
+          "type": "decoration",
+          "description": "A bread found in this dangerous area"
+        },
+        {
+          "name": "Well",
+          "type": "decoration",
+          "description": "A well found in this dangerous area"
+        }
+      ]
+    },
+    "cell_0_3": {
+      "name": "Sunny Meadow",
+      "description": "A peaceful lands location with difficulty level 1. meadow area.",
+      "region": "Peaceful Lands",
+      "coordinates": {
+        "x": 0,
+        "y": 3
+      },
+      "type": "meadow",
+      "connections": [
+        "cell_1_3",
+        "cell_0_2",
+        "cell_0_4"
+      ],
+      "npcs": [
+        {
+          "name": "Merchant D",
+          "type": "merchant",
+          "description": "A merchant found in this area",
+          "health": 80
+        }
+      ],
+      "objects": [
+        {
+          "name": "Well",
+          "type": "decoration",
+          "description": "A well found in this dangerous area"
+        },
+        {
+          "name": "Wooden Stick",
+          "type": "decoration",
+          "description": "A wooden stick found in this dangerous area"
+        }
+      ]
+    },
+    "cell_0_4": {
+      "name": "Sunny Town",
+      "description": "A peaceful lands location with difficulty level 1. town area.",
+      "region": "Peaceful Lands",
+      "coordinates": {
+        "x": 0,
+        "y": 4
+      },
+      "type": "town",
+      "connections": [
+        "cell_1_4",
+        "cell_0_3",
+        "cell_0_5"
+      ],
+      "npcs": [
+        {
+          "name": "Villager E",
+          "type": "villager",
+          "description": "A villager found in this area",
+          "health": 60
+        }
+      ],
+      "objects": [
+        {
+          "name": "Wooden Stick",
+          "type": "decoration",
+          "description": "A wooden stick found in this dangerous area"
+        },
+        {
+          "name": "Healing Herb",
+          "type": "decoration",
+          "description": "A healing herb found in this dangerous area"
+        }
+      ]
+    },
+    "cell_0_5": {
+      "name": "Sunny Village",
+      "description": "A peaceful lands location with difficulty level 1. village area.",
+      "region": "Peaceful Lands",
+      "coordinates": {
+        "x": 0,
+        "y": 5
+      },
+      "type": "village",
+      "connections": [
+        "cell_1_5",
+        "cell_0_4",
+        "cell_0_6"
+      ],
+      "npcs": [
+        {
+          "name": "Guard F",
+          "type": "guard",
+          "description": "A guard found in this area",
+          "health": 100
+        }
+      ],
+      "objects": [
+        {
+          "name": "Healing Herb",
+          "type": "decoration",
+          "description": "A healing herb found in this dangerous area"
+        },
+        {
+          "name": "Bread",
+          "type": "decoration",
+          "description": "A bread found in this dangerous area"
+        }
+      ]
+    },
+    "cell_0_6": {
+      "name": "Sunny Farmland",
+      "description": "A peaceful lands location with difficulty level 1. farmland area.",
+      "region": "Peaceful Lands",
+      "coordinates": {
+        "x": 0,
+        "y": 6
+      },
+      "type": "farmland",
+      "connections": [
+        "cell_1_6",
+        "cell_0_5",
+        "cell_0_7"
+      ],
+      "npcs": [
+        {
+          "name": "Merchant G",
+          "type": "merchant",
+          "description": "A merchant found in this area",
+          "health": 80
+        }
+      ],
+      "objects": [
+        {
+          "name": "Bread",
+          "type": "decoration",
+          "description": "A bread found in this dangerous area"
+        },
+        {
+          "name": "Well",
+          "type": "decoration",
+          "description": "A well found in this dangerous area"
+        }
+      ]
+    },
+    "cell_0_7": {
+      "name": "Sunny Meadow",
+      "description": "A peaceful lands location with difficulty level 1. meadow area.",
+      "region": "Peaceful Lands",
+      "coordinates": {
+        "x": 0,
+        "y": 7
+      },
+      "type": "meadow",
+      "connections": [
+        "cell_1_7",
+        "cell_0_6",
+        "cell_0_8"
+      ],
+      "npcs": [
+        {
+          "name": "Villager H",
+          "type": "villager",
+          "description": "A villager found in this area",
+          "health": 60
+        }
+      ],
+      "objects": [
+        {
+          "name": "Well",
+          "type": "decoration",
+          "description": "A well found in this dangerous area"
+        },
+        {
+          "name": "Wooden Stick",
+          "type": "decoration",
+          "description": "A wooden stick found in this dangerous area"
+        }
+      ]
+    },
+    "cell_0_8": {
+      "name": "Sunny Town",
+      "description": "A peaceful lands location with difficulty level 1. town area.",
+      "region": "Peaceful Lands",
+      "coordinates": {
+        "x": 0,
+        "y": 8
+      },
+      "type": "town",
+      "connections": [
+        "cell_1_8",
+        "cell_0_7",
+        "cell_0_9"
+      ],
+      "npcs": [
+        {
+          "name": "Guard I",
+          "type": "guard",
+          "description": "A guard found in this area",
+          "health": 100
+        }
+      ],
+      "objects": [
+        {
+          "name": "Wooden Stick",
+          "type": "decoration",
+          "description": "A wooden stick found in this dangerous area"
+        },
+        {
+          "name": "Healing Herb",
+          "type": "decoration",
+          "description": "A healing herb found in this dangerous area"
+        }
+      ]
+    },
+    "cell_0_9": {
+      "name": "Sunny Village",
+      "description": "A peaceful lands location with difficulty level 1. village area.",
+      "region": "Peaceful Lands",
+      "coordinates": {
+        "x": 0,
+        "y": 9
+      },
+      "type": "village",
+      "connections": [
+        "cell_1_9",
+        "cell_0_8"
+      ],
+      "npcs": [
+        {
+          "name": "Merchant J",
+          "type": "merchant",
+          "description": "A merchant found in this area",
+          "health": 80
+        }
+      ],
+      "objects": [
+        {
+          "name": "Healing Herb",
+          "type": "decoration",
+          "description": "A healing herb found in this dangerous area"
+        },
+        {
+          "name": "Bread",
+          "type": "decoration",
+          "description": "A bread found in this dangerous area"
+        }
+      ]
+    },
+    "cell_1_0": {
+      "name": "Sunny Village",
+      "description": "A peaceful lands location with difficulty level 1. village area.",
+      "region": "Peaceful Lands",
+      "coordinates": {
+        "x": 1,
+        "y": 0
+      },
+      "type": "village",
+      "connections": [
+        "cell_0_0",
+        "cell_2_0",
+        "cell_1_1"
+      ],
+      "npcs": [
+        {
+          "name": "Villager B",
+          "type": "villager",
+          "description": "A villager found in this area",
+          "health": 60
+        }
+      ],
+      "objects": [
+        {
+          "name": "Healing Herb",
+          "type": "decoration",
+          "description": "A healing herb found in this dangerous area"
+        },
+        {
+          "name": "Bread",
+          "type": "decoration",
+          "description": "A bread found in this dangerous area"
+        }
+      ]
+    },
+    "cell_1_1": {
+      "name": "Wild Path",
+      "description": "A borderlands location with difficulty level 2. path area.",
+      "region": "Borderlands",
+      "coordinates": {
+        "x": 1,
+        "y": 1
+      },
+      "type": "path",
+      "connections": [
+        "cell_0_1",
+        "cell_2_1",
+        "cell_1_0",
+        "cell_1_2"
+      ],
+      "npcs": [
+        {
+          "name": "Hermit C",
+          "type": "hermit",
+          "description": "A hermit found in this area",
+          "health": 90
+        },
+        {
+          "name": "Bandit D",
+          "type": "bandit",
+          "description": "A bandit found in this area",
+          "health": 120
+        }
+      ],
+      "objects": [
+        {
+          "name": "Trap",
+          "type": "trap",
+          "description": "A trap found in this dangerous area"
+        },
+        {
+          "name": "Treasure Chest",
+          "type": "decoration",
+          "description": "A treasure chest found in this dangerous area"
+        },
+        {
+          "name": "Iron Sword",
+          "type": "item",
+          "description": "A iron sword found in this dangerous area"
+        }
+      ]
+    },
+    "cell_1_2": {
+      "name": "Hidden Ruins",
+      "description": "A borderlands location with difficulty level 2. ruins area.",
+      "region": "Borderlands",
+      "coordinates": {
+        "x": 1,
+        "y": 2
+      },
+      "type": "ruins",
+      "connections": [
+        "cell_0_2",
+        "cell_2_2",
+        "cell_1_1",
+        "cell_1_3"
+      ],
+      "npcs": [
+        {
+          "name": "Bandit D",
+          "type": "bandit",
+          "description": "A bandit found in this area",
+          "health": 120
+        },
+        {
+          "name": "Wolf E",
+          "type": "wolf",
+          "description": "A wolf found in this area",
+          "health": 80
+        }
+      ],
+      "objects": [
+        {
+          "name": "Treasure Chest",
+          "type": "decoration",
+          "description": "A treasure chest found in this dangerous area"
+        },
+        {
+          "name": "Iron Sword",
+          "type": "item",
+          "description": "A iron sword found in this dangerous area"
+        },
+        {
+          "name": "Leather Armor",
+          "type": "item",
+          "description": "A leather armor found in this dangerous area"
+        }
+      ]
+    },
+    "cell_1_3": {
+      "name": "Lost Forest",
+      "description": "A borderlands location with difficulty level 2. forest area.",
+      "region": "Borderlands",
+      "coordinates": {
+        "x": 1,
+        "y": 3
+      },
+      "type": "forest",
+      "connections": [
+        "cell_0_3",
+        "cell_2_3",
+        "cell_1_2",
+        "cell_1_4"
+      ],
+      "npcs": [
+        {
+          "name": "Wolf E",
+          "type": "wolf",
+          "description": "A wolf found in this area",
+          "health": 80
+        },
+        {
+          "name": "Hermit F",
+          "type": "hermit",
+          "description": "A hermit found in this area",
+          "health": 90
+        }
+      ],
+      "objects": [
+        {
+          "name": "Iron Sword",
+          "type": "item",
+          "description": "A iron sword found in this dangerous area"
+        },
+        {
+          "name": "Leather Armor",
+          "type": "item",
+          "description": "A leather armor found in this dangerous area"
+        },
+        {
+          "name": "Trap",
+          "type": "trap",
+          "description": "A trap found in this dangerous area"
+        }
+      ]
+    },
+    "cell_1_4": {
+      "name": "Old Hills",
+      "description": "A borderlands location with difficulty level 2. hills area.",
+      "region": "Borderlands",
+      "coordinates": {
+        "x": 1,
+        "y": 4
+      },
+      "type": "hills",
+      "connections": [
+        "cell_0_4",
+        "cell_2_4",
+        "cell_1_3",
+        "cell_1_5"
+      ],
+      "npcs": [
+        {
+          "name": "Hermit F",
+          "type": "hermit",
+          "description": "A hermit found in this area",
+          "health": 90
+        },
+        {
+          "name": "Bandit G",
+          "type": "bandit",
+          "description": "A bandit found in this area",
+          "health": 120
+        }
+      ],
+      "objects": [
+        {
+          "name": "Leather Armor",
+          "type": "item",
+          "description": "A leather armor found in this dangerous area"
+        },
+        {
+          "name": "Trap",
+          "type": "trap",
+          "description": "A trap found in this dangerous area"
+        },
+        {
+          "name": "Treasure Chest",
+          "type": "decoration",
+          "description": "A treasure chest found in this dangerous area"
+        }
+      ]
+    },
+    "cell_1_5": {
+      "name": "Wild Path",
+      "description": "A borderlands location with difficulty level 2. path area.",
+      "region": "Borderlands",
+      "coordinates": {
+        "x": 1,
+        "y": 5
+      },
+      "type": "path",
+      "connections": [
+        "cell_0_5",
+        "cell_2_5",
+        "cell_1_4",
+        "cell_1_6"
+      ],
+      "npcs": [
+        {
+          "name": "Bandit G",
+          "type": "bandit",
+          "description": "A bandit found in this area",
+          "health": 120
+        },
+        {
+          "name": "Wolf H",
+          "type": "wolf",
+          "description": "A wolf found in this area",
+          "health": 80
+        }
+      ],
+      "objects": [
+        {
+          "name": "Trap",
+          "type": "trap",
+          "description": "A trap found in this dangerous area"
+        },
+        {
+          "name": "Treasure Chest",
+          "type": "decoration",
+          "description": "A treasure chest found in this dangerous area"
+        },
+        {
+          "name": "Iron Sword",
+          "type": "item",
+          "description": "A iron sword found in this dangerous area"
+        }
+      ]
+    },
+    "cell_1_6": {
+      "name": "Hidden Ruins",
+      "description": "A borderlands location with difficulty level 2. ruins area.",
+      "region": "Borderlands",
+      "coordinates": {
+        "x": 1,
+        "y": 6
+      },
+      "type": "ruins",
+      "connections": [
+        "cell_0_6",
+        "cell_2_6",
+        "cell_1_5",
+        "cell_1_7"
+      ],
+      "npcs": [
+        {
+          "name": "Wolf H",
+          "type": "wolf",
+          "description": "A wolf found in this area",
+          "health": 80
+        },
+        {
+          "name": "Hermit I",
+          "type": "hermit",
+          "description": "A hermit found in this area",
+          "health": 90
+        }
+      ],
+      "objects": [
+        {
+          "name": "Treasure Chest",
+          "type": "decoration",
+          "description": "A treasure chest found in this dangerous area"
+        },
+        {
+          "name": "Iron Sword",
+          "type": "item",
+          "description": "A iron sword found in this dangerous area"
+        },
+        {
+          "name": "Leather Armor",
+          "type": "item",
+          "description": "A leather armor found in this dangerous area"
+        }
+      ]
+    },
+    "cell_1_7": {
+      "name": "Lost Forest",
+      "description": "A borderlands location with difficulty level 2. forest area.",
+      "region": "Borderlands",
+      "coordinates": {
+        "x": 1,
+        "y": 7
+      },
+      "type": "forest",
+      "connections": [
+        "cell_0_7",
+        "cell_2_7",
+        "cell_1_6",
+        "cell_1_8"
+      ],
+      "npcs": [
+        {
+          "name": "Hermit I",
+          "type": "hermit",
+          "description": "A hermit found in this area",
+          "health": 90
+        },
+        {
+          "name": "Bandit J",
+          "type": "bandit",
+          "description": "A bandit found in this area",
+          "health": 120
+        }
+      ],
+      "objects": [
+        {
+          "name": "Iron Sword",
+          "type": "item",
+          "description": "A iron sword found in this dangerous area"
+        },
+        {
+          "name": "Leather Armor",
+          "type": "item",
+          "description": "A leather armor found in this dangerous area"
+        },
+        {
+          "name": "Trap",
+          "type": "trap",
+          "description": "A trap found in this dangerous area"
+        }
+      ]
+    },
+    "cell_1_8": {
+      "name": "Sunny Village",
+      "description": "A peaceful lands location with difficulty level 1. village area.",
+      "region": "Peaceful Lands",
+      "coordinates": {
+        "x": 1,
+        "y": 8
+      },
+      "type": "village",
+      "connections": [
+        "cell_0_8",
+        "cell_2_8",
+        "cell_1_7",
+        "cell_1_9"
+      ],
+      "npcs": [
+        {
+          "name": "Merchant J",
+          "type": "merchant",
+          "description": "A merchant found in this area",
+          "health": 80
+        }
+      ],
+      "objects": [
+        {
+          "name": "Healing Herb",
+          "type": "decoration",
+          "description": "A healing herb found in this dangerous area"
+        },
+        {
+          "name": "Bread",
+          "type": "decoration",
+          "description": "A bread found in this dangerous area"
+        }
+      ]
+    },
+    "cell_1_9": {
+      "name": "Peaceful Farmland",
+      "description": "A peaceful lands location with difficulty level 1. farmland area.",
+      "region": "Peaceful Lands",
+      "coordinates": {
+        "x": 1,
+        "y": 9
+      },
+      "type": "farmland",
+      "connections": [
+        "cell_0_9",
+        "cell_2_9",
+        "cell_1_8"
+      ],
+      "npcs": [
+        {
+          "name": "Villager K",
+          "type": "villager",
+          "description": "A villager found in this area",
+          "health": 60
+        }
+      ],
+      "objects": [
+        {
+          "name": "Bread",
+          "type": "decoration",
+          "description": "A bread found in this dangerous area"
+        },
+        {
+          "name": "Well",
+          "type": "decoration",
+          "description": "A well found in this dangerous area"
+        }
+      ]
+    },
+    "cell_2_0": {
+      "name": "Sunny Farmland",
+      "description": "A peaceful lands location with difficulty level 1. farmland area.",
+      "region": "Peaceful Lands",
+      "coordinates": {
+        "x": 2,
+        "y": 0
+      },
+      "type": "farmland",
+      "connections": [
+        "cell_1_0",
+        "cell_3_0",
+        "cell_2_1"
+      ],
+      "npcs": [
+        {
+          "name": "Guard C",
+          "type": "guard",
+          "description": "A guard found in this area",
+          "health": 100
+        }
+      ],
+      "objects": [
+        {
+          "name": "Bread",
+          "type": "decoration",
+          "description": "A bread found in this dangerous area"
+        },
+        {
+          "name": "Well",
+          "type": "decoration",
+          "description": "A well found in this dangerous area"
+        }
+      ]
+    },
+    "cell_2_1": {
+      "name": "Hidden Ruins",
+      "description": "A borderlands location with difficulty level 2. ruins area.",
+      "region": "Borderlands",
+      "coordinates": {
+        "x": 2,
+        "y": 1
+      },
+      "type": "ruins",
+      "connections": [
+        "cell_1_1",
+        "cell_3_1",
+        "cell_2_0",
+        "cell_2_2"
+      ],
+      "npcs": [
+        {
+          "name": "Bandit D",
+          "type": "bandit",
+          "description": "A bandit found in this area",
+          "health": 120
+        },
+        {
+          "name": "Wolf E",
+          "type": "wolf",
+          "description": "A wolf found in this area",
+          "health": 80
+        }
+      ],
+      "objects": [
+        {
+          "name": "Treasure Chest",
+          "type": "decoration",
+          "description": "A treasure chest found in this dangerous area"
+        },
+        {
+          "name": "Iron Sword",
+          "type": "item",
+          "description": "A iron sword found in this dangerous area"
+        },
+        {
+          "name": "Leather Armor",
+          "type": "item",
+          "description": "A leather armor found in this dangerous area"
+        }
+      ]
+    },
+    "cell_2_2": {
+      "name": "Dark Dark Forest",
+      "description": "A wild territories location with difficulty level 3. dark forest area.",
+      "region": "Wild Territories",
+      "coordinates": {
+        "x": 2,
+        "y": 2
+      },
+      "type": "dark_forest",
+      "connections": [
+        "cell_1_2",
+        "cell_3_2",
+        "cell_2_1",
+        "cell_2_3"
+      ],
+      "npcs": [
+        {
+          "name": "Giant Spider E",
+          "type": "giant_spider",
+          "description": "A giant spider found in this area",
+          "health": 120
+        },
+        {
+          "name": "Dark Mage F",
+          "type": "dark_mage",
+          "description": "A dark mage found in this area",
+          "health": 180
+        },
+        {
+          "name": "Orc G",
+          "type": "orc",
+          "description": "A orc found in this area",
+          "health": 150
+        }
+      ],
+      "objects": [
+        {
+          "name": "Steel Sword",
+          "type": "item",
+          "description": "A steel sword found in this dangerous area"
+        },
+        {
+          "name": "Magic Armor",
+          "type": "item",
+          "description": "A magic armor found in this dangerous area"
+        },
+        {
+          "name": "Poison Trap",
+          "type": "trap",
+          "description": "A poison trap found in this dangerous area"
+        },
+        {
+          "name": "Spellbook",
+          "type": "decoration",
+          "description": "A spellbook found in this dangerous area"
+        }
+      ]
+    },
+    "cell_2_3": {
+      "name": "Forgotten Swamp",
+      "description": "A wild territories location with difficulty level 3. swamp area.",
+      "region": "Wild Territories",
+      "coordinates": {
+        "x": 2,
+        "y": 3
+      },
+      "type": "swamp",
+      "connections": [
+        "cell_1_3",
+        "cell_3_3",
+        "cell_2_2",
+        "cell_2_4"
+      ],
+      "npcs": [
+        {
+          "name": "Dark Mage F",
+          "type": "dark_mage",
+          "description": "A dark mage found in this area",
+          "health": 180
+        },
+        {
+          "name": "Orc G",
+          "type": "orc",
+          "description": "A orc found in this area",
+          "health": 150
+        },
+        {
+          "name": "Giant Spider H",
+          "type": "giant_spider",
+          "description": "A giant spider found in this area",
+          "health": 120
+        }
+      ],
+      "objects": [
+        {
+          "name": "Magic Armor",
+          "type": "item",
+          "description": "A magic armor found in this dangerous area"
+        },
+        {
+          "name": "Poison Trap",
+          "type": "trap",
+          "description": "A poison trap found in this dangerous area"
+        },
+        {
+          "name": "Spellbook",
+          "type": "decoration",
+          "description": "A spellbook found in this dangerous area"
+        },
+        {
+          "name": "Steel Sword",
+          "type": "item",
+          "description": "A steel sword found in this dangerous area"
+        }
+      ]
+    },
+    "cell_2_4": {
+      "name": "Dark Canyon",
+      "description": "A wild territories location with difficulty level 3. canyon area.",
+      "region": "Wild Territories",
+      "coordinates": {
+        "x": 2,
+        "y": 4
+      },
+      "type": "canyon",
+      "connections": [
+        "cell_1_4",
+        "cell_3_4",
+        "cell_2_3",
+        "cell_2_5"
+      ],
+      "npcs": [
+        {
+          "name": "Orc G",
+          "type": "orc",
+          "description": "A orc found in this area",
+          "health": 150
+        },
+        {
+          "name": "Giant Spider H",
+          "type": "giant_spider",
+          "description": "A giant spider found in this area",
+          "health": 120
+        },
+        {
+          "name": "Dark Mage I",
+          "type": "dark_mage",
+          "description": "A dark mage found in this area",
+          "health": 180
+        }
+      ],
+      "objects": [
+        {
+          "name": "Poison Trap",
+          "type": "trap",
+          "description": "A poison trap found in this dangerous area"
+        },
+        {
+          "name": "Spellbook",
+          "type": "decoration",
+          "description": "A spellbook found in this dangerous area"
+        },
+        {
+          "name": "Steel Sword",
+          "type": "item",
+          "description": "A steel sword found in this dangerous area"
+        },
+        {
+          "name": "Magic Armor",
+          "type": "item",
+          "description": "A magic armor found in this dangerous area"
+        }
+      ]
+    },
+    "cell_2_5": {
+      "name": "Forgotten Abandoned Tower",
+      "description": "A wild territories location with difficulty level 3. abandoned tower area.",
+      "region": "Wild Territories",
+      "coordinates": {
+        "x": 2,
+        "y": 5
+      },
+      "type": "abandoned_tower",
+      "connections": [
+        "cell_1_5",
+        "cell_3_5",
+        "cell_2_4",
+        "cell_2_6"
+      ],
+      "npcs": [
+        {
+          "name": "Giant Spider H",
+          "type": "giant_spider",
+          "description": "A giant spider found in this area",
+          "health": 120
+        },
+        {
+          "name": "Dark Mage I",
+          "type": "dark_mage",
+          "description": "A dark mage found in this area",
+          "health": 180
+        },
+        {
+          "name": "Orc J",
+          "type": "orc",
+          "description": "A orc found in this area",
+          "health": 150
+        }
+      ],
+      "objects": [
+        {
+          "name": "Spellbook",
+          "type": "decoration",
+          "description": "A spellbook found in this dangerous area"
+        },
+        {
+          "name": "Steel Sword",
+          "type": "item",
+          "description": "A steel sword found in this dangerous area"
+        },
+        {
+          "name": "Magic Armor",
+          "type": "item",
+          "description": "A magic armor found in this dangerous area"
+        },
+        {
+          "name": "Poison Trap",
+          "type": "trap",
+          "description": "A poison trap found in this dangerous area"
+        }
+      ]
+    },
+    "cell_2_6": {
+      "name": "Dark Dark Forest",
+      "description": "A wild territories location with difficulty level 3. dark forest area.",
+      "region": "Wild Territories",
+      "coordinates": {
+        "x": 2,
+        "y": 6
+      },
+      "type": "dark_forest",
+      "connections": [
+        "cell_1_6",
+        "cell_3_6",
+        "cell_2_5",
+        "cell_2_7"
+      ],
+      "npcs": [
+        {
+          "name": "Dark Mage I",
+          "type": "dark_mage",
+          "description": "A dark mage found in this area",
+          "health": 180
+        },
+        {
+          "name": "Orc J",
+          "type": "orc",
+          "description": "A orc found in this area",
+          "health": 150
+        },
+        {
+          "name": "Giant Spider K",
+          "type": "giant_spider",
+          "description": "A giant spider found in this area",
+          "health": 120
+        }
+      ],
+      "objects": [
+        {
+          "name": "Steel Sword",
+          "type": "item",
+          "description": "A steel sword found in this dangerous area"
+        },
+        {
+          "name": "Magic Armor",
+          "type": "item",
+          "description": "A magic armor found in this dangerous area"
+        },
+        {
+          "name": "Poison Trap",
+          "type": "trap",
+          "description": "A poison trap found in this dangerous area"
+        },
+        {
+          "name": "Spellbook",
+          "type": "decoration",
+          "description": "A spellbook found in this dangerous area"
+        }
+      ]
+    },
+    "cell_2_7": {
+      "name": "Hidden Hills",
+      "description": "A borderlands location with difficulty level 2. hills area.",
+      "region": "Borderlands",
+      "coordinates": {
+        "x": 2,
+        "y": 7
+      },
+      "type": "hills",
+      "connections": [
+        "cell_1_7",
+        "cell_3_7",
+        "cell_2_6",
+        "cell_2_8"
+      ],
+      "npcs": [
+        {
+          "name": "Bandit J",
+          "type": "bandit",
+          "description": "A bandit found in this area",
+          "health": 120
+        },
+        {
+          "name": "Wolf K",
+          "type": "wolf",
+          "description": "A wolf found in this area",
+          "health": 80
+        }
+      ],
+      "objects": [
+        {
+          "name": "Leather Armor",
+          "type": "item",
+          "description": "A leather armor found in this dangerous area"
+        },
+        {
+          "name": "Trap",
+          "type": "trap",
+          "description": "A trap found in this dangerous area"
+        },
+        {
+          "name": "Treasure Chest",
+          "type": "decoration",
+          "description": "A treasure chest found in this dangerous area"
+        }
+      ]
+    },
+    "cell_2_8": {
+      "name": "Sunny Farmland",
+      "description": "A peaceful lands location with difficulty level 1. farmland area.",
+      "region": "Peaceful Lands",
+      "coordinates": {
+        "x": 2,
+        "y": 8
+      },
+      "type": "farmland",
+      "connections": [
+        "cell_1_8",
+        "cell_3_8",
+        "cell_2_7",
+        "cell_2_9"
+      ],
+      "npcs": [
+        {
+          "name": "Villager K",
+          "type": "villager",
+          "description": "A villager found in this area",
+          "health": 60
+        }
+      ],
+      "objects": [
+        {
+          "name": "Bread",
+          "type": "decoration",
+          "description": "A bread found in this dangerous area"
+        },
+        {
+          "name": "Well",
+          "type": "decoration",
+          "description": "A well found in this dangerous area"
+        }
+      ]
+    },
+    "cell_2_9": {
+      "name": "Green Meadow",
+      "description": "A peaceful lands location with difficulty level 1. meadow area.",
+      "region": "Peaceful Lands",
+      "coordinates": {
+        "x": 2,
+        "y": 9
+      },
+      "type": "meadow",
+      "connections": [
+        "cell_1_9",
+        "cell_3_9",
+        "cell_2_8"
+      ],
+      "npcs": [
+        {
+          "name": "Guard L",
+          "type": "guard",
+          "description": "A guard found in this area",
+          "health": 100
+        }
+      ],
+      "objects": [
+        {
+          "name": "Well",
+          "type": "decoration",
+          "description": "A well found in this dangerous area"
+        },
+        {
+          "name": "Wooden Stick",
+          "type": "decoration",
+          "description": "A wooden stick found in this dangerous area"
+        }
+      ]
+    },
+    "cell_3_0": {
+      "name": "Sunny Meadow",
+      "description": "A peaceful lands location with difficulty level 1. meadow area.",
+      "region": "Peaceful Lands",
+      "coordinates": {
+        "x": 3,
+        "y": 0
+      },
+      "type": "meadow",
+      "connections": [
+        "cell_2_0",
+        "cell_4_0",
+        "cell_3_1"
+      ],
+      "npcs": [
+        {
+          "name": "Merchant D",
+          "type": "merchant",
+          "description": "A merchant found in this area",
+          "health": 80
+        }
+      ],
+      "objects": [
+        {
+          "name": "Well",
+          "type": "decoration",
+          "description": "A well found in this dangerous area"
+        },
+        {
+          "name": "Wooden Stick",
+          "type": "decoration",
+          "description": "A wooden stick found in this dangerous area"
+        }
+      ]
+    },
+    "cell_3_1": {
+      "name": "Lost Forest",
+      "description": "A borderlands location with difficulty level 2. forest area.",
+      "region": "Borderlands",
+      "coordinates": {
+        "x": 3,
+        "y": 1
+      },
+      "type": "forest",
+      "connections": [
+        "cell_2_1",
+        "cell_4_1",
+        "cell_3_0",
+        "cell_3_2"
+      ],
+      "npcs": [
+        {
+          "name": "Wolf E",
+          "type": "wolf",
+          "description": "A wolf found in this area",
+          "health": 80
+        },
+        {
+          "name": "Hermit F",
+          "type": "hermit",
+          "description": "A hermit found in this area",
+          "health": 90
+        }
+      ],
+      "objects": [
+        {
+          "name": "Iron Sword",
+          "type": "item",
+          "description": "A iron sword found in this dangerous area"
+        },
+        {
+          "name": "Leather Armor",
+          "type": "item",
+          "description": "A leather armor found in this dangerous area"
+        },
+        {
+          "name": "Trap",
+          "type": "trap",
+          "description": "A trap found in this dangerous area"
+        }
+      ]
+    },
+    "cell_3_2": {
+      "name": "Forgotten Swamp",
+      "description": "A wild territories location with difficulty level 3. swamp area.",
+      "region": "Wild Territories",
+      "coordinates": {
+        "x": 3,
+        "y": 2
+      },
+      "type": "swamp",
+      "connections": [
+        "cell_2_2",
+        "cell_4_2",
+        "cell_3_1",
+        "cell_3_3"
+      ],
+      "npcs": [
+        {
+          "name": "Dark Mage F",
+          "type": "dark_mage",
+          "description": "A dark mage found in this area",
+          "health": 180
+        },
+        {
+          "name": "Orc G",
+          "type": "orc",
+          "description": "A orc found in this area",
+          "health": 150
+        },
+        {
+          "name": "Giant Spider H",
+          "type": "giant_spider",
+          "description": "A giant spider found in this area",
+          "health": 120
+        }
+      ],
+      "objects": [
+        {
+          "name": "Magic Armor",
+          "type": "item",
+          "description": "A magic armor found in this dangerous area"
+        },
+        {
+          "name": "Poison Trap",
+          "type": "trap",
+          "description": "A poison trap found in this dangerous area"
+        },
+        {
+          "name": "Spellbook",
+          "type": "decoration",
+          "description": "A spellbook found in this dangerous area"
+        },
+        {
+          "name": "Steel Sword",
+          "type": "item",
+          "description": "A steel sword found in this dangerous area"
+        }
+      ]
+    },
+    "cell_3_3": {
+      "name": "Forbidden Demon Cave",
+      "description": "A cursed lands location with difficulty level 4. demon cave area.",
+      "region": "Cursed Lands",
+      "coordinates": {
+        "x": 3,
+        "y": 3
+      },
+      "type": "demon_cave",
+      "connections": [
+        "cell_2_3",
+        "cell_4_3",
+        "cell_3_2",
+        "cell_3_4"
+      ],
+      "npcs": [
+        {
+          "name": "Skeleton Warrior G",
+          "type": "skeleton_warrior",
+          "description": "A skeleton warrior found in this area",
+          "health": 200
+        },
+        {
+          "name": "Demon H",
+          "type": "demon",
+          "description": "A demon found in this area",
+          "health": 250
+        },
+        {
+          "name": "Lich I",
+          "type": "lich",
+          "description": "A lich found in this area",
+          "health": 300
+        }
+      ],
+      "objects": [
+        {
+          "name": "Death Trap",
+          "type": "trap",
+          "description": "A death trap found in this dangerous area"
+        },
+        {
+          "name": "Artifact",
+          "type": "decoration",
+          "description": "A artifact found in this dangerous area"
+        },
+        {
+          "name": "Enchanted Blade",
+          "type": "decoration",
+          "description": "A enchanted blade found in this dangerous area"
+        },
+        {
+          "name": "Mithril Armor",
+          "type": "item",
+          "description": "A mithril armor found in this dangerous area"
+        }
+      ]
+    },
+    "cell_3_4": {
+      "name": "Cursed Cursed Temple",
+      "description": "A cursed lands location with difficulty level 4. cursed temple area.",
+      "region": "Cursed Lands",
+      "coordinates": {
+        "x": 3,
+        "y": 4
+      },
+      "type": "cursed_temple",
+      "connections": [
+        "cell_2_4",
+        "cell_4_4",
+        "cell_3_3",
+        "cell_3_5"
+      ],
+      "npcs": [
+        {
+          "name": "Demon H",
+          "type": "demon",
+          "description": "A demon found in this area",
+          "health": 250
+        },
+        {
+          "name": "Lich I",
+          "type": "lich",
+          "description": "A lich found in this area",
+          "health": 300
+        },
+        {
+          "name": "Skeleton Warrior J",
+          "type": "skeleton_warrior",
+          "description": "A skeleton warrior found in this area",
+          "health": 200
+        }
+      ],
+      "objects": [
+        {
+          "name": "Artifact",
+          "type": "decoration",
+          "description": "A artifact found in this dangerous area"
+        },
+        {
+          "name": "Enchanted Blade",
+          "type": "decoration",
+          "description": "A enchanted blade found in this dangerous area"
+        },
+        {
+          "name": "Mithril Armor",
+          "type": "item",
+          "description": "A mithril armor found in this dangerous area"
+        },
+        {
+          "name": "Death Trap",
+          "type": "trap",
+          "description": "A death trap found in this dangerous area"
+        }
+      ]
+    },
+    "cell_3_5": {
+      "name": "Evil Dungeon",
+      "description": "A cursed lands location with difficulty level 4. dungeon area.",
+      "region": "Cursed Lands",
+      "coordinates": {
+        "x": 3,
+        "y": 5
+      },
+      "type": "dungeon",
+      "connections": [
+        "cell_2_5",
+        "cell_4_5",
+        "cell_3_4",
+        "cell_3_6"
+      ],
+      "npcs": [
+        {
+          "name": "Lich I",
+          "type": "lich",
+          "description": "A lich found in this area",
+          "health": 300
+        },
+        {
+          "name": "Skeleton Warrior J",
+          "type": "skeleton_warrior",
+          "description": "A skeleton warrior found in this area",
+          "health": 200
+        },
+        {
+          "name": "Demon K",
+          "type": "demon",
+          "description": "A demon found in this area",
+          "health": 250
+        }
+      ],
+      "objects": [
+        {
+          "name": "Enchanted Blade",
+          "type": "decoration",
+          "description": "A enchanted blade found in this dangerous area"
+        },
+        {
+          "name": "Mithril Armor",
+          "type": "item",
+          "description": "A mithril armor found in this dangerous area"
+        },
+        {
+          "name": "Death Trap",
+          "type": "trap",
+          "description": "A death trap found in this dangerous area"
+        },
+        {
+          "name": "Artifact",
+          "type": "decoration",
+          "description": "A artifact found in this dangerous area"
+        }
+      ]
+    },
+    "cell_3_6": {
+      "name": "Forgotten Swamp",
+      "description": "A wild territories location with difficulty level 3. swamp area.",
+      "region": "Wild Territories",
+      "coordinates": {
+        "x": 3,
+        "y": 6
+      },
+      "type": "swamp",
+      "connections": [
+        "cell_2_6",
+        "cell_4_6",
+        "cell_3_5",
+        "cell_3_7"
+      ],
+      "npcs": [
+        {
+          "name": "Orc J",
+          "type": "orc",
+          "description": "A orc found in this area",
+          "health": 150
+        },
+        {
+          "name": "Giant Spider K",
+          "type": "giant_spider",
+          "description": "A giant spider found in this area",
+          "health": 120
+        },
+        {
+          "name": "Dark Mage L",
+          "type": "dark_mage",
+          "description": "A dark mage found in this area",
+          "health": 180
+        }
+      ],
+      "objects": [
+        {
+          "name": "Magic Armor",
+          "type": "item",
+          "description": "A magic armor found in this dangerous area"
+        },
+        {
+          "name": "Poison Trap",
+          "type": "trap",
+          "description": "A poison trap found in this dangerous area"
+        },
+        {
+          "name": "Spellbook",
+          "type": "decoration",
+          "description": "A spellbook found in this dangerous area"
+        },
+        {
+          "name": "Steel Sword",
+          "type": "item",
+          "description": "A steel sword found in this dangerous area"
+        }
+      ]
+    },
+    "cell_3_7": {
+      "name": "Wild Path",
+      "description": "A borderlands location with difficulty level 2. path area.",
+      "region": "Borderlands",
+      "coordinates": {
+        "x": 3,
+        "y": 7
+      },
+      "type": "path",
+      "connections": [
+        "cell_2_7",
+        "cell_4_7",
+        "cell_3_6",
+        "cell_3_8"
+      ],
+      "npcs": [
+        {
+          "name": "Wolf K",
+          "type": "wolf",
+          "description": "A wolf found in this area",
+          "health": 80
+        },
+        {
+          "name": "Hermit L",
+          "type": "hermit",
+          "description": "A hermit found in this area",
+          "health": 90
+        }
+      ],
+      "objects": [
+        {
+          "name": "Trap",
+          "type": "trap",
+          "description": "A trap found in this dangerous area"
+        },
+        {
+          "name": "Treasure Chest",
+          "type": "decoration",
+          "description": "A treasure chest found in this dangerous area"
+        },
+        {
+          "name": "Iron Sword",
+          "type": "item",
+          "description": "A iron sword found in this dangerous area"
+        }
+      ]
+    },
+    "cell_3_8": {
+      "name": "Sunny Meadow",
+      "description": "A peaceful lands location with difficulty level 1. meadow area.",
+      "region": "Peaceful Lands",
+      "coordinates": {
+        "x": 3,
+        "y": 8
+      },
+      "type": "meadow",
+      "connections": [
+        "cell_2_8",
+        "cell_4_8",
+        "cell_3_7",
+        "cell_3_9"
+      ],
+      "npcs": [
+        {
+          "name": "Guard L",
+          "type": "guard",
+          "description": "A guard found in this area",
+          "health": 100
+        }
+      ],
+      "objects": [
+        {
+          "name": "Well",
+          "type": "decoration",
+          "description": "A well found in this dangerous area"
+        },
+        {
+          "name": "Wooden Stick",
+          "type": "decoration",
+          "description": "A wooden stick found in this dangerous area"
+        }
+      ]
+    },
+    "cell_3_9": {
+      "name": "Safe Town",
+      "description": "A peaceful lands location with difficulty level 1. town area.",
+      "region": "Peaceful Lands",
+      "coordinates": {
+        "x": 3,
+        "y": 9
+      },
+      "type": "town",
+      "connections": [
+        "cell_2_9",
+        "cell_4_9",
+        "cell_3_8"
+      ],
+      "npcs": [
+        {
+          "name": "Merchant M",
+          "type": "merchant",
+          "description": "A merchant found in this area",
+          "health": 80
+        }
+      ],
+      "objects": [
+        {
+          "name": "Wooden Stick",
+          "type": "decoration",
+          "description": "A wooden stick found in this dangerous area"
+        },
+        {
+          "name": "Healing Herb",
+          "type": "decoration",
+          "description": "A healing herb found in this dangerous area"
+        }
+      ]
+    },
+    "cell_4_0": {
+      "name": "Sunny Town",
+      "description": "A peaceful lands location with difficulty level 1. town area.",
+      "region": "Peaceful Lands",
+      "coordinates": {
+        "x": 4,
+        "y": 0
+      },
+      "type": "town",
+      "connections": [
+        "cell_3_0",
+        "cell_5_0",
+        "cell_4_1"
+      ],
+      "npcs": [
+        {
+          "name": "Villager E",
+          "type": "villager",
+          "description": "A villager found in this area",
+          "health": 60
+        }
+      ],
+      "objects": [
+        {
+          "name": "Wooden Stick",
+          "type": "decoration",
+          "description": "A wooden stick found in this dangerous area"
+        },
+        {
+          "name": "Healing Herb",
+          "type": "decoration",
+          "description": "A healing herb found in this dangerous area"
+        }
+      ]
+    },
+    "cell_4_1": {
+      "name": "Old Hills",
+      "description": "A borderlands location with difficulty level 2. hills area.",
+      "region": "Borderlands",
+      "coordinates": {
+        "x": 4,
+        "y": 1
+      },
+      "type": "hills",
+      "connections": [
+        "cell_3_1",
+        "cell_5_1",
+        "cell_4_0",
+        "cell_4_2"
+      ],
+      "npcs": [
+        {
+          "name": "Hermit F",
+          "type": "hermit",
+          "description": "A hermit found in this area",
+          "health": 90
+        },
+        {
+          "name": "Bandit G",
+          "type": "bandit",
+          "description": "A bandit found in this area",
+          "health": 120
+        }
+      ],
+      "objects": [
+        {
+          "name": "Leather Armor",
+          "type": "item",
+          "description": "A leather armor found in this dangerous area"
+        },
+        {
+          "name": "Trap",
+          "type": "trap",
+          "description": "A trap found in this dangerous area"
+        },
+        {
+          "name": "Treasure Chest",
+          "type": "decoration",
+          "description": "A treasure chest found in this dangerous area"
+        }
+      ]
+    },
+    "cell_4_2": {
+      "name": "Dark Canyon",
+      "description": "A wild territories location with difficulty level 3. canyon area.",
+      "region": "Wild Territories",
+      "coordinates": {
+        "x": 4,
+        "y": 2
+      },
+      "type": "canyon",
+      "connections": [
+        "cell_3_2",
+        "cell_5_2",
+        "cell_4_1",
+        "cell_4_3"
+      ],
+      "npcs": [
+        {
+          "name": "Orc G",
+          "type": "orc",
+          "description": "A orc found in this area",
+          "health": 150
+        },
+        {
+          "name": "Giant Spider H",
+          "type": "giant_spider",
+          "description": "A giant spider found in this area",
+          "health": 120
+        },
+        {
+          "name": "Dark Mage I",
+          "type": "dark_mage",
+          "description": "A dark mage found in this area",
+          "health": 180
+        }
+      ],
+      "objects": [
+        {
+          "name": "Poison Trap",
+          "type": "trap",
+          "description": "A poison trap found in this dangerous area"
+        },
+        {
+          "name": "Spellbook",
+          "type": "decoration",
+          "description": "A spellbook found in this dangerous area"
+        },
+        {
+          "name": "Steel Sword",
+          "type": "item",
+          "description": "A steel sword found in this dangerous area"
+        },
+        {
+          "name": "Magic Armor",
+          "type": "item",
+          "description": "A magic armor found in this dangerous area"
+        }
+      ]
+    },
+    "cell_4_3": {
+      "name": "Cursed Cursed Temple",
+      "description": "A cursed lands location with difficulty level 4. cursed temple area.",
+      "region": "Cursed Lands",
+      "coordinates": {
+        "x": 4,
+        "y": 3
+      },
+      "type": "cursed_temple",
+      "connections": [
+        "cell_3_3",
+        "cell_5_3",
+        "cell_4_2",
+        "cell_4_4"
+      ],
+      "npcs": [
+        {
+          "name": "Demon H",
+          "type": "demon",
+          "description": "A demon found in this area",
+          "health": 250
+        },
+        {
+          "name": "Lich I",
+          "type": "lich",
+          "description": "A lich found in this area",
+          "health": 300
+        },
+        {
+          "name": "Skeleton Warrior J",
+          "type": "skeleton_warrior",
+          "description": "A skeleton warrior found in this area",
+          "health": 200
+        }
+      ],
+      "objects": [
+        {
+          "name": "Artifact",
+          "type": "decoration",
+          "description": "A artifact found in this dangerous area"
+        },
+        {
+          "name": "Enchanted Blade",
+          "type": "decoration",
+          "description": "A enchanted blade found in this dangerous area"
+        },
+        {
+          "name": "Mithril Armor",
+          "type": "item",
+          "description": "A mithril armor found in this dangerous area"
+        },
+        {
+          "name": "Death Trap",
+          "type": "trap",
+          "description": "A death trap found in this dangerous area"
+        }
+      ]
+    },
+    "cell_4_4": {
+      "name": "Ancient Dragon Lair",
+      "description": "A heart of darkness location with difficulty level 5. dragon lair area.",
+      "region": "Heart of Darkness",
+      "coordinates": {
+        "x": 4,
+        "y": 4
+      },
+      "type": "dragon_lair",
+      "connections": [
+        "cell_3_4",
+        "cell_5_4",
+        "cell_4_3",
+        "cell_4_5"
+      ],
+      "npcs": [
+        {
+          "name": "Fallen God I",
+          "type": "fallen_god",
+          "description": "A fallen god found in this area",
+          "health": 600
+        },
+        {
+          "name": "Ancient Dragon J",
+          "type": "ancient_dragon",
+          "description": "A ancient dragon found in this area",
+          "health": 500
+        },
+        {
+          "name": "Void Lord K",
+          "type": "void_lord",
+          "description": "A void lord found in this area",
+          "health": 400
+        }
+      ],
+      "objects": [
+        {
+          "name": "Legendary Weapon",
+          "type": "item",
+          "description": "A legendary weapon found in this dangerous area"
+        },
+        {
+          "name": "Divine Armor",
+          "type": "item",
+          "description": "A divine armor found in this dangerous area"
+        },
+        {
+          "name": "Ultimate Trap",
+          "type": "trap",
+          "description": "A ultimate trap found in this dangerous area"
+        },
+        {
+          "name": "World Crystal",
+          "type": "decoration",
+          "description": "A world crystal found in this dangerous area"
+        }
+      ]
+    },
+    "cell_4_5": {
+      "name": "Cursed Necropolis",
+      "description": "A cursed lands location with difficulty level 4. necropolis area.",
+      "region": "Cursed Lands",
+      "coordinates": {
+        "x": 4,
+        "y": 5
+      },
+      "type": "necropolis",
+      "connections": [
+        "cell_3_5",
+        "cell_5_5",
+        "cell_4_4",
+        "cell_4_6"
+      ],
+      "npcs": [
+        {
+          "name": "Skeleton Warrior J",
+          "type": "skeleton_warrior",
+          "description": "A skeleton warrior found in this area",
+          "health": 200
+        },
+        {
+          "name": "Demon K",
+          "type": "demon",
+          "description": "A demon found in this area",
+          "health": 250
+        },
+        {
+          "name": "Lich L",
+          "type": "lich",
+          "description": "A lich found in this area",
+          "health": 300
+        }
+      ],
+      "objects": [
+        {
+          "name": "Mithril Armor",
+          "type": "item",
+          "description": "A mithril armor found in this dangerous area"
+        },
+        {
+          "name": "Death Trap",
+          "type": "trap",
+          "description": "A death trap found in this dangerous area"
+        },
+        {
+          "name": "Artifact",
+          "type": "decoration",
+          "description": "A artifact found in this dangerous area"
+        },
+        {
+          "name": "Enchanted Blade",
+          "type": "decoration",
+          "description": "A enchanted blade found in this dangerous area"
+        }
+      ]
+    },
+    "cell_4_6": {
+      "name": "Dark Canyon",
+      "description": "A wild territories location with difficulty level 3. canyon area.",
+      "region": "Wild Territories",
+      "coordinates": {
+        "x": 4,
+        "y": 6
+      },
+      "type": "canyon",
+      "connections": [
+        "cell_3_6",
+        "cell_5_6",
+        "cell_4_5",
+        "cell_4_7"
+      ],
+      "npcs": [
+        {
+          "name": "Giant Spider K",
+          "type": "giant_spider",
+          "description": "A giant spider found in this area",
+          "health": 120
+        },
+        {
+          "name": "Dark Mage L",
+          "type": "dark_mage",
+          "description": "A dark mage found in this area",
+          "health": 180
+        },
+        {
+          "name": "Orc M",
+          "type": "orc",
+          "description": "A orc found in this area",
+          "health": 150
+        }
+      ],
+      "objects": [
+        {
+          "name": "Poison Trap",
+          "type": "trap",
+          "description": "A poison trap found in this dangerous area"
+        },
+        {
+          "name": "Spellbook",
+          "type": "decoration",
+          "description": "A spellbook found in this dangerous area"
+        },
+        {
+          "name": "Steel Sword",
+          "type": "item",
+          "description": "A steel sword found in this dangerous area"
+        },
+        {
+          "name": "Magic Armor",
+          "type": "item",
+          "description": "A magic armor found in this dangerous area"
+        }
+      ]
+    },
+    "cell_4_7": {
+      "name": "Old Ruins",
+      "description": "A borderlands location with difficulty level 2. ruins area.",
+      "region": "Borderlands",
+      "coordinates": {
+        "x": 4,
+        "y": 7
+      },
+      "type": "ruins",
+      "connections": [
+        "cell_3_7",
+        "cell_5_7",
+        "cell_4_6",
+        "cell_4_8"
+      ],
+      "npcs": [
+        {
+          "name": "Hermit L",
+          "type": "hermit",
+          "description": "A hermit found in this area",
+          "health": 90
+        },
+        {
+          "name": "Bandit M",
+          "type": "bandit",
+          "description": "A bandit found in this area",
+          "health": 120
+        }
+      ],
+      "objects": [
+        {
+          "name": "Treasure Chest",
+          "type": "decoration",
+          "description": "A treasure chest found in this dangerous area"
+        },
+        {
+          "name": "Iron Sword",
+          "type": "item",
+          "description": "A iron sword found in this dangerous area"
+        },
+        {
+          "name": "Leather Armor",
+          "type": "item",
+          "description": "A leather armor found in this dangerous area"
+        }
+      ]
+    },
+    "cell_4_8": {
+      "name": "Sunny Town",
+      "description": "A peaceful lands location with difficulty level 1. town area.",
+      "region": "Peaceful Lands",
+      "coordinates": {
+        "x": 4,
+        "y": 8
+      },
+      "type": "town",
+      "connections": [
+        "cell_3_8",
+        "cell_5_8",
+        "cell_4_7",
+        "cell_4_9"
+      ],
+      "npcs": [
+        {
+          "name": "Merchant M",
+          "type": "merchant",
+          "description": "A merchant found in this area",
+          "health": 80
+        }
+      ],
+      "objects": [
+        {
+          "name": "Wooden Stick",
+          "type": "decoration",
+          "description": "A wooden stick found in this dangerous area"
+        },
+        {
+          "name": "Healing Herb",
+          "type": "decoration",
+          "description": "A healing herb found in this dangerous area"
+        }
+      ]
+    },
+    "cell_4_9": {
+      "name": "Sunny Village",
+      "description": "A peaceful lands location with difficulty level 1. village area.",
+      "region": "Peaceful Lands",
+      "coordinates": {
+        "x": 4,
+        "y": 9
+      },
+      "type": "village",
+      "connections": [
+        "cell_3_9",
+        "cell_5_9",
+        "cell_4_8"
+      ],
+      "npcs": [
+        {
+          "name": "Villager N",
+          "type": "villager",
+          "description": "A villager found in this area",
+          "health": 60
+        }
+      ],
+      "objects": [
+        {
+          "name": "Healing Herb",
+          "type": "decoration",
+          "description": "A healing herb found in this dangerous area"
+        },
+        {
+          "name": "Bread",
+          "type": "decoration",
+          "description": "A bread found in this dangerous area"
+        }
+      ]
+    },
+    "cell_5_0": {
+      "name": "Sunny Village",
+      "description": "A peaceful lands location with difficulty level 1. village area.",
+      "region": "Peaceful Lands",
+      "coordinates": {
+        "x": 5,
+        "y": 0
+      },
+      "type": "village",
+      "connections": [
+        "cell_4_0",
+        "cell_6_0",
+        "cell_5_1"
+      ],
+      "npcs": [
+        {
+          "name": "Guard F",
+          "type": "guard",
+          "description": "A guard found in this area",
+          "health": 100
+        }
+      ],
+      "objects": [
+        {
+          "name": "Healing Herb",
+          "type": "decoration",
+          "description": "A healing herb found in this dangerous area"
+        },
+        {
+          "name": "Bread",
+          "type": "decoration",
+          "description": "A bread found in this dangerous area"
+        }
+      ]
+    },
+    "cell_5_1": {
+      "name": "Wild Path",
+      "description": "A borderlands location with difficulty level 2. path area.",
+      "region": "Borderlands",
+      "coordinates": {
+        "x": 5,
+        "y": 1
+      },
+      "type": "path",
+      "connections": [
+        "cell_4_1",
+        "cell_6_1",
+        "cell_5_0",
+        "cell_5_2"
+      ],
+      "npcs": [
+        {
+          "name": "Bandit G",
+          "type": "bandit",
+          "description": "A bandit found in this area",
+          "health": 120
+        },
+        {
+          "name": "Wolf H",
+          "type": "wolf",
+          "description": "A wolf found in this area",
+          "health": 80
+        }
+      ],
+      "objects": [
+        {
+          "name": "Trap",
+          "type": "trap",
+          "description": "A trap found in this dangerous area"
+        },
+        {
+          "name": "Treasure Chest",
+          "type": "decoration",
+          "description": "A treasure chest found in this dangerous area"
+        },
+        {
+          "name": "Iron Sword",
+          "type": "item",
+          "description": "A iron sword found in this dangerous area"
+        }
+      ]
+    },
+    "cell_5_2": {
+      "name": "Forgotten Abandoned Tower",
+      "description": "A wild territories location with difficulty level 3. abandoned tower area.",
+      "region": "Wild Territories",
+      "coordinates": {
+        "x": 5,
+        "y": 2
+      },
+      "type": "abandoned_tower",
+      "connections": [
+        "cell_4_2",
+        "cell_6_2",
+        "cell_5_1",
+        "cell_5_3"
+      ],
+      "npcs": [
+        {
+          "name": "Giant Spider H",
+          "type": "giant_spider",
+          "description": "A giant spider found in this area",
+          "health": 120
+        },
+        {
+          "name": "Dark Mage I",
+          "type": "dark_mage",
+          "description": "A dark mage found in this area",
+          "health": 180
+        },
+        {
+          "name": "Orc J",
+          "type": "orc",
+          "description": "A orc found in this area",
+          "health": 150
+        }
+      ],
+      "objects": [
+        {
+          "name": "Spellbook",
+          "type": "decoration",
+          "description": "A spellbook found in this dangerous area"
+        },
+        {
+          "name": "Steel Sword",
+          "type": "item",
+          "description": "A steel sword found in this dangerous area"
+        },
+        {
+          "name": "Magic Armor",
+          "type": "item",
+          "description": "A magic armor found in this dangerous area"
+        },
+        {
+          "name": "Poison Trap",
+          "type": "trap",
+          "description": "A poison trap found in this dangerous area"
+        }
+      ]
+    },
+    "cell_5_3": {
+      "name": "Evil Dungeon",
+      "description": "A cursed lands location with difficulty level 4. dungeon area.",
+      "region": "Cursed Lands",
+      "coordinates": {
+        "x": 5,
+        "y": 3
+      },
+      "type": "dungeon",
+      "connections": [
+        "cell_4_3",
+        "cell_6_3",
+        "cell_5_2",
+        "cell_5_4"
+      ],
+      "npcs": [
+        {
+          "name": "Lich I",
+          "type": "lich",
+          "description": "A lich found in this area",
+          "health": 300
+        },
+        {
+          "name": "Skeleton Warrior J",
+          "type": "skeleton_warrior",
+          "description": "A skeleton warrior found in this area",
+          "health": 200
+        },
+        {
+          "name": "Demon K",
+          "type": "demon",
+          "description": "A demon found in this area",
+          "health": 250
+        }
+      ],
+      "objects": [
+        {
+          "name": "Enchanted Blade",
+          "type": "decoration",
+          "description": "A enchanted blade found in this dangerous area"
+        },
+        {
+          "name": "Mithril Armor",
+          "type": "item",
+          "description": "A mithril armor found in this dangerous area"
+        },
+        {
+          "name": "Death Trap",
+          "type": "trap",
+          "description": "A death trap found in this dangerous area"
+        },
+        {
+          "name": "Artifact",
+          "type": "decoration",
+          "description": "A artifact found in this dangerous area"
+        }
+      ]
+    },
+    "cell_5_4": {
+      "name": "Cursed Necropolis",
+      "description": "A cursed lands location with difficulty level 4. necropolis area.",
+      "region": "Cursed Lands",
+      "coordinates": {
+        "x": 5,
+        "y": 4
+      },
+      "type": "necropolis",
+      "connections": [
+        "cell_4_4",
+        "cell_6_4",
+        "cell_5_3",
+        "cell_5_5"
+      ],
+      "npcs": [
+        {
+          "name": "Skeleton Warrior J",
+          "type": "skeleton_warrior",
+          "description": "A skeleton warrior found in this area",
+          "health": 200
+        },
+        {
+          "name": "Demon K",
+          "type": "demon",
+          "description": "A demon found in this area",
+          "health": 250
+        },
+        {
+          "name": "Lich L",
+          "type": "lich",
+          "description": "A lich found in this area",
+          "health": 300
+        }
+      ],
+      "objects": [
+        {
+          "name": "Mithril Armor",
+          "type": "item",
+          "description": "A mithril armor found in this dangerous area"
+        },
+        {
+          "name": "Death Trap",
+          "type": "trap",
+          "description": "A death trap found in this dangerous area"
+        },
+        {
+          "name": "Artifact",
+          "type": "decoration",
+          "description": "A artifact found in this dangerous area"
+        },
+        {
+          "name": "Enchanted Blade",
+          "type": "decoration",
+          "description": "A enchanted blade found in this dangerous area"
+        }
+      ]
+    },
+    "cell_5_5": {
+      "name": "Forbidden Demon Cave",
+      "description": "A cursed lands location with difficulty level 4. demon cave area.",
+      "region": "Cursed Lands",
+      "coordinates": {
+        "x": 5,
+        "y": 5
+      },
+      "type": "demon_cave",
+      "connections": [
+        "cell_4_5",
+        "cell_6_5",
+        "cell_5_4",
+        "cell_5_6"
+      ],
+      "npcs": [
+        {
+          "name": "Demon K",
+          "type": "demon",
+          "description": "A demon found in this area",
+          "health": 250
+        },
+        {
+          "name": "Lich L",
+          "type": "lich",
+          "description": "A lich found in this area",
+          "health": 300
+        },
+        {
+          "name": "Skeleton Warrior M",
+          "type": "skeleton_warrior",
+          "description": "A skeleton warrior found in this area",
+          "health": 200
+        }
+      ],
+      "objects": [
+        {
+          "name": "Death Trap",
+          "type": "trap",
+          "description": "A death trap found in this dangerous area"
+        },
+        {
+          "name": "Artifact",
+          "type": "decoration",
+          "description": "A artifact found in this dangerous area"
+        },
+        {
+          "name": "Enchanted Blade",
+          "type": "decoration",
+          "description": "A enchanted blade found in this dangerous area"
+        },
+        {
+          "name": "Mithril Armor",
+          "type": "item",
+          "description": "A mithril armor found in this dangerous area"
+        }
+      ]
+    },
+    "cell_5_6": {
+      "name": "Forgotten Abandoned Tower",
+      "description": "A wild territories location with difficulty level 3. abandoned tower area.",
+      "region": "Wild Territories",
+      "coordinates": {
+        "x": 5,
+        "y": 6
+      },
+      "type": "abandoned_tower",
+      "connections": [
+        "cell_4_6",
+        "cell_6_6",
+        "cell_5_5",
+        "cell_5_7"
+      ],
+      "npcs": [
+        {
+          "name": "Dark Mage L",
+          "type": "dark_mage",
+          "description": "A dark mage found in this area",
+          "health": 180
+        },
+        {
+          "name": "Orc M",
+          "type": "orc",
+          "description": "A orc found in this area",
+          "health": 150
+        },
+        {
+          "name": "Giant Spider N",
+          "type": "giant_spider",
+          "description": "A giant spider found in this area",
+          "health": 120
+        }
+      ],
+      "objects": [
+        {
+          "name": "Spellbook",
+          "type": "decoration",
+          "description": "A spellbook found in this dangerous area"
+        },
+        {
+          "name": "Steel Sword",
+          "type": "item",
+          "description": "A steel sword found in this dangerous area"
+        },
+        {
+          "name": "Magic Armor",
+          "type": "item",
+          "description": "A magic armor found in this dangerous area"
+        },
+        {
+          "name": "Poison Trap",
+          "type": "trap",
+          "description": "A poison trap found in this dangerous area"
+        }
+      ]
+    },
+    "cell_5_7": {
+      "name": "Lost Forest",
+      "description": "A borderlands location with difficulty level 2. forest area.",
+      "region": "Borderlands",
+      "coordinates": {
+        "x": 5,
+        "y": 7
+      },
+      "type": "forest",
+      "connections": [
+        "cell_4_7",
+        "cell_6_7",
+        "cell_5_6",
+        "cell_5_8"
+      ],
+      "npcs": [
+        {
+          "name": "Bandit M",
+          "type": "bandit",
+          "description": "A bandit found in this area",
+          "health": 120
+        },
+        {
+          "name": "Wolf N",
+          "type": "wolf",
+          "description": "A wolf found in this area",
+          "health": 80
+        }
+      ],
+      "objects": [
+        {
+          "name": "Iron Sword",
+          "type": "item",
+          "description": "A iron sword found in this dangerous area"
+        },
+        {
+          "name": "Leather Armor",
+          "type": "item",
+          "description": "A leather armor found in this dangerous area"
+        },
+        {
+          "name": "Trap",
+          "type": "trap",
+          "description": "A trap found in this dangerous area"
+        }
+      ]
+    },
+    "cell_5_8": {
+      "name": "Sunny Village",
+      "description": "A peaceful lands location with difficulty level 1. village area.",
+      "region": "Peaceful Lands",
+      "coordinates": {
+        "x": 5,
+        "y": 8
+      },
+      "type": "village",
+      "connections": [
+        "cell_4_8",
+        "cell_6_8",
+        "cell_5_7",
+        "cell_5_9"
+      ],
+      "npcs": [
+        {
+          "name": "Villager N",
+          "type": "villager",
+          "description": "A villager found in this area",
+          "health": 60
+        }
+      ],
+      "objects": [
+        {
+          "name": "Healing Herb",
+          "type": "decoration",
+          "description": "A healing herb found in this dangerous area"
+        },
+        {
+          "name": "Bread",
+          "type": "decoration",
+          "description": "A bread found in this dangerous area"
+        }
+      ]
+    },
+    "cell_5_9": {
+      "name": "Peaceful Farmland",
+      "description": "A peaceful lands location with difficulty level 1. farmland area.",
+      "region": "Peaceful Lands",
+      "coordinates": {
+        "x": 5,
+        "y": 9
+      },
+      "type": "farmland",
+      "connections": [
+        "cell_4_9",
+        "cell_6_9",
+        "cell_5_8"
+      ],
+      "npcs": [
+        {
+          "name": "Guard O",
+          "type": "guard",
+          "description": "A guard found in this area",
+          "health": 100
+        }
+      ],
+      "objects": [
+        {
+          "name": "Bread",
+          "type": "decoration",
+          "description": "A bread found in this dangerous area"
+        },
+        {
+          "name": "Well",
+          "type": "decoration",
+          "description": "A well found in this dangerous area"
+        }
+      ]
+    },
+    "cell_6_0": {
+      "name": "Sunny Farmland",
+      "description": "A peaceful lands location with difficulty level 1. farmland area.",
+      "region": "Peaceful Lands",
+      "coordinates": {
+        "x": 6,
+        "y": 0
+      },
+      "type": "farmland",
+      "connections": [
+        "cell_5_0",
+        "cell_7_0",
+        "cell_6_1"
+      ],
+      "npcs": [
+        {
+          "name": "Merchant G",
+          "type": "merchant",
+          "description": "A merchant found in this area",
+          "health": 80
+        }
+      ],
+      "objects": [
+        {
+          "name": "Bread",
+          "type": "decoration",
+          "description": "A bread found in this dangerous area"
+        },
+        {
+          "name": "Well",
+          "type": "decoration",
+          "description": "A well found in this dangerous area"
+        }
+      ]
+    },
+    "cell_6_1": {
+      "name": "Hidden Ruins",
+      "description": "A borderlands location with difficulty level 2. ruins area.",
+      "region": "Borderlands",
+      "coordinates": {
+        "x": 6,
+        "y": 1
+      },
+      "type": "ruins",
+      "connections": [
+        "cell_5_1",
+        "cell_7_1",
+        "cell_6_0",
+        "cell_6_2"
+      ],
+      "npcs": [
+        {
+          "name": "Wolf H",
+          "type": "wolf",
+          "description": "A wolf found in this area",
+          "health": 80
+        },
+        {
+          "name": "Hermit I",
+          "type": "hermit",
+          "description": "A hermit found in this area",
+          "health": 90
+        }
+      ],
+      "objects": [
+        {
+          "name": "Treasure Chest",
+          "type": "decoration",
+          "description": "A treasure chest found in this dangerous area"
+        },
+        {
+          "name": "Iron Sword",
+          "type": "item",
+          "description": "A iron sword found in this dangerous area"
+        },
+        {
+          "name": "Leather Armor",
+          "type": "item",
+          "description": "A leather armor found in this dangerous area"
+        }
+      ]
+    },
+    "cell_6_2": {
+      "name": "Dark Dark Forest",
+      "description": "A wild territories location with difficulty level 3. dark forest area.",
+      "region": "Wild Territories",
+      "coordinates": {
+        "x": 6,
+        "y": 2
+      },
+      "type": "dark_forest",
+      "connections": [
+        "cell_5_2",
+        "cell_7_2",
+        "cell_6_1",
+        "cell_6_3"
+      ],
+      "npcs": [
+        {
+          "name": "Dark Mage I",
+          "type": "dark_mage",
+          "description": "A dark mage found in this area",
+          "health": 180
+        },
+        {
+          "name": "Orc J",
+          "type": "orc",
+          "description": "A orc found in this area",
+          "health": 150
+        },
+        {
+          "name": "Giant Spider K",
+          "type": "giant_spider",
+          "description": "A giant spider found in this area",
+          "health": 120
+        }
+      ],
+      "objects": [
+        {
+          "name": "Steel Sword",
+          "type": "item",
+          "description": "A steel sword found in this dangerous area"
+        },
+        {
+          "name": "Magic Armor",
+          "type": "item",
+          "description": "A magic armor found in this dangerous area"
+        },
+        {
+          "name": "Poison Trap",
+          "type": "trap",
+          "description": "A poison trap found in this dangerous area"
+        },
+        {
+          "name": "Spellbook",
+          "type": "decoration",
+          "description": "A spellbook found in this dangerous area"
+        }
+      ]
+    },
+    "cell_6_3": {
+      "name": "Forgotten Swamp",
+      "description": "A wild territories location with difficulty level 3. swamp area.",
+      "region": "Wild Territories",
+      "coordinates": {
+        "x": 6,
+        "y": 3
+      },
+      "type": "swamp",
+      "connections": [
+        "cell_5_3",
+        "cell_7_3",
+        "cell_6_2",
+        "cell_6_4"
+      ],
+      "npcs": [
+        {
+          "name": "Orc J",
+          "type": "orc",
+          "description": "A orc found in this area",
+          "health": 150
+        },
+        {
+          "name": "Giant Spider K",
+          "type": "giant_spider",
+          "description": "A giant spider found in this area",
+          "health": 120
+        },
+        {
+          "name": "Dark Mage L",
+          "type": "dark_mage",
+          "description": "A dark mage found in this area",
+          "health": 180
+        }
+      ],
+      "objects": [
+        {
+          "name": "Magic Armor",
+          "type": "item",
+          "description": "A magic armor found in this dangerous area"
+        },
+        {
+          "name": "Poison Trap",
+          "type": "trap",
+          "description": "A poison trap found in this dangerous area"
+        },
+        {
+          "name": "Spellbook",
+          "type": "decoration",
+          "description": "A spellbook found in this dangerous area"
+        },
+        {
+          "name": "Steel Sword",
+          "type": "item",
+          "description": "A steel sword found in this dangerous area"
+        }
+      ]
+    },
+    "cell_6_4": {
+      "name": "Dark Canyon",
+      "description": "A wild territories location with difficulty level 3. canyon area.",
+      "region": "Wild Territories",
+      "coordinates": {
+        "x": 6,
+        "y": 4
+      },
+      "type": "canyon",
+      "connections": [
+        "cell_5_4",
+        "cell_7_4",
+        "cell_6_3",
+        "cell_6_5"
+      ],
+      "npcs": [
+        {
+          "name": "Giant Spider K",
+          "type": "giant_spider",
+          "description": "A giant spider found in this area",
+          "health": 120
+        },
+        {
+          "name": "Dark Mage L",
+          "type": "dark_mage",
+          "description": "A dark mage found in this area",
+          "health": 180
+        },
+        {
+          "name": "Orc M",
+          "type": "orc",
+          "description": "A orc found in this area",
+          "health": 150
+        }
+      ],
+      "objects": [
+        {
+          "name": "Poison Trap",
+          "type": "trap",
+          "description": "A poison trap found in this dangerous area"
+        },
+        {
+          "name": "Spellbook",
+          "type": "decoration",
+          "description": "A spellbook found in this dangerous area"
+        },
+        {
+          "name": "Steel Sword",
+          "type": "item",
+          "description": "A steel sword found in this dangerous area"
+        },
+        {
+          "name": "Magic Armor",
+          "type": "item",
+          "description": "A magic armor found in this dangerous area"
+        }
+      ]
+    },
+    "cell_6_5": {
+      "name": "Forgotten Abandoned Tower",
+      "description": "A wild territories location with difficulty level 3. abandoned tower area.",
+      "region": "Wild Territories",
+      "coordinates": {
+        "x": 6,
+        "y": 5
+      },
+      "type": "abandoned_tower",
+      "connections": [
+        "cell_5_5",
+        "cell_7_5",
+        "cell_6_4",
+        "cell_6_6"
+      ],
+      "npcs": [
+        {
+          "name": "Dark Mage L",
+          "type": "dark_mage",
+          "description": "A dark mage found in this area",
+          "health": 180
+        },
+        {
+          "name": "Orc M",
+          "type": "orc",
+          "description": "A orc found in this area",
+          "health": 150
+        },
+        {
+          "name": "Giant Spider N",
+          "type": "giant_spider",
+          "description": "A giant spider found in this area",
+          "health": 120
+        }
+      ],
+      "objects": [
+        {
+          "name": "Spellbook",
+          "type": "decoration",
+          "description": "A spellbook found in this dangerous area"
+        },
+        {
+          "name": "Steel Sword",
+          "type": "item",
+          "description": "A steel sword found in this dangerous area"
+        },
+        {
+          "name": "Magic Armor",
+          "type": "item",
+          "description": "A magic armor found in this dangerous area"
+        },
+        {
+          "name": "Poison Trap",
+          "type": "trap",
+          "description": "A poison trap found in this dangerous area"
+        }
+      ]
+    },
+    "cell_6_6": {
+      "name": "Dark Dark Forest",
+      "description": "A wild territories location with difficulty level 3. dark forest area.",
+      "region": "Wild Territories",
+      "coordinates": {
+        "x": 6,
+        "y": 6
+      },
+      "type": "dark_forest",
+      "connections": [
+        "cell_5_6",
+        "cell_7_6",
+        "cell_6_5",
+        "cell_6_7"
+      ],
+      "npcs": [
+        {
+          "name": "Orc M",
+          "type": "orc",
+          "description": "A orc found in this area",
+          "health": 150
+        },
+        {
+          "name": "Giant Spider N",
+          "type": "giant_spider",
+          "description": "A giant spider found in this area",
+          "health": 120
+        },
+        {
+          "name": "Dark Mage O",
+          "type": "dark_mage",
+          "description": "A dark mage found in this area",
+          "health": 180
+        }
+      ],
+      "objects": [
+        {
+          "name": "Steel Sword",
+          "type": "item",
+          "description": "A steel sword found in this dangerous area"
+        },
+        {
+          "name": "Magic Armor",
+          "type": "item",
+          "description": "A magic armor found in this dangerous area"
+        },
+        {
+          "name": "Poison Trap",
+          "type": "trap",
+          "description": "A poison trap found in this dangerous area"
+        },
+        {
+          "name": "Spellbook",
+          "type": "decoration",
+          "description": "A spellbook found in this dangerous area"
+        }
+      ]
+    },
+    "cell_6_7": {
+      "name": "Hidden Hills",
+      "description": "A borderlands location with difficulty level 2. hills area.",
+      "region": "Borderlands",
+      "coordinates": {
+        "x": 6,
+        "y": 7
+      },
+      "type": "hills",
+      "connections": [
+        "cell_5_7",
+        "cell_7_7",
+        "cell_6_6",
+        "cell_6_8"
+      ],
+      "npcs": [
+        {
+          "name": "Wolf N",
+          "type": "wolf",
+          "description": "A wolf found in this area",
+          "health": 80
+        },
+        {
+          "name": "Hermit O",
+          "type": "hermit",
+          "description": "A hermit found in this area",
+          "health": 90
+        }
+      ],
+      "objects": [
+        {
+          "name": "Leather Armor",
+          "type": "item",
+          "description": "A leather armor found in this dangerous area"
+        },
+        {
+          "name": "Trap",
+          "type": "trap",
+          "description": "A trap found in this dangerous area"
+        },
+        {
+          "name": "Treasure Chest",
+          "type": "decoration",
+          "description": "A treasure chest found in this dangerous area"
+        }
+      ]
+    },
+    "cell_6_8": {
+      "name": "Sunny Farmland",
+      "description": "A peaceful lands location with difficulty level 1. farmland area.",
+      "region": "Peaceful Lands",
+      "coordinates": {
+        "x": 6,
+        "y": 8
+      },
+      "type": "farmland",
+      "connections": [
+        "cell_5_8",
+        "cell_7_8",
+        "cell_6_7",
+        "cell_6_9"
+      ],
+      "npcs": [
+        {
+          "name": "Guard O",
+          "type": "guard",
+          "description": "A guard found in this area",
+          "health": 100
+        }
+      ],
+      "objects": [
+        {
+          "name": "Bread",
+          "type": "decoration",
+          "description": "A bread found in this dangerous area"
+        },
+        {
+          "name": "Well",
+          "type": "decoration",
+          "description": "A well found in this dangerous area"
+        }
+      ]
+    },
+    "cell_6_9": {
+      "name": "Green Meadow",
+      "description": "A peaceful lands location with difficulty level 1. meadow area.",
+      "region": "Peaceful Lands",
+      "coordinates": {
+        "x": 6,
+        "y": 9
+      },
+      "type": "meadow",
+      "connections": [
+        "cell_5_9",
+        "cell_7_9",
+        "cell_6_8"
+      ],
+      "npcs": [
+        {
+          "name": "Merchant P",
+          "type": "merchant",
+          "description": "A merchant found in this area",
+          "health": 80
+        }
+      ],
+      "objects": [
+        {
+          "name": "Well",
+          "type": "decoration",
+          "description": "A well found in this dangerous area"
+        },
+        {
+          "name": "Wooden Stick",
+          "type": "decoration",
+          "description": "A wooden stick found in this dangerous area"
+        }
+      ]
+    },
+    "cell_7_0": {
+      "name": "Sunny Meadow",
+      "description": "A peaceful lands location with difficulty level 1. meadow area.",
+      "region": "Peaceful Lands",
+      "coordinates": {
+        "x": 7,
+        "y": 0
+      },
+      "type": "meadow",
+      "connections": [
+        "cell_6_0",
+        "cell_8_0",
+        "cell_7_1"
+      ],
+      "npcs": [
+        {
+          "name": "Villager H",
+          "type": "villager",
+          "description": "A villager found in this area",
+          "health": 60
+        }
+      ],
+      "objects": [
+        {
+          "name": "Well",
+          "type": "decoration",
+          "description": "A well found in this dangerous area"
+        },
+        {
+          "name": "Wooden Stick",
+          "type": "decoration",
+          "description": "A wooden stick found in this dangerous area"
+        }
+      ]
+    },
+    "cell_7_1": {
+      "name": "Lost Forest",
+      "description": "A borderlands location with difficulty level 2. forest area.",
+      "region": "Borderlands",
+      "coordinates": {
+        "x": 7,
+        "y": 1
+      },
+      "type": "forest",
+      "connections": [
+        "cell_6_1",
+        "cell_8_1",
+        "cell_7_0",
+        "cell_7_2"
+      ],
+      "npcs": [
+        {
+          "name": "Hermit I",
+          "type": "hermit",
+          "description": "A hermit found in this area",
+          "health": 90
+        },
+        {
+          "name": "Bandit J",
+          "type": "bandit",
+          "description": "A bandit found in this area",
+          "health": 120
+        }
+      ],
+      "objects": [
+        {
+          "name": "Iron Sword",
+          "type": "item",
+          "description": "A iron sword found in this dangerous area"
+        },
+        {
+          "name": "Leather Armor",
+          "type": "item",
+          "description": "A leather armor found in this dangerous area"
+        },
+        {
+          "name": "Trap",
+          "type": "trap",
+          "description": "A trap found in this dangerous area"
+        }
+      ]
+    },
+    "cell_7_2": {
+      "name": "Hidden Hills",
+      "description": "A borderlands location with difficulty level 2. hills area.",
+      "region": "Borderlands",
+      "coordinates": {
+        "x": 7,
+        "y": 2
+      },
+      "type": "hills",
+      "connections": [
+        "cell_6_2",
+        "cell_8_2",
+        "cell_7_1",
+        "cell_7_3"
+      ],
+      "npcs": [
+        {
+          "name": "Bandit J",
+          "type": "bandit",
+          "description": "A bandit found in this area",
+          "health": 120
+        },
+        {
+          "name": "Wolf K",
+          "type": "wolf",
+          "description": "A wolf found in this area",
+          "health": 80
+        }
+      ],
+      "objects": [
+        {
+          "name": "Leather Armor",
+          "type": "item",
+          "description": "A leather armor found in this dangerous area"
+        },
+        {
+          "name": "Trap",
+          "type": "trap",
+          "description": "A trap found in this dangerous area"
+        },
+        {
+          "name": "Treasure Chest",
+          "type": "decoration",
+          "description": "A treasure chest found in this dangerous area"
+        }
+      ]
+    },
+    "cell_7_3": {
+      "name": "Wild Path",
+      "description": "A borderlands location with difficulty level 2. path area.",
+      "region": "Borderlands",
+      "coordinates": {
+        "x": 7,
+        "y": 3
+      },
+      "type": "path",
+      "connections": [
+        "cell_6_3",
+        "cell_8_3",
+        "cell_7_2",
+        "cell_7_4"
+      ],
+      "npcs": [
+        {
+          "name": "Wolf K",
+          "type": "wolf",
+          "description": "A wolf found in this area",
+          "health": 80
+        },
+        {
+          "name": "Hermit L",
+          "type": "hermit",
+          "description": "A hermit found in this area",
+          "health": 90
+        }
+      ],
+      "objects": [
+        {
+          "name": "Trap",
+          "type": "trap",
+          "description": "A trap found in this dangerous area"
+        },
+        {
+          "name": "Treasure Chest",
+          "type": "decoration",
+          "description": "A treasure chest found in this dangerous area"
+        },
+        {
+          "name": "Iron Sword",
+          "type": "item",
+          "description": "A iron sword found in this dangerous area"
+        }
+      ]
+    },
+    "cell_7_4": {
+      "name": "Old Ruins",
+      "description": "A borderlands location with difficulty level 2. ruins area.",
+      "region": "Borderlands",
+      "coordinates": {
+        "x": 7,
+        "y": 4
+      },
+      "type": "ruins",
+      "connections": [
+        "cell_6_4",
+        "cell_8_4",
+        "cell_7_3",
+        "cell_7_5"
+      ],
+      "npcs": [
+        {
+          "name": "Hermit L",
+          "type": "hermit",
+          "description": "A hermit found in this area",
+          "health": 90
+        },
+        {
+          "name": "Bandit M",
+          "type": "bandit",
+          "description": "A bandit found in this area",
+          "health": 120
+        }
+      ],
+      "objects": [
+        {
+          "name": "Treasure Chest",
+          "type": "decoration",
+          "description": "A treasure chest found in this dangerous area"
+        },
+        {
+          "name": "Iron Sword",
+          "type": "item",
+          "description": "A iron sword found in this dangerous area"
+        },
+        {
+          "name": "Leather Armor",
+          "type": "item",
+          "description": "A leather armor found in this dangerous area"
+        }
+      ]
+    },
+    "cell_7_5": {
+      "name": "Lost Forest",
+      "description": "A borderlands location with difficulty level 2. forest area.",
+      "region": "Borderlands",
+      "coordinates": {
+        "x": 7,
+        "y": 5
+      },
+      "type": "forest",
+      "connections": [
+        "cell_6_5",
+        "cell_8_5",
+        "cell_7_4",
+        "cell_7_6"
+      ],
+      "npcs": [
+        {
+          "name": "Bandit M",
+          "type": "bandit",
+          "description": "A bandit found in this area",
+          "health": 120
+        },
+        {
+          "name": "Wolf N",
+          "type": "wolf",
+          "description": "A wolf found in this area",
+          "health": 80
+        }
+      ],
+      "objects": [
+        {
+          "name": "Iron Sword",
+          "type": "item",
+          "description": "A iron sword found in this dangerous area"
+        },
+        {
+          "name": "Leather Armor",
+          "type": "item",
+          "description": "A leather armor found in this dangerous area"
+        },
+        {
+          "name": "Trap",
+          "type": "trap",
+          "description": "A trap found in this dangerous area"
+        }
+      ]
+    },
+    "cell_7_6": {
+      "name": "Hidden Hills",
+      "description": "A borderlands location with difficulty level 2. hills area.",
+      "region": "Borderlands",
+      "coordinates": {
+        "x": 7,
+        "y": 6
+      },
+      "type": "hills",
+      "connections": [
+        "cell_6_6",
+        "cell_8_6",
+        "cell_7_5",
+        "cell_7_7"
+      ],
+      "npcs": [
+        {
+          "name": "Wolf N",
+          "type": "wolf",
+          "description": "A wolf found in this area",
+          "health": 80
+        },
+        {
+          "name": "Hermit O",
+          "type": "hermit",
+          "description": "A hermit found in this area",
+          "health": 90
+        }
+      ],
+      "objects": [
+        {
+          "name": "Leather Armor",
+          "type": "item",
+          "description": "A leather armor found in this dangerous area"
+        },
+        {
+          "name": "Trap",
+          "type": "trap",
+          "description": "A trap found in this dangerous area"
+        },
+        {
+          "name": "Treasure Chest",
+          "type": "decoration",
+          "description": "A treasure chest found in this dangerous area"
+        }
+      ]
+    },
+    "cell_7_7": {
+      "name": "Wild Path",
+      "description": "A borderlands location with difficulty level 2. path area.",
+      "region": "Borderlands",
+      "coordinates": {
+        "x": 7,
+        "y": 7
+      },
+      "type": "path",
+      "connections": [
+        "cell_6_7",
+        "cell_8_7",
+        "cell_7_6",
+        "cell_7_8"
+      ],
+      "npcs": [
+        {
+          "name": "Hermit O",
+          "type": "hermit",
+          "description": "A hermit found in this area",
+          "health": 90
+        },
+        {
+          "name": "Bandit P",
+          "type": "bandit",
+          "description": "A bandit found in this area",
+          "health": 120
+        }
+      ],
+      "objects": [
+        {
+          "name": "Trap",
+          "type": "trap",
+          "description": "A trap found in this dangerous area"
+        },
+        {
+          "name": "Treasure Chest",
+          "type": "decoration",
+          "description": "A treasure chest found in this dangerous area"
+        },
+        {
+          "name": "Iron Sword",
+          "type": "item",
+          "description": "A iron sword found in this dangerous area"
+        }
+      ]
+    },
+    "cell_7_8": {
+      "name": "Sunny Meadow",
+      "description": "A peaceful lands location with difficulty level 1. meadow area.",
+      "region": "Peaceful Lands",
+      "coordinates": {
+        "x": 7,
+        "y": 8
+      },
+      "type": "meadow",
+      "connections": [
+        "cell_6_8",
+        "cell_8_8",
+        "cell_7_7",
+        "cell_7_9"
+      ],
+      "npcs": [
+        {
+          "name": "Merchant P",
+          "type": "merchant",
+          "description": "A merchant found in this area",
+          "health": 80
+        }
+      ],
+      "objects": [
+        {
+          "name": "Well",
+          "type": "decoration",
+          "description": "A well found in this dangerous area"
+        },
+        {
+          "name": "Wooden Stick",
+          "type": "decoration",
+          "description": "A wooden stick found in this dangerous area"
+        }
+      ]
+    },
+    "cell_7_9": {
+      "name": "Safe Town",
+      "description": "A peaceful lands location with difficulty level 1. town area.",
+      "region": "Peaceful Lands",
+      "coordinates": {
+        "x": 7,
+        "y": 9
+      },
+      "type": "town",
+      "connections": [
+        "cell_6_9",
+        "cell_8_9",
+        "cell_7_8"
+      ],
+      "npcs": [
+        {
+          "name": "Villager Q",
+          "type": "villager",
+          "description": "A villager found in this area",
+          "health": 60
+        }
+      ],
+      "objects": [
+        {
+          "name": "Wooden Stick",
+          "type": "decoration",
+          "description": "A wooden stick found in this dangerous area"
+        },
+        {
+          "name": "Healing Herb",
+          "type": "decoration",
+          "description": "A healing herb found in this dangerous area"
+        }
+      ]
+    },
+    "cell_8_0": {
+      "name": "Sunny Town",
+      "description": "A peaceful lands location with difficulty level 1. town area.",
+      "region": "Peaceful Lands",
+      "coordinates": {
+        "x": 8,
+        "y": 0
+      },
+      "type": "town",
+      "connections": [
+        "cell_7_0",
+        "cell_9_0",
+        "cell_8_1"
+      ],
+      "npcs": [
+        {
+          "name": "Guard I",
+          "type": "guard",
+          "description": "A guard found in this area",
+          "health": 100
+        }
+      ],
+      "objects": [
+        {
+          "name": "Wooden Stick",
+          "type": "decoration",
+          "description": "A wooden stick found in this dangerous area"
+        },
+        {
+          "name": "Healing Herb",
+          "type": "decoration",
+          "description": "A healing herb found in this dangerous area"
+        }
+      ]
+    },
+    "cell_8_1": {
+      "name": "Sunny Village",
+      "description": "A peaceful lands location with difficulty level 1. village area.",
+      "region": "Peaceful Lands",
+      "coordinates": {
+        "x": 8,
+        "y": 1
+      },
+      "type": "village",
+      "connections": [
+        "cell_7_1",
+        "cell_9_1",
+        "cell_8_0",
+        "cell_8_2"
+      ],
+      "npcs": [
+        {
+          "name": "Merchant J",
+          "type": "merchant",
+          "description": "A merchant found in this area",
+          "health": 80
+        }
+      ],
+      "objects": [
+        {
+          "name": "Healing Herb",
+          "type": "decoration",
+          "description": "A healing herb found in this dangerous area"
+        },
+        {
+          "name": "Bread",
+          "type": "decoration",
+          "description": "A bread found in this dangerous area"
+        }
+      ]
+    },
+    "cell_8_2": {
+      "name": "Sunny Farmland",
+      "description": "A peaceful lands location with difficulty level 1. farmland area.",
+      "region": "Peaceful Lands",
+      "coordinates": {
+        "x": 8,
+        "y": 2
+      },
+      "type": "farmland",
+      "connections": [
+        "cell_7_2",
+        "cell_9_2",
+        "cell_8_1",
+        "cell_8_3"
+      ],
+      "npcs": [
+        {
+          "name": "Villager K",
+          "type": "villager",
+          "description": "A villager found in this area",
+          "health": 60
+        }
+      ],
+      "objects": [
+        {
+          "name": "Bread",
+          "type": "decoration",
+          "description": "A bread found in this dangerous area"
+        },
+        {
+          "name": "Well",
+          "type": "decoration",
+          "description": "A well found in this dangerous area"
+        }
+      ]
+    },
+    "cell_8_3": {
+      "name": "Sunny Meadow",
+      "description": "A peaceful lands location with difficulty level 1. meadow area.",
+      "region": "Peaceful Lands",
+      "coordinates": {
+        "x": 8,
+        "y": 3
+      },
+      "type": "meadow",
+      "connections": [
+        "cell_7_3",
+        "cell_9_3",
+        "cell_8_2",
+        "cell_8_4"
+      ],
+      "npcs": [
+        {
+          "name": "Guard L",
+          "type": "guard",
+          "description": "A guard found in this area",
+          "health": 100
+        }
+      ],
+      "objects": [
+        {
+          "name": "Well",
+          "type": "decoration",
+          "description": "A well found in this dangerous area"
+        },
+        {
+          "name": "Wooden Stick",
+          "type": "decoration",
+          "description": "A wooden stick found in this dangerous area"
+        }
+      ]
+    },
+    "cell_8_4": {
+      "name": "Sunny Town",
+      "description": "A peaceful lands location with difficulty level 1. town area.",
+      "region": "Peaceful Lands",
+      "coordinates": {
+        "x": 8,
+        "y": 4
+      },
+      "type": "town",
+      "connections": [
+        "cell_7_4",
+        "cell_9_4",
+        "cell_8_3",
+        "cell_8_5"
+      ],
+      "npcs": [
+        {
+          "name": "Merchant M",
+          "type": "merchant",
+          "description": "A merchant found in this area",
+          "health": 80
+        }
+      ],
+      "objects": [
+        {
+          "name": "Wooden Stick",
+          "type": "decoration",
+          "description": "A wooden stick found in this dangerous area"
+        },
+        {
+          "name": "Healing Herb",
+          "type": "decoration",
+          "description": "A healing herb found in this dangerous area"
+        }
+      ]
+    },
+    "cell_8_5": {
+      "name": "Sunny Village",
+      "description": "A peaceful lands location with difficulty level 1. village area.",
+      "region": "Peaceful Lands",
+      "coordinates": {
+        "x": 8,
+        "y": 5
+      },
+      "type": "village",
+      "connections": [
+        "cell_7_5",
+        "cell_9_5",
+        "cell_8_4",
+        "cell_8_6"
+      ],
+      "npcs": [
+        {
+          "name": "Villager N",
+          "type": "villager",
+          "description": "A villager found in this area",
+          "health": 60
+        }
+      ],
+      "objects": [
+        {
+          "name": "Healing Herb",
+          "type": "decoration",
+          "description": "A healing herb found in this dangerous area"
+        },
+        {
+          "name": "Bread",
+          "type": "decoration",
+          "description": "A bread found in this dangerous area"
+        }
+      ]
+    },
+    "cell_8_6": {
+      "name": "Sunny Farmland",
+      "description": "A peaceful lands location with difficulty level 1. farmland area.",
+      "region": "Peaceful Lands",
+      "coordinates": {
+        "x": 8,
+        "y": 6
+      },
+      "type": "farmland",
+      "connections": [
+        "cell_7_6",
+        "cell_9_6",
+        "cell_8_5",
+        "cell_8_7"
+      ],
+      "npcs": [
+        {
+          "name": "Guard O",
+          "type": "guard",
+          "description": "A guard found in this area",
+          "health": 100
+        }
+      ],
+      "objects": [
+        {
+          "name": "Bread",
+          "type": "decoration",
+          "description": "A bread found in this dangerous area"
+        },
+        {
+          "name": "Well",
+          "type": "decoration",
+          "description": "A well found in this dangerous area"
+        }
+      ]
+    },
+    "cell_8_7": {
+      "name": "Sunny Meadow",
+      "description": "A peaceful lands location with difficulty level 1. meadow area.",
+      "region": "Peaceful Lands",
+      "coordinates": {
+        "x": 8,
+        "y": 7
+      },
+      "type": "meadow",
+      "connections": [
+        "cell_7_7",
+        "cell_9_7",
+        "cell_8_6",
+        "cell_8_8"
+      ],
+      "npcs": [
+        {
+          "name": "Merchant P",
+          "type": "merchant",
+          "description": "A merchant found in this area",
+          "health": 80
+        }
+      ],
+      "objects": [
+        {
+          "name": "Well",
+          "type": "decoration",
+          "description": "A well found in this dangerous area"
+        },
+        {
+          "name": "Wooden Stick",
+          "type": "decoration",
+          "description": "A wooden stick found in this dangerous area"
+        }
+      ]
+    },
+    "cell_8_8": {
+      "name": "Sunny Town",
+      "description": "A peaceful lands location with difficulty level 1. town area.",
+      "region": "Peaceful Lands",
+      "coordinates": {
+        "x": 8,
+        "y": 8
+      },
+      "type": "town",
+      "connections": [
+        "cell_7_8",
+        "cell_9_8",
+        "cell_8_7",
+        "cell_8_9"
+      ],
+      "npcs": [
+        {
+          "name": "Villager Q",
+          "type": "villager",
+          "description": "A villager found in this area",
+          "health": 60
+        }
+      ],
+      "objects": [
+        {
+          "name": "Wooden Stick",
+          "type": "decoration",
+          "description": "A wooden stick found in this dangerous area"
+        },
+        {
+          "name": "Healing Herb",
+          "type": "decoration",
+          "description": "A healing herb found in this dangerous area"
+        }
+      ]
+    },
+    "cell_8_9": {
+      "name": "Sunny Village",
+      "description": "A peaceful lands location with difficulty level 1. village area.",
+      "region": "Peaceful Lands",
+      "coordinates": {
+        "x": 8,
+        "y": 9
+      },
+      "type": "village",
+      "connections": [
+        "cell_7_9",
+        "cell_9_9",
+        "cell_8_8"
+      ],
+      "npcs": [
+        {
+          "name": "Guard R",
+          "type": "guard",
+          "description": "A guard found in this area",
+          "health": 100
+        }
+      ],
+      "objects": [
+        {
+          "name": "Healing Herb",
+          "type": "decoration",
+          "description": "A healing herb found in this dangerous area"
+        },
+        {
+          "name": "Bread",
+          "type": "decoration",
+          "description": "A bread found in this dangerous area"
+        }
+      ]
+    },
+    "cell_9_0": {
+      "name": "Sunny Village",
+      "description": "A peaceful lands location with difficulty level 1. village area.",
+      "region": "Peaceful Lands",
+      "coordinates": {
+        "x": 9,
+        "y": 0
+      },
+      "type": "village",
+      "connections": [
+        "cell_8_0",
+        "cell_9_1"
+      ],
+      "npcs": [
+        {
+          "name": "Merchant J",
+          "type": "merchant",
+          "description": "A merchant found in this area",
+          "health": 80
+        }
+      ],
+      "objects": [
+        {
+          "name": "Healing Herb",
+          "type": "decoration",
+          "description": "A healing herb found in this dangerous area"
+        },
+        {
+          "name": "Bread",
+          "type": "decoration",
+          "description": "A bread found in this dangerous area"
+        }
+      ]
+    },
+    "cell_9_1": {
+      "name": "Peaceful Farmland",
+      "description": "A peaceful lands location with difficulty level 1. farmland area.",
+      "region": "Peaceful Lands",
+      "coordinates": {
+        "x": 9,
+        "y": 1
+      },
+      "type": "farmland",
+      "connections": [
+        "cell_8_1",
+        "cell_9_0",
+        "cell_9_2"
+      ],
+      "npcs": [
+        {
+          "name": "Villager K",
+          "type": "villager",
+          "description": "A villager found in this area",
+          "health": 60
+        }
+      ],
+      "objects": [
+        {
+          "name": "Bread",
+          "type": "decoration",
+          "description": "A bread found in this dangerous area"
+        },
+        {
+          "name": "Well",
+          "type": "decoration",
+          "description": "A well found in this dangerous area"
+        }
+      ]
+    },
+    "cell_9_2": {
+      "name": "Green Meadow",
+      "description": "A peaceful lands location with difficulty level 1. meadow area.",
+      "region": "Peaceful Lands",
+      "coordinates": {
+        "x": 9,
+        "y": 2
+      },
+      "type": "meadow",
+      "connections": [
+        "cell_8_2",
+        "cell_9_1",
+        "cell_9_3"
+      ],
+      "npcs": [
+        {
+          "name": "Guard L",
+          "type": "guard",
+          "description": "A guard found in this area",
+          "health": 100
+        }
+      ],
+      "objects": [
+        {
+          "name": "Well",
+          "type": "decoration",
+          "description": "A well found in this dangerous area"
+        },
+        {
+          "name": "Wooden Stick",
+          "type": "decoration",
+          "description": "A wooden stick found in this dangerous area"
+        }
+      ]
+    },
+    "cell_9_3": {
+      "name": "Safe Town",
+      "description": "A peaceful lands location with difficulty level 1. town area.",
+      "region": "Peaceful Lands",
+      "coordinates": {
+        "x": 9,
+        "y": 3
+      },
+      "type": "town",
+      "connections": [
+        "cell_8_3",
+        "cell_9_2",
+        "cell_9_4"
+      ],
+      "npcs": [
+        {
+          "name": "Merchant M",
+          "type": "merchant",
+          "description": "A merchant found in this area",
+          "health": 80
+        }
+      ],
+      "objects": [
+        {
+          "name": "Wooden Stick",
+          "type": "decoration",
+          "description": "A wooden stick found in this dangerous area"
+        },
+        {
+          "name": "Healing Herb",
+          "type": "decoration",
+          "description": "A healing herb found in this dangerous area"
+        }
+      ]
+    },
+    "cell_9_4": {
+      "name": "Sunny Village",
+      "description": "A peaceful lands location with difficulty level 1. village area.",
+      "region": "Peaceful Lands",
+      "coordinates": {
+        "x": 9,
+        "y": 4
+      },
+      "type": "village",
+      "connections": [
+        "cell_8_4",
+        "cell_9_3",
+        "cell_9_5"
+      ],
+      "npcs": [
+        {
+          "name": "Villager N",
+          "type": "villager",
+          "description": "A villager found in this area",
+          "health": 60
+        }
+      ],
+      "objects": [
+        {
+          "name": "Healing Herb",
+          "type": "decoration",
+          "description": "A healing herb found in this dangerous area"
+        },
+        {
+          "name": "Bread",
+          "type": "decoration",
+          "description": "A bread found in this dangerous area"
+        }
+      ]
+    },
+    "cell_9_5": {
+      "name": "Peaceful Farmland",
+      "description": "A peaceful lands location with difficulty level 1. farmland area.",
+      "region": "Peaceful Lands",
+      "coordinates": {
+        "x": 9,
+        "y": 5
+      },
+      "type": "farmland",
+      "connections": [
+        "cell_8_5",
+        "cell_9_4",
+        "cell_9_6"
+      ],
+      "npcs": [
+        {
+          "name": "Guard O",
+          "type": "guard",
+          "description": "A guard found in this area",
+          "health": 100
+        }
+      ],
+      "objects": [
+        {
+          "name": "Bread",
+          "type": "decoration",
+          "description": "A bread found in this dangerous area"
+        },
+        {
+          "name": "Well",
+          "type": "decoration",
+          "description": "A well found in this dangerous area"
+        }
+      ]
+    },
+    "cell_9_6": {
+      "name": "Green Meadow",
+      "description": "A peaceful lands location with difficulty level 1. meadow area.",
+      "region": "Peaceful Lands",
+      "coordinates": {
+        "x": 9,
+        "y": 6
+      },
+      "type": "meadow",
+      "connections": [
+        "cell_8_6",
+        "cell_9_5",
+        "cell_9_7"
+      ],
+      "npcs": [
+        {
+          "name": "Merchant P",
+          "type": "merchant",
+          "description": "A merchant found in this area",
+          "health": 80
+        }
+      ],
+      "objects": [
+        {
+          "name": "Well",
+          "type": "decoration",
+          "description": "A well found in this dangerous area"
+        },
+        {
+          "name": "Wooden Stick",
+          "type": "decoration",
+          "description": "A wooden stick found in this dangerous area"
+        }
+      ]
+    },
+    "cell_9_7": {
+      "name": "Safe Town",
+      "description": "A peaceful lands location with difficulty level 1. town area.",
+      "region": "Peaceful Lands",
+      "coordinates": {
+        "x": 9,
+        "y": 7
+      },
+      "type": "town",
+      "connections": [
+        "cell_8_7",
+        "cell_9_6",
+        "cell_9_8"
+      ],
+      "npcs": [
+        {
+          "name": "Villager Q",
+          "type": "villager",
+          "description": "A villager found in this area",
+          "health": 60
+        }
+      ],
+      "objects": [
+        {
+          "name": "Wooden Stick",
+          "type": "decoration",
+          "description": "A wooden stick found in this dangerous area"
+        },
+        {
+          "name": "Healing Herb",
+          "type": "decoration",
+          "description": "A healing herb found in this dangerous area"
+        }
+      ]
+    },
+    "cell_9_8": {
+      "name": "Sunny Village",
+      "description": "A peaceful lands location with difficulty level 1. village area.",
+      "region": "Peaceful Lands",
+      "coordinates": {
+        "x": 9,
+        "y": 8
+      },
+      "type": "village",
+      "connections": [
+        "cell_8_8",
+        "cell_9_7",
+        "cell_9_9"
+      ],
+      "npcs": [
+        {
+          "name": "Guard R",
+          "type": "guard",
+          "description": "A guard found in this area",
+          "health": 100
+        }
+      ],
+      "objects": [
+        {
+          "name": "Healing Herb",
+          "type": "decoration",
+          "description": "A healing herb found in this dangerous area"
+        },
+        {
+          "name": "Bread",
+          "type": "decoration",
+          "description": "A bread found in this dangerous area"
+        }
+      ]
+    },
+    "cell_9_9": {
+      "name": "Peaceful Farmland",
+      "description": "A peaceful lands location with difficulty level 1. farmland area.",
+      "region": "Peaceful Lands",
+      "coordinates": {
+        "x": 9,
+        "y": 9
+      },
+      "type": "farmland",
+      "connections": [
+        "cell_8_9",
+        "cell_9_8"
+      ],
+      "npcs": [
+        {
+          "name": "Merchant S",
+          "type": "merchant",
+          "description": "A merchant found in this area",
+          "health": 80
+        }
+      ],
+      "objects": [
+        {
+          "name": "Bread",
+          "type": "decoration",
+          "description": "A bread found in this dangerous area"
+        },
+        {
+          "name": "Well",
+          "type": "decoration",
+          "description": "A well found in this dangerous area"
+        }
+      ]
+    }
+  }
+}
