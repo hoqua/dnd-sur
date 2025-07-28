@@ -1,0 +1,249 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="d2e4b23c-cdd6-4c78-9784-7189ba357c97" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/app/(auth)/actions.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/(auth)/api/auth/[...nextauth]/route.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/(auth)/auth.config.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/(auth)/auth.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/(auth)/login/page.tsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/(auth)/register/page.tsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/(chat)/actions.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/(chat)/api/chat/route.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/(chat)/api/chat/schema.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/(chat)/api/files/upload/route.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/(chat)/api/history/route.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/(chat)/api/player/[userId]/route.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/(chat)/api/player/despawn/route.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/(chat)/api/player/spawn/route.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/(chat)/api/transform-text/route.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/(chat)/chat/[id]/page.tsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/(chat)/layout.tsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/(chat)/opengraph-image.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/(chat)/page.tsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/(chat)/twitter-image.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/favicon.ico" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/globals.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/layout.tsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/world-visualizer/page.tsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/biome.jsonc" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/components.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/auth-form.tsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/chat-header.tsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/chat.tsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/code-block.tsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/console.tsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/data-stream-provider.tsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/greeting.tsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/icons.tsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/location-display.tsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/markdown.tsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/message-actions.tsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/message-editor.tsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/message.tsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/messages.tsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/multimodal-input.tsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/player-stats.tsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/preview-attachment.tsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/providers.tsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/quick-actions.tsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/sign-out-form.tsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/submit-button.tsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/suggested-actions.tsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/theme-provider.tsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/toast.tsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/ui/alert-dialog.tsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/ui/badge.tsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/ui/button.tsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/ui/card.tsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/ui/dropdown-menu.tsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/ui/input.tsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/ui/label.tsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/ui/select.tsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/ui/separator.tsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/ui/sheet.tsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/ui/skeleton.tsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/ui/textarea.tsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/ui/tooltip.tsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/drizzle.config.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/hooks/use-auto-resume.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/hooks/use-messages.tsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/hooks/use-scroll-to-bottom.tsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/instrumentation.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/ai/prompts.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/ai/providers.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/ai/tools/create-player.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/ai/tools/look-around.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/constants.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/db/helpers/01-core-to-parts.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/db/migrate.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/db/migrations/0000_mysterious_virginia_dare.sql" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/db/migrations/meta/0000_snapshot.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/db/migrations/meta/_journal.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/db/queries.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/db/schema.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/db/utils.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/errors.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/types.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/utils.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/world/generate-world.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/world/player-spawning.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/world/schemas.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/world/world-data.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/world/world-loader.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/world/world-manager.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/middleware.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/next-env.d.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/next.config.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/playwright.config.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/pnpm-lock.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/pnpm-lock.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/postcss.config.mjs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/tailwind.config.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/prompts/basic.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/prompts/utils.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/tsconfig.json" beforeDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="McpProjectServerCommands">
+    <McpServerCommand>
+      <option name="enabled" value="true" />
+      <option name="name" value="nx-mcp" />
+      <option name="programPath" value="npx" />
+      <option name="arguments" value="-y nx-mcp@latest /Users/hoqua/Desktop/work/pets/dnd-sur" />
+      <option name="workingDirectory" value="" />
+      <envs />
+    </McpServerCommand>
+  </component>
+  <component name="ProjectColorInfo">{
+  &quot;associatedIndex&quot;: 8
+}</component>
+  <component name="ProjectId" id="30UwlggaLogOzatu8QvJd7QMXXR" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "ModuleVcsDetector.initialDetectionPerformed": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.git.unshallow": "true",
+    "git-widget-placeholder": "main",
+    "js.debugger.nextJs.config.created.client": "true",
+    "js.debugger.nextJs.config.created.server": "true",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "pnpm",
+    "npm.Next.js: server-side.executor": "Run",
+    "npm.db:generate.executor": "Run",
+    "npm.db:migrate.executor": "Run",
+    "npm.db:push.executor": "Run",
+    "npm.lint.executor": "Run",
+    "ts.external.directory.path": "/Users/hoqua/Desktop/work/pets/dnd-sur/apps/web/node_modules/typescript/lib"
+  }
+}]]></component>
+  <component name="RunManager" selected="npm.db:migrate">
+    <configuration name="Next.js: debug client-side" type="JavascriptDebugType" uri="http://localhost:3000/">
+      <method v="2" />
+    </configuration>
+    <configuration name="Next.js: server-side" type="js.build_tools.npm">
+      <package-json value="$PROJECT_DIR$/package.json" />
+      <command value="run" />
+      <scripts>
+        <script value="dev" />
+      </scripts>
+      <node-interpreter value="project" />
+      <envs />
+      <method v="2" />
+    </configuration>
+    <configuration name="db:generate" type="js.build_tools.npm" temporary="true" nameIsGenerated="true">
+      <package-json value="$PROJECT_DIR$/package.json" />
+      <command value="run" />
+      <scripts>
+        <script value="db:generate" />
+      </scripts>
+      <node-interpreter value="project" />
+      <envs />
+      <method v="2" />
+    </configuration>
+    <configuration name="db:migrate" type="js.build_tools.npm" temporary="true" nameIsGenerated="true">
+      <package-json value="$PROJECT_DIR$/package.json" />
+      <command value="run" />
+      <scripts>
+        <script value="db:migrate" />
+      </scripts>
+      <node-interpreter value="project" />
+      <envs />
+      <method v="2" />
+    </configuration>
+    <configuration name="db:push" type="js.build_tools.npm" temporary="true" nameIsGenerated="true">
+      <package-json value="$PROJECT_DIR$/package.json" />
+      <command value="run" />
+      <scripts>
+        <script value="db:push" />
+      </scripts>
+      <node-interpreter value="project" />
+      <envs />
+      <method v="2" />
+    </configuration>
+    <configuration name="lint" type="js.build_tools.npm" temporary="true" nameIsGenerated="true">
+      <package-json value="$PROJECT_DIR$/package.json" />
+      <command value="run" />
+      <scripts>
+        <script value="lint" />
+      </scripts>
+      <node-interpreter value="project" />
+      <envs />
+      <method v="2" />
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="npm.db:migrate" />
+        <item itemvalue="npm.db:generate" />
+        <item itemvalue="npm.db:push" />
+        <item itemvalue="npm.lint" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="SharedIndexes">
+    <attachedChunks>
+      <set>
+        <option value="bundled-js-predefined-d6986cc7102b-09060db00ec0-JavaScript-WS-251.27812.50" />
+      </set>
+    </attachedChunks>
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="d2e4b23c-cdd6-4c78-9784-7189ba357c97" name="Changes" comment="" />
+      <created>1753695611295</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1753695611295</updated>
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+  <component name="UnknownFeatures">
+    <option featureType="dependencySupport" implementationName="javascript:npm:react" />
+    <option featureType="dependencySupport" implementationName="executable:docker" />
+    <option featureType="dependencySupport" implementationName="javascript:npm:tailwindcss" />
+    <option featureType="dependencySupport" implementationName="executable:kubectl" />
+    <option featureType="dependencySupport" implementationName="javascript:npm:next" />
+    <option featureType="dependencySupport" implementationName="executable:terraform" />
+    <option featureType="dependencySupport" implementationName="javascript:npm:postcss" />
+  </component>
+</project>
