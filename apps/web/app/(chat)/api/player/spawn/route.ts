@@ -1,6 +1,7 @@
 import type { NextRequest } from 'next/server';
 import { auth } from '@/app/(auth)/auth';
-import { spawnPlayerOnLogin } from '@/lib/world/player-spawning';
+
+const WORLD_SERVER_URL = process.env.WORLD_SERVER_URL || 'http://localhost:3001';
 
 export async function POST(request: NextRequest) {
   try {
@@ -10,7 +11,15 @@ export async function POST(request: NextRequest) {
       return Response.json({ error: 'Unauthorized' }, { status: 401 });
     }
 
-    const result = await spawnPlayerOnLogin(session.user.id);
+    const response = await fetch(`${WORLD_SERVER_URL}/api/world/spawn`, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({ userId: session.user.id }),
+    });
+    
+    const result = await response.json();
     
     return Response.json({ 
       success: result.success, 

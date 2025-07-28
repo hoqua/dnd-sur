@@ -1,7 +1,28 @@
 'use client';
 
-import { useState, useMemo, useCallback } from 'react';
-import { world, type Location } from '@/lib/world/world-loader';
+import { useState, useMemo, useCallback, useEffect } from 'react';
+
+const WORLD_SERVER_URL = process.env.NEXT_PUBLIC_WORLD_SERVER_URL || 'http://localhost:3001';
+
+interface Location {
+  name: string;
+  description: string;
+  region: string;
+  coordinates: { x: number; y: number };
+  type: string;
+  connections: string[];
+  npcs: Array<{ name: string; type: string; description: string; health: number }>;
+  objects: Array<{ name: string; type: string; description: string }>;
+}
+
+interface WorldData {
+  meta: {
+    name: string;
+    version: string;
+    description: string;
+  };
+  locations: Record<string, Location>;
+}
 
 // Memoized location list item component
 const LocationListItem = ({ 
@@ -81,8 +102,49 @@ const LocationCell = ({
 };
 
 export default function WorldVisualizer() {
-  const worldData = world.getWorldData();
+  const [worldData, setWorldData] = useState<WorldData | null>(null);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState<string | null>(null);
   const [selectedLocation, setSelectedLocation] = useState<string | null>(null);
+
+  useEffect(() => {
+    const fetchWorldData = async () => {
+      try {
+        const response = await fetch(`${WORLD_SERVER_URL}/api/world/data`);
+        if (!response.ok) {
+          throw new Error('Failed to fetch world data');
+        }
+        const result = await response.json();
+        if (result.success) {
+          setWorldData(result.worldData);
+        } else {
+          throw new Error(result.error || 'Unknown error');
+        }
+      } catch (err) {
+        setError(err instanceof Error ? err.message : 'Unknown error');
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchWorldData();
+  }, []);
+
+  if (loading) {
+    return (
+      <div className="min-h-screen bg-slate-900 text-white flex items-center justify-center">
+        <div className="text-xl">Loading world data...</div>
+      </div>
+    );
+  }
+
+  if (error || !worldData) {
+    return (
+      <div className="min-h-screen bg-slate-900 text-white flex items-center justify-center">
+        <div className="text-xl text-red-400">Error: {error || 'No world data available'}</div>
+      </div>
+    );
+  }
   
   // Memoize heavy calculations
   const { locations, selectedLoc, gridData } = useMemo(() => {

@@ -1,0 +1,136 @@
+import { FastifyPluginAsync } from 'fastify';
+import { z } from 'zod';
+import { spawnPlayerOnLogin, getPlayerWorldState, movePlayerInWorld, despawnPlayerOnLogout } from '../world/player-spawning.js';
+import { world } from '../world/world-manager.js';
+
+// Request/Response schemas
+const SpawnPlayerSchema = z.object({
+  userId: z.string().uuid(),
+});
+
+
+const MovePlayerSchema = z.object({
+  userId: z.string().uuid(),
+  targetLocationId: z.string(),
+});
+
+const DespawnPlayerSchema = z.object({
+  userId: z.string().uuid(),
+});
+
+export const worldRoutes: FastifyPluginAsync = async (fastify) => {
+  // Get world data (for visualizer)
+  fastify.get('/data', async (_request, reply) => {
+    try {
+      const worldData = world.getWorldData();
+      return {
+        success: true,
+        worldData
+      };
+    } catch (error) {
+      fastify.log.error(error);
+      return reply.status(500).send({
+        success: false,
+        error: 'Internal server error'
+      });
+    }
+  });
+  // Spawn player in world
+  fastify.post('/spawn', async (request, reply) => {
+    try {
+      const { userId } = SpawnPlayerSchema.parse(request.body);
+      const result = await spawnPlayerOnLogin(userId);
+      
+      if (!result.success) {
+        return reply.status(400).send({
+          success: false,
+          error: result.error
+        });
+      }
+      
+      return {
+        success: true,
+        worldPlayer: result.worldPlayer
+      };
+    } catch (error) {
+      fastify.log.error(error);
+      return reply.status(500).send({
+        success: false,
+        error: 'Internal server error'
+      });
+    }
+  });
+
+  // Get player's current world state (for look-around)
+  fastify.get('/player/:userId/state', async (request, reply) => {
+    try {
+      const { userId } = request.params as { userId: string };
+      z.string().uuid().parse(userId);
+      
+      const worldState = getPlayerWorldState(userId);
+      
+      if (!worldState) {
+        return reply.status(404).send({
+          success: false,
+          error: 'Player not found in world'
+        });
+      }
+      
+      return {
+        success: true,
+        ...worldState
+      };
+    } catch (error) {
+      fastify.log.error(error);
+      return reply.status(500).send({
+        success: false,
+        error: 'Internal server error'
+      });
+    }
+  });
+
+  // Move player to new location
+  fastify.post('/move', async (request, reply) => {
+    try {
+      const { userId, targetLocationId } = MovePlayerSchema.parse(request.body);
+      const success = movePlayerInWorld(userId, targetLocationId);
+      
+      if (!success) {
+        return reply.status(400).send({
+          success: false,
+          error: 'Failed to move player'
+        });
+      }
+      
+      return {
+        success: true,
+        message: 'Player moved successfully'
+      };
+    } catch (error) {
+      fastify.log.error(error);
+      return reply.status(500).send({
+        success: false,
+        error: 'Internal server error'
+      });
+    }
+  });
+
+  // Despawn player from world
+  fastify.post('/despawn', async (request, reply) => {
+    try {
+      const { userId } = DespawnPlayerSchema.parse(request.body);
+      const success = despawnPlayerOnLogout(userId);
+      
+      return {
+        success,
+        message: success ? 'Player despawned successfully' : 'Player not found in world'
+      };
+    } catch (error) {
+      fastify.log.error(error);
+      return reply.status(500).send({
+        success: false,
+        error: 'Internal server error'
+      });
+    }
+  });
+};

@@ -10,6 +10,7 @@
     "lint": "tsc --noEmit"
   },
   "dependencies": {
+    "ai": "5.0.0-beta.6",
     "bcrypt-ts": "^5.0.2",
     "drizzle-orm": "^0.44.3",
     "postgres": "^3.4.7"

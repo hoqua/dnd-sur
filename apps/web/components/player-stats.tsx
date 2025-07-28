@@ -1,5 +1,5 @@
 'use client';
-import type { Player } from '@/lib/db/schema';
+import type { Player } from '@dnd-sur/database';
 
 interface PlayerStatsProps {
   player: Player | null;

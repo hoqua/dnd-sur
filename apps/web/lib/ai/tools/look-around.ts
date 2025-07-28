@@ -1,18 +1,28 @@
 import { tool } from 'ai';
 import { z } from 'zod';
-import { getPlayerWorldState } from '@/lib/world/player-spawning';
+
+const WORLD_SERVER_URL = process.env.WORLD_SERVER_URL || 'http://localhost:3001';
 
 export const createLookAroundTool = (userId: string) => tool({
   description: 'Look around the current location to see what is nearby, including other players, NPCs, objects, and exits.',
   inputSchema: z.object({}),
   execute: async () => {
     try {
-      const worldState = getPlayerWorldState(userId);
+      const response = await fetch(`${WORLD_SERVER_URL}/api/world/player/${userId}/state`);
       
-      if (!worldState) {
+      if (!response.ok) {
         return {
           success: false,
           error: 'You are not currently in the world. Please wait a moment for your character to be placed.',
+        };
+      }
+      
+      const worldState = await response.json();
+      
+      if (!worldState.success) {
+        return {
+          success: false,
+          error: worldState.error || 'Unable to get world state.',
         };
       }
 

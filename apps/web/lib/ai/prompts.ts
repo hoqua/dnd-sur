@@ -1,5 +1,5 @@
 import type { Geo } from '@vercel/functions';
-import type { Player } from '@/lib/db/schema';
+import type { Player } from '@dnd-sur/database';
 
 export const regularPrompt = `You are the NARRATOR of an immersive multiplayer roguelike adventure game. You are the storyteller, guide, and game master for players in a shared fantasy world.
 

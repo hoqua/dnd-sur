@@ -2,7 +2,7 @@ import type { NextRequest } from 'next/server';
 
 import { auth } from '@/app/(auth)/auth';
 import { getPlayerByUserId } from '@dnd-sur/database';
-import { getPlayerWorldState } from '@/lib/world/player-spawning';
+const WORLD_SERVER_URL = process.env.WORLD_SERVER_URL || 'http://localhost:3001';
 
 export async function GET(
   request: NextRequest,
@@ -26,12 +26,21 @@ export async function GET(
     // Get player data from database
     const player = await getPlayerByUserId({ userId });
     
-    // Get player's world state
-    const worldState = getPlayerWorldState(userId);
+    // Get player's world state from server
+    let worldState = null;
+    try {
+      const response = await fetch(`${WORLD_SERVER_URL}/api/world/player/${userId}/state`);
+      if (response.ok) {
+        const result = await response.json();
+        worldState = result.success ? result : null;
+      }
+    } catch (error) {
+      console.warn('Failed to get world state from server:', error);
+    }
 
     return Response.json({ 
       player: player || null,
-      worldState: worldState || null,
+      worldState,
     });
   } catch (error) {
     console.error('Error fetching player data:', error);
