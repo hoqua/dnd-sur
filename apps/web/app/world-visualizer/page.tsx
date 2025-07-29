@@ -24,6 +24,14 @@ interface WorldData {
   locations: Record<string, Location>;
 }
 
+interface WorldDataResponse {
+  success: boolean;
+  worldData: WorldData;
+  playersByLocation: Record<string, Array<{id: string, name: string, userId: string}>>;
+  totalActivePlayers: number;
+  error?: string;
+}
+
 // Memoized location list item component
 const LocationListItem = ({ 
   locationId, 
@@ -68,86 +76,75 @@ const LocationCell = ({
   locationId, 
   selectedLocation, 
   onLocationSelect, 
-  getLocationTypeColor 
+  getLocationTypeColor,
+  playersInLocation = []
 }: {
   location: Location;
   locationId: string;
   selectedLocation: string | null;
   onLocationSelect: (id: string) => void;
   getLocationTypeColor: (type: string) => string;
+  playersInLocation?: Array<{id: string, name: string, userId: string}>;
 }) => {
   const handleClick = useCallback(() => {
     onLocationSelect(locationId);
   }, [locationId, onLocationSelect]);
+
+  const hasPlayers = playersInLocation.length > 0;
 
   return (
     <button
       type="button"
       onClick={handleClick}
       className={`
-        size-16 rounded-lg border-2 transition-all
+        size-16 rounded-lg border-2 transition-all relative
         ${getLocationTypeColor(location.type)}
         ${selectedLocation === locationId
           ? 'border-amber-400 scale-105'
-          : 'border-slate-600 hover:border-amber-600'
+          : hasPlayers 
+            ? 'border-green-400 shadow-lg shadow-green-400/30'
+            : 'border-slate-600 hover:border-amber-600'
         }
       `}
-      title={location.name}
+      title={`${location.name}${hasPlayers ? ` (${playersInLocation.length} player${playersInLocation.length > 1 ? 's' : ''})` : ''}`}
     >
       <div className="text-xs font-medium text-white text-center px-1">
         {location.name.split(' ')[0]}
       </div>
+      {hasPlayers && (
+        <div className="absolute -top-1 -right-1 bg-green-500 text-white text-xs rounded-full w-5 h-5 flex items-center justify-center font-bold">
+          {playersInLocation.length}
+        </div>
+      )}
     </button>
   );
 };
 
 export default function WorldVisualizer() {
   const [worldData, setWorldData] = useState<WorldData | null>(null);
+  const [playersByLocation, setPlayersByLocation] = useState<Record<string, Array<{id: string, name: string, userId: string}>>>({});
+  const [totalActivePlayers, setTotalActivePlayers] = useState(0);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
   const [selectedLocation, setSelectedLocation] = useState<string | null>(null);
 
-  useEffect(() => {
-    const fetchWorldData = async () => {
-      try {
-        const response = await fetch(`${WORLD_SERVER_URL}/api/world/data`);
-        if (!response.ok) {
-          throw new Error('Failed to fetch world data');
-        }
-        const result = await response.json();
-        if (result.success) {
-          setWorldData(result.worldData);
-        } else {
-          throw new Error(result.error || 'Unknown error');
-        }
-      } catch (err) {
-        setError(err instanceof Error ? err.message : 'Unknown error');
-      } finally {
-        setLoading(false);
-      }
-    };
-
-    fetchWorldData();
-  }, []);
-
-  if (loading) {
-    return (
-      <div className="min-h-screen bg-slate-900 text-white flex items-center justify-center">
-        <div className="text-xl">Loading world data...</div>
-      </div>
-    );
-  }
-
-  if (error || !worldData) {
-    return (
-      <div className="min-h-screen bg-slate-900 text-white flex items-center justify-center">
-        <div className="text-xl text-red-400">Error: {error || 'No world data available'}</div>
-      </div>
-    );
-  }
-  
-  // Memoize heavy calculations
+  // All hooks must be called before any conditional returns
   const { locations, selectedLoc, gridData } = useMemo(() => {
+    if (!worldData) {
+      return {
+        locations: [],
+        selectedLoc: null,
+        gridData: {
+          minX: 0,
+          maxX: 0,
+          minY: 0,
+          maxY: 0,
+          gridWidth: 1,
+          gridHeight: 1
+        }
+      };
+    }
+
     const entries = Object.entries(worldData.locations);
     const coords = entries.map(([_, loc]) => loc.coordinates);
     const minX = Math.min(...coords.map(c => c.x));
@@ -167,7 +164,7 @@ export default function WorldVisualizer() {
         gridHeight: maxY - minY + 1
       }
     };
-  }, [worldData.locations, selectedLocation]);
+  }, [worldData, selectedLocation]);
 
   // Memoize color function
   const getLocationTypeColor = useCallback((type: string) => {
@@ -187,13 +184,64 @@ export default function WorldVisualizer() {
     setSelectedLocation(locationId);
   }, []);
 
+  useEffect(() => {
+    const fetchWorldData = async () => {
+      try {
+        const response = await fetch(`${WORLD_SERVER_URL}/api/world/data`);
+        if (!response.ok) {
+          throw new Error('Failed to fetch world data');
+        }
+        const result: WorldDataResponse = await response.json();
+        if (result.success) {
+          setWorldData(result.worldData);
+          setPlayersByLocation(result.playersByLocation || {});
+          setTotalActivePlayers(result.totalActivePlayers || 0);
+        } else {
+          throw new Error(result.error || 'Unknown error');
+        }
+      } catch (err) {
+        setError(err instanceof Error ? err.message : 'Unknown error');
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchWorldData();
+    
+    // Set up periodic refresh for player positions
+    const interval = setInterval(fetchWorldData, 10000); // Refresh every 10 seconds
+    
+    return () => clearInterval(interval);
+  }, []);
+
+  if (loading) {
+    return (
+      <div className="min-h-screen bg-slate-900 text-white flex items-center justify-center">
+        <div className="text-xl">Loading world data...</div>
+      </div>
+    );
+  }
+
+  if (error || !worldData) {
+    return (
+      <div className="min-h-screen bg-slate-900 text-white flex items-center justify-center">
+        <div className="text-xl text-red-400">Error: {error || 'No world data available'}</div>
+      </div>
+    );
+  }
+
       return (
       <div className="min-h-screen bg-slate-900 text-white p-8">
         <div className="max-w-7xl mx-auto pb-8">
         <h1 className="text-3xl font-bold mb-2 text-amber-300">
           {worldData.meta.name} - World Visualizer
         </h1>
-        <p className="text-amber-200 mb-8">{worldData.meta.description}</p>
+        <div className="flex justify-between items-center mb-8">
+          <p className="text-amber-200">{worldData.meta.description}</p>
+          <div className="text-green-400 font-medium">
+            {totalActivePlayers} Active Player{totalActivePlayers !== 1 ? 's' : ''}
+          </div>
+        </div>
 
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
           {/* World Map */}
@@ -228,6 +276,7 @@ export default function WorldVisualizer() {
                                   selectedLocation={selectedLocation}
                                   onLocationSelect={handleLocationSelect}
                                   getLocationTypeColor={getLocationTypeColor}
+                                  playersInLocation={playersByLocation[locationId] || []}
                                 />
                               );
                             }
@@ -259,6 +308,12 @@ export default function WorldVisualizer() {
                   <div className="size-4 bg-yellow-600 rounded" />
                   <span>Path</span>
                 </div>
+                <div className="flex items-center gap-2">
+                  <div className="size-4 bg-green-500 rounded relative">
+                    <div className="absolute -top-1 -right-1 bg-green-400 text-white text-xs rounded-full w-3 h-3 flex items-center justify-center font-bold">!</div>
+                  </div>
+                  <span>Players Present</span>
+                </div>
               </div>
             </div>
           </div>
@@ -274,6 +329,21 @@ export default function WorldVisualizer() {
                   <p className="text-sm text-slate-300 mb-2">{selectedLoc.region}</p>
                   <p className="text-slate-200">{selectedLoc.description}</p>
                 </div>
+
+                {selectedLocation && playersByLocation[selectedLocation]?.length > 0 && (
+                  <div>
+                    <h4 className="font-medium text-green-400 mb-2">
+                      Active Players ({playersByLocation[selectedLocation].length})
+                    </h4>
+                    <div className="space-y-1">
+                      {playersByLocation[selectedLocation].map((player) => (
+                        <div key={player.id} className="text-sm">
+                          <div className="text-green-300 font-medium">{player.name}</div>
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+                )}
 
                 <div>
                   <h4 className="font-medium text-amber-200 mb-2">Connections</h4>

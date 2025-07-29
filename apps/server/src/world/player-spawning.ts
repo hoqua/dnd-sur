@@ -1,5 +1,5 @@
 import { world } from './world-manager';
-import { getPlayerByUserId } from '@dnd-sur/database';
+import { getPlayerByUserId, updatePlayerLocation } from '@dnd-sur/database';
 import type { WorldPlayer } from './schemas';
 
 export interface PlayerSpawnResult {
@@ -12,35 +12,40 @@ export interface PlayerSpawnResult {
  * Spawns a player in the world when they log in
  */
 export async function spawnPlayerOnLogin(userId: string): Promise<PlayerSpawnResult> {
-  try {
-    // Check if player is already in the world
-    const existingWorldPlayer = world.getPlayerInWorld(userId);
-    if (existingWorldPlayer) {
-      // Update activity and return existing player
-      world.updatePlayerActivity(userId);
-      console.log(`🔄 Player ${existingWorldPlayer.name} already in world, updating activity`);
-      return { success: true, worldPlayer: existingWorldPlayer };
-    }
-
-    // Get player data from database - handle gracefully if database isn't ready
-    const playerData = await getPlayerByUserId({ userId });
-    if (!playerData) {
-      console.log(`ℹ️ No player character found for user ${userId} - they need to create one first`);
-      return { success: false, error: 'No player character found. Please create a character first.' };
-    }
-
-    // Spawn player in the world
-    const worldPlayer = world.spawnPlayer(userId, playerData.name);
-    if (!worldPlayer) {
-      return { success: false, error: 'Failed to spawn player in world' };
-    }
-
-    console.log(`✨ Player ${playerData.name} spawned in world at ${worldPlayer.locationId}`);
-    return { success: true, worldPlayer };
-  } catch (error) {
-    console.error('Error spawning player:', error);
-    return { success: false, error: 'Internal error during player spawning' };
+  // Check if player is already in the world
+  const existingWorldPlayer = world.getPlayerInWorld(userId);
+  if (existingWorldPlayer) {
+    // Update activity and return existing player
+    world.updatePlayerActivity(userId);
+    console.log(`🔄 Player ${existingWorldPlayer.name} already in world, updating activity`);
+    return { success: true, worldPlayer: existingWorldPlayer };
   }
+
+  // Get player data from database - handle gracefully if database isn't ready
+  let playerData;
+  try {
+    playerData = await getPlayerByUserId({ userId });
+  } catch (error) {
+    console.error('Database connection failed:', error);
+    return { 
+      success: false, 
+      error: 'Database unavailable. Please ensure PostgreSQL is running and try again.' 
+    };
+  }
+  
+  if (!playerData) {
+    console.log(`ℹ️ No player character found for user ${userId} - they need to create one first`);
+    return { success: false, error: 'No player character found. Please create a character first.' };
+  }
+
+  // Spawn player in the world using their saved location
+  const worldPlayer = world.spawnPlayer(userId, playerData.name, playerData.location);
+  if (!worldPlayer) {
+    return { success: false, error: 'Failed to spawn player in world' };
+  }
+
+  console.log(`✨ Player ${playerData.name} spawned in world at ${worldPlayer.locationId}`);
+  return { success: true, worldPlayer };
 }
 
 /**
@@ -87,8 +92,24 @@ export function getPlayerWorldState(userId: string) {
 /**
  * Attempts to move a player to a new location
  */
-export function movePlayerInWorld(userId: string, targetLocationId: string): boolean {
-  return world.movePlayer(userId, targetLocationId);
+export async function movePlayerInWorld(userId: string, targetLocationId: string): Promise<boolean> {
+  const success = world.movePlayer(userId, targetLocationId);
+  
+  if (success) {
+    // Save location to database (fire and forget - don't block movement on DB issues)
+    savePlayerLocationToDB(userId, targetLocationId).catch(error => {
+      console.error(`Failed to save player location to DB:`, error);
+    });
+  }
+  
+  return success;
+}
+
+async function savePlayerLocationToDB(userId: string, locationId: string): Promise<void> {
+  const playerData = await getPlayerByUserId({ userId });
+  if (playerData) {
+    await updatePlayerLocation({ playerId: playerData.id, location: locationId });
+  }
 }
 
 /**

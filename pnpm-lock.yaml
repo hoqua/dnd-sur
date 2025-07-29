@@ -17,9 +17,15 @@ importers:
       '@dnd-sur/database':
         specifier: workspace:*
         version: link:../../packages/database
+      '@dnd-sur/env':
+        specifier: workspace:*
+        version: link:../../packages/env
       '@fastify/cors':
         specifier: ^10.0.0
         version: 10.1.0
+      dotenv:
+        specifier: ^16.4.5
+        version: 16.4.7
       fastify:
         specifier: ^5.0.0
         version: 5.4.0
@@ -54,6 +60,9 @@ importers:
       '@dnd-sur/database':
         specifier: workspace:*
         version: link:../../packages/database
+      '@dnd-sur/env':
+        specifier: workspace:*
+        version: link:../../packages/env
       '@opentelemetry/api':
         specifier: ^1.9.0
         version: 1.9.0
@@ -295,6 +304,9 @@ importers:
 
   packages/database:
     dependencies:
+      '@dnd-sur/env':
+        specifier: workspace:*
+        version: link:../env
       ai:
         specifier: 5.0.0-beta.6
         version: 5.0.0-beta.6(zod@3.25.68)
@@ -314,6 +326,19 @@ importers:
       drizzle-kit:
         specifier: ^0.31.4
         version: 0.31.4
+      typescript:
+        specifier: ^5.6.3
+        version: 5.8.2
+
+  packages/env:
+    dependencies:
+      zod:
+        specifier: ^3.23.8
+        version: 3.25.68
+    devDependencies:
+      '@types/node':
+        specifier: ^22.8.6
+        version: 22.13.10
       typescript:
         specifier: ^5.6.3
         version: 5.8.2

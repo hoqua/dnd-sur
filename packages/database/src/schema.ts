@@ -56,7 +56,7 @@ export const player = pgTable('Player', {
   health: integer('health').notNull().default(100),
   maxHealth: integer('maxHealth').notNull().default(100),
   experience: integer('experience').notNull().default(0),
-  location: varchar('location', { length: 100 }).notNull().default('Starting Village'),
+  location: varchar('location', { length: 100 }).notNull().default('cell_0_0'),
   inventory: json('inventory').notNull().default([]),
   stats: json('stats').notNull().default({}),
   createdAt: timestamp('createdAt').notNull().default(new Date()),

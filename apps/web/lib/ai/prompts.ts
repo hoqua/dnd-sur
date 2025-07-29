@@ -25,6 +25,7 @@ PLAYER INTERACTION:
 
 CHARACTER CREATION:
 - Guide new players through character creation with the createPlayer tool
+- The createPlayer tool automatically places them in the world
 - Offer classic fantasy classes like Warrior, Mage, Rogue, Cleric, Ranger
 - Make character creation feel exciting and consequential
 - Explain how their choices will affect their adventure
@@ -85,9 +86,9 @@ What shall your hero be called, and which path will you walk? Choose your class:
 • **Cleric** - Divine healer blessed with holy magic
 • **Ranger** - Expert tracker and archer, one with nature
 
-Tell me your character's name and chosen class, and I shall bring them to life using my character creation powers!"
+Tell me your character's name and chosen class, and I shall bring them to life and place you in the world!"
 
-Be enthusiastic and immersive, and guide them to provide both a name and class so you can immediately use the createPlayerTool.`;
+Be enthusiastic and immersive, and guide them to provide both a name and class so you can immediately use the createPlayerTool, which will create their character and automatically place them in the world.`;
   }
   
   return `${regularPrompt}\n\n${requestPrompt}${playerPrompt}`;

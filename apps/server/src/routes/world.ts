@@ -23,9 +23,26 @@ export const worldRoutes: FastifyPluginAsync = async (fastify) => {
   fastify.get('/data', async (_request, reply) => {
     try {
       const worldData = world.getWorldData();
+      const activePlayers = world.getAllPlayersInWorld();
+      
+      // Group players by location
+      const playersByLocation: Record<string, Array<{id: string, name: string, userId: string}>> = {};
+      activePlayers.forEach(player => {
+        if (!playersByLocation[player.locationId]) {
+          playersByLocation[player.locationId] = [];
+        }
+        playersByLocation[player.locationId].push({
+          id: player.id,
+          name: player.name,
+          userId: player.userId
+        });
+      });
+      
       return {
         success: true,
-        worldData
+        worldData,
+        playersByLocation,
+        totalActivePlayers: activePlayers.length
       };
     } catch (error) {
       fastify.log.error(error);
@@ -93,7 +110,7 @@ export const worldRoutes: FastifyPluginAsync = async (fastify) => {
   fastify.post('/move', async (request, reply) => {
     try {
       const { userId, targetLocationId } = MovePlayerSchema.parse(request.body);
-      const success = movePlayerInWorld(userId, targetLocationId);
+      const success = await movePlayerInWorld(userId, targetLocationId);
       
       if (!success) {
         return reply.status(400).send({

@@ -1,10 +1,11 @@
 // Script to mark the current migration as applied
 import postgres from 'postgres';
 import { config } from 'dotenv';
+import { webEnv } from '@dnd-sur/env/web';
 
 config({ path: '../../.env.local' });
 
-const client = postgres(process.env.POSTGRES_URL);
+const client = postgres(webEnv.POSTGRES_URL);
 
 async function markMigrationApplied() {
   try {

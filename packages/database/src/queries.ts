@@ -21,7 +21,14 @@ import {
 import { generateHashedPassword } from './utils';
 
 // biome-ignore lint: Forbidden non-null assertion.
-const client = postgres(process.env.POSTGRES_URL!);
+const client = postgres(process.env.POSTGRES_URL!, {
+  max: 20,
+  idle_timeout: 20,
+  max_lifetime: 60 * 30,
+  connect_timeout: 30,
+  ssl: 'require',
+  onnotice: () => {},
+});
 const db = drizzle(client);
 
 export async function getUser(email: string): Promise<Array<User>> {
@@ -144,7 +151,7 @@ export async function createPlayer({
   characterClass,
   level = 1,
   health = 100,
-  location = 'tavern'
+  location = 'cell_0_0'
 }: {
   userId: string;
   name: string;

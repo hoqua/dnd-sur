@@ -41,3 +41,23 @@ yarn-error.log*
 /playwright-report/
 /blob-report/
 /playwright/*
+
+# Distribution folders
+**/dist/
+**/build/
+**/.dist/
+**/out/
+
+# IntelliJ IDEA
+.idea/
+*.iml
+*.iws
+*.ipr
+
+# JetBrains IDEs
+.idea/
+*.swp
+*.swo
+
+# TypeScript
+*.tsbuildinfo

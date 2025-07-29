@@ -20,6 +20,7 @@
   },
   "dependencies": {
     "@dnd-sur/database": "workspace:*",
+    "@dnd-sur/env": "workspace:*",
     "@ai-sdk/openai": "2.0.0-beta.11",
     "@ai-sdk/provider": "2.0.0-beta.1",
     "@ai-sdk/react": "2.0.0-beta.6",

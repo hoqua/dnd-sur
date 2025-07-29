@@ -1,46 +1,24 @@
-import { WorldDataSchema, LocationSchema, type WorldData, type Location, type WorldPlayer, } from './schemas';
+import {
+  type WorldData,
+  type Location,
+  type WorldPlayer,
+} from './schemas';
 import worldDataJson from './world-data.json';
 
+const  SPAWN_LOCATIONS = ['cell_0_0', 'cell_0_9', 'cell_9_0', 'cell_9_9'];
+
 class WorldManager {
-  private static instance: WorldManager | null = null;
-  private worldData: WorldData;
-  private activePlayers: Map<string, WorldPlayer> = new Map();
-  private readonly SPAWN_LOCATIONS = ['cell_0_0', 'cell_0_9', 'cell_9_0', 'cell_9_9']; // Corner starting positions
+  constructor(
+    private activePlayers: Map<string, WorldPlayer> = new Map(),
+    private worldData: WorldData = worldDataJson as WorldData,
+) {}
 
-  private constructor() {
-    // Validate world data on initialization
-    const parseResult = WorldDataSchema.safeParse(worldDataJson);
-    if (!parseResult.success) {
-      console.error('Invalid world data:', parseResult.error);
-      throw new Error('Failed to load world data: Invalid schema');
-    }
-    this.worldData = parseResult.data;
-    console.log(`🌍 World Manager initialized: ${this.worldData.meta.name} v${this.worldData.meta.version}`);
-  }
-
-  public static getInstance(): WorldManager {
-    if (!WorldManager.instance) {
-      WorldManager.instance = new WorldManager();
-    }
-    return WorldManager.instance;
-  }
-
-  // World Data Access
   public getWorldData(): WorldData {
     return this.worldData;
   }
 
   public getLocation(locationId: string): Location | null {
-    const location = this.worldData.locations[locationId];
-    if (!location) return null;
-    
-    // Validate location data
-    const parseResult = LocationSchema.safeParse(location);
-    if (!parseResult.success) {
-      console.error(`Invalid location data for ${locationId}:`, parseResult.error);
-      return null;
-    }
-    return parseResult.data;
+    return this.worldData.locations[locationId] || null;
   }
 
   public getAllLocations(): Record<string, Location> {
@@ -61,15 +39,18 @@ class WorldManager {
   }
 
   // Player Management
-  public spawnPlayer(userId: string, playerName: string): WorldPlayer | null {
-    try {
+  public spawnPlayer(userId: string, playerName: string, preferredLocationId?: string): WorldPlayer | null {
       // Remove existing player if they're already in the world
       this.despawnPlayer(userId);
 
-      // Find a random spawn location (corners - difficulty level 1)
-      const spawnLocationId = this.SPAWN_LOCATIONS[Math.floor(Math.random() * this.SPAWN_LOCATIONS.length)];
-      const spawnLocation = this.getLocation(spawnLocationId);
+      // Use preferred location if provided and valid, otherwise use random spawn location
+      let spawnLocationId = preferredLocationId;
+      if (!spawnLocationId || !this.getLocation(spawnLocationId)) {
+        // Fall back to random corner spawn location
+        spawnLocationId = SPAWN_LOCATIONS[Math.floor(Math.random() * SPAWN_LOCATIONS.length)];
+      }
       
+      const spawnLocation = this.getLocation(spawnLocationId);
       if (!spawnLocation) {
         console.error(`Spawn location ${spawnLocationId} not found`);
         return null;
@@ -88,10 +69,6 @@ class WorldManager {
       this.activePlayers.set(userId, worldPlayer);
       console.log(`👤 Player ${playerName} spawned at ${spawnLocation.name} (${spawnLocationId})`);
       return worldPlayer;
-    } catch (error) {
-      console.error('Failed to spawn player:', error);
-      return null;
-    }
   }
 
   public despawnPlayer(userId: string): boolean {
@@ -143,6 +120,7 @@ class WorldManager {
     player.lastActive = new Date();
 
     console.log(`🚶 Player ${player.name} moved from ${currentLocation.name} to ${targetLocation.name}`);
+    
     return true;
   }
 
@@ -199,5 +177,5 @@ class WorldManager {
 }
 
 // Export singleton instance
-export const world = WorldManager.getInstance();
+export const world = new WorldManager()
 export type { WorldManager }; 

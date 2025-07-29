@@ -10,6 +10,7 @@
     "lint": "tsc --noEmit"
   },
   "dependencies": {
+    "@dnd-sur/env": "workspace:*",
     "ai": "5.0.0-beta.6",
     "bcrypt-ts": "^5.0.2",
     "drizzle-orm": "^0.44.3",
