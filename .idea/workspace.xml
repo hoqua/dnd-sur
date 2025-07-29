@@ -4,39 +4,11 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="d2e4b23c-cdd6-4c78-9784-7189ba357c97" name="Changes" comment="some cleanups">
-      <change afterPath="$PROJECT_DIR$/apps/server/.env.example" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/packages/env/package.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/packages/env/src/index.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/packages/env/src/server.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/packages/env/src/web.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/packages/env/tsconfig.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+    <list default="true" id="d2e4b23c-cdd6-4c78-9784-7189ba357c97" name="Changes" comment="some updates">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/apps/server/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/apps/server/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/apps/server/src/index.ts" beforeDir="false" afterPath="$PROJECT_DIR$/apps/server/src/index.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/apps/server/src/routes/world.ts" beforeDir="false" afterPath="$PROJECT_DIR$/apps/server/src/routes/world.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/apps/server/src/world/player-spawning.ts" beforeDir="false" afterPath="$PROJECT_DIR$/apps/server/src/world/player-spawning.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/apps/server/src/world/world-manager.ts" beforeDir="false" afterPath="$PROJECT_DIR$/apps/server/src/world/world-manager.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/apps/web/app/world-visualizer/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/apps/web/app/world-visualizer/page.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/apps/web/drizzle.config.ts" beforeDir="false" afterPath="$PROJECT_DIR$/apps/web/drizzle.config.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/apps/web/lib/ai/prompts.ts" beforeDir="false" afterPath="$PROJECT_DIR$/apps/web/lib/ai/prompts.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/apps/web/lib/ai/tools/create-player.ts" beforeDir="false" afterPath="$PROJECT_DIR$/apps/web/lib/ai/tools/create-player.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/apps/web/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/apps/web/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/packages/database/dist/index.d.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/packages/database/dist/index.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/packages/database/dist/queries.d.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/packages/database/dist/queries.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/packages/database/dist/schema.d.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/packages/database/dist/schema.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/packages/database/dist/utils.d.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/packages/database/dist/utils.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/packages/database/drizzle.config.ts" beforeDir="false" afterPath="$PROJECT_DIR$/packages/database/drizzle.config.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/packages/database/mark-migration-applied.js" beforeDir="false" afterPath="$PROJECT_DIR$/packages/database/mark-migration-applied.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/packages/database/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/packages/database/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/packages/database/src/queries.ts" beforeDir="false" afterPath="$PROJECT_DIR$/packages/database/src/queries.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/packages/database/src/schema.ts" beforeDir="false" afterPath="$PROJECT_DIR$/packages/database/src/schema.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pnpm-lock.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/pnpm-lock.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/apps/web/lib/ai/tools/look-around.ts" beforeDir="false" afterPath="$PROJECT_DIR$/apps/web/lib/ai/tools/look-around.ts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -180,6 +152,7 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="to monorepo" />
-    <option name="LAST_COMMIT_MESSAGE" value="to monorepo" />
+    <MESSAGE value="some updates" />
+    <option name="LAST_COMMIT_MESSAGE" value="some updates" />
   </component>
 </project>

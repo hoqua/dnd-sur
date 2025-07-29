@@ -21,17 +21,8 @@ export async function spawnPlayerOnLogin(userId: string): Promise<PlayerSpawnRes
     return { success: true, worldPlayer: existingWorldPlayer };
   }
 
-  // Get player data from database - handle gracefully if database isn't ready
-  let playerData;
-  try {
-    playerData = await getPlayerByUserId({ userId });
-  } catch (error) {
-    console.error('Database connection failed:', error);
-    return { 
-      success: false, 
-      error: 'Database unavailable. Please ensure PostgreSQL is running and try again.' 
-    };
-  }
+  // Get player data from database
+  const playerData = await getPlayerByUserId({ userId });
   
   if (!playerData) {
     console.log(`ℹ️ No player character found for user ${userId} - they need to create one first`);
@@ -97,9 +88,7 @@ export async function movePlayerInWorld(userId: string, targetLocationId: string
   
   if (success) {
     // Save location to database (fire and forget - don't block movement on DB issues)
-    savePlayerLocationToDB(userId, targetLocationId).catch(error => {
-      console.error(`Failed to save player location to DB:`, error);
-    });
+    savePlayerLocationToDB(userId, targetLocationId);
   }
   
   return success;

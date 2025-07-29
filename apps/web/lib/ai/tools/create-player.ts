@@ -11,63 +11,55 @@ export const createPlayerTool = (userId: string) => tool({
     characterClass: z.enum(['Warrior', 'Mage', 'Rogue', 'Cleric', 'Ranger']).describe('The character class chosen by the player'),
   }),
   execute: async ({ name, characterClass }) => {
-    try {
-      // Check if player already exists
-      const existingPlayer = await getPlayerByUserId({ userId });
-      
-      if (existingPlayer) {
-        return {
-          success: false,
-          error: 'Player already exists',
-          player: existingPlayer,
-        };
-      }
-
-      // Create new player with proper starting location
-      const newPlayer = await createPlayer({
-        userId,
-        name,
-        characterClass,
-        location: 'cell_0_0', // Start at Sunny Town (safe corner)
-      });
-
-      // Immediately spawn player in world
-      try {
-        const spawnResponse = await fetch(`${WORLD_SERVER_URL}/api/world/spawn`, {
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/json',
-          },
-          body: JSON.stringify({ userId }),
-        });
-
-        if (spawnResponse.ok) {
-          const spawnResult = await spawnResponse.json();
-          if (spawnResult.success) {
-            return {
-              success: true,
-              player: newPlayer,
-              worldPlayer: spawnResult.worldPlayer,
-              message: `Successfully created ${characterClass} character "${name}" and spawned at ${spawnResult.worldPlayer.locationId}. Your adventure begins!`,
-            };
-          }
-        }
-      } catch (spawnError) {
-        console.error('Error spawning player in world:', spawnError);
-      }
-
-      // If spawn fails, still return success for player creation
-      return {
-        success: true,
-        player: newPlayer,
-        message: `Successfully created ${characterClass} character "${name}" at Sunny Town. Ready to begin your adventure!`,
-      };
-    } catch (error) {
-      console.error('Failed to create player:', error);
+    // Check if player already exists
+    const existingPlayer = await getPlayerByUserId({ userId });
+    
+    if (existingPlayer) {
       return {
         success: false,
-        error: 'Failed to create character',
+        error: 'Player already exists',
+        player: existingPlayer,
       };
     }
+
+    // Create new player with proper starting location
+    const newPlayer = await createPlayer({
+      userId,
+      name,
+      characterClass,
+      location: 'cell_0_0', // Start at Sunny Town (safe corner)
+    });
+
+    // Immediately spawn player in world (optional - don't fail creation if world server is down)
+    try {
+      const spawnResponse = await fetch(`${WORLD_SERVER_URL}/api/world/spawn`, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ userId }),
+      });
+
+      if (spawnResponse.ok) {
+        const spawnResult = await spawnResponse.json();
+        if (spawnResult.success) {
+          return {
+            success: true,
+            player: newPlayer,
+            worldPlayer: spawnResult.worldPlayer,
+            message: `Successfully created ${characterClass} character "${name}" and spawned at ${spawnResult.worldPlayer.locationId}. Your adventure begins!`,
+          };
+        }
+      }
+    } catch (spawnError) {
+      console.error('Error spawning player in world:', spawnError);
+    }
+
+    // If spawn fails, still return success for player creation
+    return {
+      success: true,
+      player: newPlayer,
+      message: `Successfully created ${characterClass} character "${name}" at Sunny Town. Ready to begin your adventure!`,
+    };
   },
 }); 

@@ -14,36 +14,31 @@ export async function GET(
     return Response.json({ error: 'Unauthorized' }, { status: 401 });
   }
 
-  try {
-    // Await params before accessing properties (Next.js 15 requirement)
-    const { userId } = await params;
+  // Await params before accessing properties (Next.js 15 requirement)
+  const { userId } = await params;
 
-    // Users can only access their own data
-    if (session.user.id !== userId) {
-      return Response.json({ error: 'Forbidden' }, { status: 403 });
-    }
-
-    // Get player data from database
-    const player = await getPlayerByUserId({ userId });
-    
-    // Get player's world state from server
-    let worldState = null;
-    try {
-      const response = await fetch(`${WORLD_SERVER_URL}/api/world/player/${userId}/state`);
-      if (response.ok) {
-        const result = await response.json();
-        worldState = result.success ? result : null;
-      }
-    } catch (error) {
-      console.warn('Failed to get world state from server:', error);
-    }
-
-    return Response.json({ 
-      player: player || null,
-      worldState,
-    });
-  } catch (error) {
-    console.error('Error fetching player data:', error);
-    return Response.json({ error: 'Internal server error' }, { status: 500 });
+  // Users can only access their own data
+  if (session.user.id !== userId) {
+    return Response.json({ error: 'Forbidden' }, { status: 403 });
   }
+
+  // Get player data from database
+  const player = await getPlayerByUserId({ userId });
+  
+  // Get player's world state from server (optional - don't fail if world server is down)
+  let worldState = null;
+  try {
+    const response = await fetch(`${WORLD_SERVER_URL}/api/world/player/${userId}/state`);
+    if (response.ok) {
+      const result = await response.json();
+      worldState = result.success ? result : null;
+    }
+  } catch (error) {
+    console.warn('Failed to get world state from server:', error);
+  }
+
+  return Response.json({ 
+    player: player || null,
+    worldState,
+  });
 } 
